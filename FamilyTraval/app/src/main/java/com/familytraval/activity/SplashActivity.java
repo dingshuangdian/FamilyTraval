@@ -48,10 +48,13 @@ public class SplashActivity extends FragmentActivity {
                     fadeOut.setFillAfter(true);
                     findViewById(R.id.guideImage).startAnimation(fadeOut);
                     initGuideGallery();
+                } else if ((SharedPreferences.getInstance().getString("cellphone", "")) != null && (SharedPreferences.getInstance().getString("password", "")) != null) {
+                    UIHelper.showHome(SplashActivity.this);
                 } else {
                     UIHelper.showLogin(SplashActivity.this);
                 }
             }
+
         }, 2000);
     }
 
@@ -61,6 +64,7 @@ public class SplashActivity extends FragmentActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences.getInstance().putBoolean("first-time-use", false);
                 UIHelper.showLogin(SplashActivity.this);
             }
         });

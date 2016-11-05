@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="G:\111111111111111\FamilyTraval\magicindicator_library\src\main\assets"/><source path="G:\111111111111111\FamilyTraval\magicindicator_library\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="G:\111111111111111\FamilyTraval\magicindicator_library\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="F:\shap\FamilyTraval\magicindicator_library\src\main\assets"/><source path="F:\shap\FamilyTraval\magicindicator_library\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="F:\shap\FamilyTraval\magicindicator_library\src\debug\assets"/></dataSet></merger>

@@ -3,7 +3,6 @@ package com.familytraval.activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -16,6 +15,7 @@ import android.widget.Toast;
 
 import com.familytraval.R;
 import com.familytraval.ui.UIHelper;
+import com.familytraval.utils.SharedPreferences;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -62,8 +62,7 @@ public class GetSecurityActivity extends FragmentActivity {
     }
 
     private void getText() {
-        SharedPreferences sp = GetSecurityActivity.this.getSharedPreferences("phoneNumber", Context.MODE_PRIVATE);
-        realPhone = sp.getString("cellNumber", "");
+        realPhone = SharedPreferences.getInstance().getString("cellphone", "");
         tv_getNumber.setText("我们已经给您的手机号码" + realPhone + "发送了一条验证短信,请稍等。");
 
     }

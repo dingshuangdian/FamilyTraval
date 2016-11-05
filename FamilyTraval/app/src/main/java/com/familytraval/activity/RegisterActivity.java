@@ -1,7 +1,6 @@
 package com.familytraval.activity;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import com.familytraval.R;
 import com.familytraval.ui.UIHelper;
+import com.familytraval.utils.SharedPreferences;
 
 import cn.smssdk.SMSSDK;
 
@@ -26,6 +26,7 @@ public class RegisterActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         registerPhone = (EditText) findViewById(R.id.registerPhone);
         rg_back = (TextView) findViewById(R.id.rg_back);
         btnNext = (Button) findViewById(R.id.btnNext);
@@ -45,8 +46,7 @@ public class RegisterActivity extends FragmentActivity {
                     } else {
                         SMSSDK.getVerificationCode("+86", cellNumber);
                         Toast.makeText(RegisterActivity.this, "短信已发送！", Toast.LENGTH_SHORT).show();
-                        SharedPreferences sp = RegisterActivity.this.getSharedPreferences("phoneNumber", Context.MODE_PRIVATE);
-                        sp.edit().putString("cellNumber", cellNumber).commit();
+                        SharedPreferences.getInstance().putString("cellphone", cellNumber);
                         UIHelper.GetSecurityActivity(RegisterActivity.this);
                     }
                     break;

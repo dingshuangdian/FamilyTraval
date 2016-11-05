@@ -4,7 +4,15 @@
         "source": "G:\\111111111111111\\FamilyTraval\\magicindicator_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
     },
     {
+        "merged": "F:\\shap\\FamilyTraval\\magicindicator_library\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "F:\\shap\\FamilyTraval\\magicindicator_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
         "merged": "G:\\111111111111111\\FamilyTraval\\magicindicator_library\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
         "source": "G:\\111111111111111\\FamilyTraval\\magicindicator_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "F:\\shap\\FamilyTraval\\magicindicator_library\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "F:\\shap\\FamilyTraval\\magicindicator_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
     }
 ]
