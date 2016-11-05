@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone" />
+
+    <com.familytraval.ui.CirclePageIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:padding="5dp"
+        android:visibility="gone"
+        app:pageColor="#88808080"
+        app:strokeWidth="0dp" />
+
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/btn_orange"
+        android:text="拥抱健康"
+        android:textColor="#ffff"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/guideImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/newer04" />
+
+</RelativeLayout>

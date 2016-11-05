@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="teal">#00796B</color>
+    <color name="brown">#8D6E63</color>
+    <color name="blue">#2196F3</color>
+    <color name="grey">#607D8B</color>
+    <color name="orange">#F57C00</color>
+    <!-- 字体颜色值 -->
+    <color name="text_color_blue">#0081E1</color>
+    <color name="text_color_black">#323232</color>
+    <color name="text_color_white">#ffffff</color>
+    <color name="text_color_gray">#888888</color>
+    <color name="text_color_gray_light">#A8A8A8</color>
+    <color name="text_color_red">#FF5B46</color>
+    <color name="text_color_hint">#ffaaaaaa</color>
+    <color name="text_color_input">#ff111111</color>
+    <!-- 主背景色值 -->
+    <color name="background_color">#fff8f8f8</color>
+    <color name="status_bar_bg">#EF3A19</color>
+    <color name="main_header_bg">#EF3A19</color>
+    <color name="main_footer_bg">#f5f5f5</color>
+    <!-- 公共颜色属性 -->
+    <color name="bg_activity">#fff0f2f5</color>
+    <color name="bg_view">#ffffffff</color>
+    <color name="bg_header">#fff8f8f8</color>
+
+    <color name="color_font_gray">#9e9d9d</color>
+    <color name="color_font_blue">#47B0DA</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="yellow">#ff9c00</color>//黄色
+    <color name="select_yellow">#f2b350</color>//选中黄色
+
+    <color name="button_fouces_gray">#f6f6f6</color>
+    <color name="button_bg_gray">#dddcdc</color>//按钮背景灰色
+
+    <color name="text_color_red_price">#f26969</color>
+
+    <color name="move_line">#f15353</color>//FilterBar 选中颜色
+    <color name="light_red">#f15353</color>//京东红
+    <color name="select_light_red">#f03f3f</color>//京东红:选中背景颜色
+
+    <color name="sub_title">#848689</color>//副标题文本颜色
+
+
+    <color name="sort_selected_text_color">#fff15353</color>
+    <color name="sort_normal_text_color">#ff000000</color>
+    <color name="search_title_hint_text_color">#ffb6b6b6</color>
+    <color name="search_title_text_color">#ff474646</color>
+    <color name="transparent">#00000000</color>
+    <color name="separator_line">#ffcccccc</color>
+    <color name="transparentblue">#445CACEE</color>
+    <color name="transparentwhite">#44ffffff</color>
+
+    <color name="color_ff">#F0F0F0</color>
+    <color name="color_00">#8A000000</color>
+
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+
+    <color name="botton_nav_bg">#f8f8f8</color>
+
+    <color name="bn">#ffa0a0a0</color>
+    <color name="cc_dot_orage">#fff08519</color>
+    <color name="cc_dot_dark">#ffdcd3cb</color>
+    <color name="divider">#E5E5E5</color>
+    <color name="shadow">#AAEBEBEB</color>
+    <color name="common_bg">#FAFAFA</color>
+    <color name="content_bg">#F3F3F3</color>
+    <color name="gray">#8c8c8c</color>
+    <color name="gray_deep">#5c5c5c</color>
+    <color name="alpha_gray">#CC646464</color>
+    <color name="theme_gray">#646464</color>
+    <color name="separate_color">#d7d7d7</color>
+    <color name="broder">#a0a0a0</color>
+    <color name="select_broder">#898787</color>
+    <eat-comment />
+    <color name="green">#00FF00</color>
+    <color name="thumbColor">#66aaaaaa</color>
+    <declare-styleable name="CustomAttributes">
+        <attr name="rippleColorOne" format="color|reference" />
+        <attr name="rippleSpeed" format="float" />
+        <attr name="showNumberIndicator" format="boolean" />
+        <attr name="max" format="integer" />
+        <attr name="min" format="integer" />
+        <attr name="value" format="integer" />
+        <attr name="progress" format="integer" />
+        <attr name="ringWidth" format="dimension" />
+        <attr name="check" format="boolean" />
+        <attr name="checkBoxSize" format="dimension" />
+        <attr name="thumbSize" format="dimension" />
+        <attr name="iconDrawable" format="integer" />
+        <attr name="iconSize" format="dimension" />
+        <attr name="animate" format="boolean" />
+        <attr name="rippleBorderRadius" format="float" />
+        <attr name="clickAfterRipple" format="boolean" />
+    </declare-styleable>
+</resources>

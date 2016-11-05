@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/login_bg">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="135dp"
+            android:layout_marginTop="45dp"
+            android:text="艾医医疗"
+            android:textColor="#ffffffff"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_getNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv"
+            android:layout_margin="20dp"
+            android:text="我们已经给您的手机号码xxx发送了一条验证短信,请稍等。"
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="fill_parent"
+            android:layout_height="45.0dip"
+            android:layout_marginLeft="18.0dip"
+            android:layout_marginRight="18.0dip"
+            android:layout_marginTop="200.0dip"
+            android:background="@drawable/login_rect_white">
+
+            <ImageView
+                android:id="@+id/imgCode"
+                android:layout_width="15.0dip"
+                android:layout_height="18.0dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10.0dip"
+                android:background="@drawable/login_lock" />
+
+            <EditText
+                android:id="@+id/code"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_toRightOf="@+id/imgCode"
+                android:background="@null"
+                android:hint="验证码"
+                android:inputType="number"
+                android:maxLength="6"
+                android:paddingLeft="15.0dip"
+                android:singleLine="true"
+                android:textColor="#ff111111"
+                android:textColorHint="#ffaaaaaa"
+                android:textSize="16.0sp" />
+
+            <Button
+                android:id="@+id/btnGetCode"
+                android:layout_width="94.0dip"
+                android:layout_height="33.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10.0dip"
+                android:background="@drawable/login_yzm_oval_shape"
+                android:text="重新获取"
+                android:textColor="#ff888888"
+                android:textSize="14.0sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_below="@+id/rl_1"
+            android:layout_marginLeft="18.0dip"
+            android:layout_marginRight="18.0dip"
+            android:layout_marginTop="30.0dip"
+            android:background="@drawable/btn_bg_gray"
+            android:onClick="postSecurity"
+            android:text="下一步"
+            android:textColor="#ffffffff"
+            android:textSize="18.0sp" />
+
+        <TextView
+            android:id="@+id/rg_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40.0dip"
+            android:text="返回登录"
+            android:textColor="#ffffff"
+            android:textSize="15dp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_view"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="@dimen/margin_space_half">
+
+        <ImageView
+            android:id="@+id/comment_head_imgv"
+            android:layout_width="40.0dip"
+            android:layout_height="40.0dip"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/margin_space"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/product_default" />
+
+        <TextView
+            android:id="@+id/comment_username_txtv"
+            style="@style/textStyle.Normal.black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/comment_head_imgv"
+            android:ellipsize="end"
+            android:gravity="left|center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/margin_space_half"
+            android:text="张三" />
+
+        <TextView
+            android:id="@+id/comment_addtime_txtv"
+            style="@style/textStyle.Normal.black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:ellipsize="end"
+            android:gravity="right|center_vertical"
+            android:maxLines="1"
+            android:paddingRight="@dimen/margin_space"
+            android:text="2016-7-8 15:30:47" />
+    </RelativeLayout>
+
+    <com.familytraval.ui.SPStarView
+        android:id="@+id/comment_star_layout"
+        android:layout_width="match_parent"
+        android:layout_height="25dip"
+        android:background="@color/green"
+        android:orientation="horizontal"></com.familytraval.ui.SPStarView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_marginTop="@dimen/margin_space_half"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/comment_content_txtv"
+            style="@style/textStyle.Normal.black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="left|center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/margin_space"
+            android:text="不错, 超喜欢" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/comment_product_scrollv"
+        android:layout_width="match_parent"
+        android:layout_height="80dip"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_space"
+        android:layout_marginRight="@dimen/margin_space"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/comment_gallery_lyaout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"></LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_product"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.familytraval.activity.ProductActivity">
+
+    <include
+        android:id="@+id/ul"
+        layout="@layout/layout_detial_header"></include>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/detail_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl"
+        android:layout_below="@+id/ul">
+
+    </android.support.v4.view.ViewPager>
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1.0"
+        android:background="@color/black">
+
+        <LinearLayout
+            android:id="@+id/like_lyaout"
+            android:layout_width="80dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/product_like_imgv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/product_unlike" />
+
+            <TextView
+                android:id="@+id/product_like_txtv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/product_details_unlike"
+                android:textSize="@dimen/font_size_small" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/product_cart_rlayout"
+            android:layout_width="80dip"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/product_cart_imgv"
+                android:layout_width="22dip"
+                android:layout_height="22dip"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/product_cart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_cart_imgv"
+                android:gravity="center_horizontal"
+                android:text="@string/tab_item_shopcart"
+                android:textSize="@dimen/font_size_small" />
+
+            <TextView
+                android:id="@+id/productcart_count"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_alignParentTop="true"
+                android:layout_below="@id/product_cart_imgv"
+                android:layout_toRightOf="@+id/product_cart_imgv"
+                android:background="@drawable/product_cart_count_bg"
+                android:gravity="center_horizontal|top"
+                android:text="@string/digate_1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_small"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/product_cart_btn"
+            android:layout_width="120dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_selector"
+            android:text="@string/product_add_cart"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

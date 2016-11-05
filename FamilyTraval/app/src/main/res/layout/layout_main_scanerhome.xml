@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toprela"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="#EEE8CD"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/searchkey_edtv"
+            style="@style/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/image_right"
+            android:layout_toRightOf="@+id/image_left"
+            android:drawableLeft="@drawable/jshop_searchbar_search"
+            android:hint="请输入搜索的内容"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:textColorHint="@color/gray" />
+
+        <TextView
+            android:id="@+id/image_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:drawableTop="@drawable/topbar_message"
+            android:text="扫一扫"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/image_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/image_right"
+            android:layout_toRightOf="@+id/image_right"
+            android:drawableTop="@drawable/icon_scan_normal"
+            android:text="扫一扫"
+            android:textColor="#fff"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</LinearLayout>

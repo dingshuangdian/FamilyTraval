@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ff">
+
+    <com.familytraval.ui.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dip" />
+
+    <ListView
+        android:id="@+id/search_key_listv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dip"
+        android:layout_marginTop="50dip"
+        android:divider="@color/separator_line"
+        android:dividerHeight="1px"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:scrollbars="none"
+        android:smoothScrollbar="true" />
+
+    <Button
+        android:id="@+id/search_delete_btn"
+        style="@style/textStyle.Normal.black"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:background="@drawable/tag_button_bg_unchecked"
+        android:text="@string/delete_history" />
+
+</RelativeLayout>
