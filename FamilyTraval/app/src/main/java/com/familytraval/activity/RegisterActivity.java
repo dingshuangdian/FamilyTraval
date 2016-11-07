@@ -58,7 +58,7 @@ public class RegisterActivity extends FragmentActivity {
     };
 
     public void getCode() {
-        SMSSDK.getVerificationCode("+86", cellNumber);
-
+        String myNum = SharedPreferences.getInstance().getString("cellphone", "");
+        SMSSDK.getVerificationCode("+86", myNum);
     }
 }

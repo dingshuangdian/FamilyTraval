@@ -48,8 +48,7 @@ public class SplashActivity extends FragmentActivity {
                     fadeOut.setFillAfter(true);
                     findViewById(R.id.guideImage).startAnimation(fadeOut);
                     initGuideGallery();
-                } else if ((SharedPreferences.getInstance().getString("cellphone", "")) != null && (SharedPreferences.getInstance().getString("password", "")) != null) {
-                    UIHelper.showHome(SplashActivity.this);
+
                 } else {
                     UIHelper.showLogin(SplashActivity.this);
                 }

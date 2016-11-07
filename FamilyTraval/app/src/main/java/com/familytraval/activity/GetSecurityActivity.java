@@ -2,7 +2,6 @@ package com.familytraval.activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 
 import com.familytraval.R;
 import com.familytraval.ui.UIHelper;
+import com.familytraval.utils.MyCountDownTimer;
 import com.familytraval.utils.SharedPreferences;
 
 import java.util.HashMap;
@@ -31,6 +31,7 @@ public class GetSecurityActivity extends FragmentActivity {
     private String realPhone;
     private EditText code;
     private ProgressDialog dialog;
+    RegisterActivity registerActivity;
     // 短信注册，随机产生头像
     private static final String[] AVATARS = {
             "http://tupian.qqjay.com/u/2011/0729/e755c434c91fed9f6f73152731788cb3.jpg",
@@ -55,10 +56,13 @@ public class GetSecurityActivity extends FragmentActivity {
         tv_getNumber = (TextView) findViewById(R.id.tv_getNumber);
         code = (EditText) findViewById(R.id.code);
         rg_back = (TextView) findViewById(R.id.rg_back);
+        registerActivity = new RegisterActivity();
+        time();
         getText();
         rg_back.setOnClickListener(clickListener);
         btnGetCode.setOnClickListener(clickListener);
         SMSSDK.registerEventHandler(ev); //注册短信回调监听
+
     }
 
     private void getText() {
@@ -148,6 +152,7 @@ public class GetSecurityActivity extends FragmentActivity {
         String nickName = "SmsSDK_User_" + uid;
         String avatar = AVATARS[id % 12];
         SMSSDK.submitUserInfo(uid, nickName, avatar, country, phone);
+
     }
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
@@ -158,10 +163,21 @@ public class GetSecurityActivity extends FragmentActivity {
                     UIHelper.showLogin(GetSecurityActivity.this);
                     break;
                 case R.id.btnGetCode:
-                    RegisterActivity registerActivity = new RegisterActivity();
                     registerActivity.getCode();
+                    time();
                     break;
             }
         }
     };
+
+    private void time() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                MyCountDownTimer mCountDownTimer = new MyCountDownTimer(btnGetCode, 60000, 1000);
+                mCountDownTimer.start();
+            }
+        });
+    }
+
 }

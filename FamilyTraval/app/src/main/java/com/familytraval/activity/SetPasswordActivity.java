@@ -1,6 +1,7 @@
 package com.familytraval.activity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -9,16 +10,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.familytraval.R;
+
 import com.familytraval.ui.UIHelper;
 import com.familytraval.utils.DBUtils;
 import com.familytraval.utils.MD5Utils;
-import com.familytraval.utils.SharedPreferences;
 
 public class SetPasswordActivity extends FragmentActivity {
     private Button btnSure;
     private EditText sure_password;
     private EditText confirm_password;
     private DBUtils dbUtils;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +39,15 @@ public class SetPasswordActivity extends FragmentActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btnSure:
-                    String phoneNum = SharedPreferences.getInstance().getString("cellphone", "");
+                    String phoneNum = com.familytraval.utils.SharedPreferences.getInstance().getString("cellphone", "");
                     String password = sure_password.getText().toString();
                     String confirnPassword = confirm_password.getText().toString();
                     if (password.equals(confirnPassword)) {
                         if (password.matches("^[a-zA-Z]\\w{5,17}$")) {
                             password = MD5Utils.getMD5(password);
                             dbUtils.insert(phoneNum, password);
-                            Toast.makeText(SetPasswordActivity.this, "密码设置成功", Toast.LENGTH_SHORT).show();
-
-                            UIHelper.SetMessageActivity(SetPasswordActivity.this);
-                            SharedPreferences.getInstance().putString("password", password);
+                            Toast.makeText(SetPasswordActivity.this, "密码设置成功,请登陆", Toast.LENGTH_SHORT).show();
+                            UIHelper.showLogin(SetPasswordActivity.this);
                         } else {
                             Toast.makeText(SetPasswordActivity.this, "密码不能过于简单", Toast.LENGTH_SHORT).show();
                         }
@@ -57,4 +57,6 @@ public class SetPasswordActivity extends FragmentActivity {
             }
         }
     };
+
+
 }

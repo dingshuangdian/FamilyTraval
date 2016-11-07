@@ -5,9 +5,11 @@ import android.content.SharedPreferences.Editor;
 
 import com.familytraval.common.MyAppContext;
 
+import java.util.Map;
+
 public class SharedPreferences {
 
-    private static final String SP_NAME = "souyue";
+    private static final String SP_NAME = "fileName";
     public static final String KEY_LOGIN_TOKEN = "login_token";
     public static final String KEY_LOGIN_TYPE = "login_type";
 
@@ -30,7 +32,7 @@ public class SharedPreferences {
         return instance;
     }
 
-    private android.content.SharedPreferences getSp() {
+    public android.content.SharedPreferences getSp() {
         return MyAppContext.getInstance().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
     }
 
@@ -82,6 +84,30 @@ public class SharedPreferences {
         }
     }
 
+    public Float getFloat(String key, Float def) {
+        try {
+            android.content.SharedPreferences sp = getSp();
+            if (sp != null)
+                def = sp.getFloat(key, def);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return def;
+    }
+
+    public void putFloat(String key, Float val) {
+        try {
+            android.content.SharedPreferences sp = getSp();
+            if (sp != null) {
+                Editor e = sp.edit();
+                e.putFloat(key, val);
+                e.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getString(String key, String def) {
         try {
             android.content.SharedPreferences sp = getSp();
@@ -105,6 +131,7 @@ public class SharedPreferences {
             e.printStackTrace();
         }
     }
+
 
     public boolean getBoolean(String key, boolean def) {
         try {
@@ -143,4 +170,15 @@ public class SharedPreferences {
         }
     }
 
+    public Map<String, ?> getAll() {
+        try {
+            android.content.SharedPreferences sp = getSp();
+            if (sp != null)
+                return sp.getAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 }
