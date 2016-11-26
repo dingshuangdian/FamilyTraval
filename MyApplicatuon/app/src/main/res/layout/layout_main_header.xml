@@ -21,7 +21,7 @@
         android:focusableInTouchMode="true"
         android:maxWidth="180dp"
         android:singleLine="true"
-        android:text="积分"
+        android:text="首页"
         android:textColor="@color/text_color_white"
         android:textSize="20sp" />
 

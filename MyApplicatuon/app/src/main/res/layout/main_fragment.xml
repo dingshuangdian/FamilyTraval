@@ -8,9 +8,9 @@
 
 
     <LinearLayout
-        android:id="@+id/home_menu_categroy_layout"
+        android:id="@+id/myPoint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1.0"
         android:background="@drawable/view_bg_clickable_selector"
         android:clickable="true"
@@ -27,14 +27,14 @@
             android:id="@+id/home_menu_categroy_txtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:text="我的积分"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/home_menu_categroy_layout1"
+        android:id="@+id/pointP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
@@ -53,14 +53,14 @@
             android:id="@+id/home_menu_categroy_txtv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:text="积分排名"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/home_menu_shopcart_layout"
+        android:id="@+id/pointD"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
@@ -79,14 +79,14 @@
             android:id="@+id/home_menu_shopcart_txtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:text="积分详情"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/home_menu_order_layout"
+        android:id="@+id/pointC"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
@@ -105,9 +105,9 @@
             android:id="@+id/home_menu_order_txtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:text="积分审核"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>
