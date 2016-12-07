@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">积分管理</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新…</string>
+    <string name="pull_to_refresh_release_label">放开以刷新…</string>
+    <string name="pull_to_refresh_refreshing_label">正在载入…</string>
+    <string name="pull_to_refresh_net_error_label">网络异常，上拉重试</string>
+    <string name="pull_to_refresh_no_data_label">暂无数据</string>
+    <string name="pull_to_refresh_no_more_data_label">已加载全部</string>
 </resources>

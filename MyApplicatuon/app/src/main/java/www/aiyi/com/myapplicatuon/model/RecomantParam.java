@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by dings on 2016-12-06.
  */
 
-public class NewsParam implements Serializable {
+public class RecomantParam implements Serializable {
     private String date;
     private String author_name;
     private String thumbnail_pic_s;
@@ -92,5 +92,8 @@ public class NewsParam implements Serializable {
         this.psize = psize;
     }
 
+    public RecomantParam copy() {
+        return JSON.parseObject(JSON.toJSONString(this), RecomantParam.class);
+    }
 
 }

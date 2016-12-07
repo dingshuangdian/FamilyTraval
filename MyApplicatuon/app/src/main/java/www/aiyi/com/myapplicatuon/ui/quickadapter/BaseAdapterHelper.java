@@ -1,12 +1,12 @@
 /**
  * Copyright 2013 Joan Zapata
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -37,7 +37,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
-import com.yuzhi.fine.R;
+
+import www.aiyi.com.myapplicatuon.R;
+
 
 /**
  * Allows an abstraction of the ViewHolder pattern.<br>
@@ -243,6 +245,7 @@ public class BaseAdapterHelper {
 
     /**
      * Will download an image from a URL and put it in an ImageView.<br/>
+     *
      * @param viewId         The view id.
      * @param requestBuilder The Picasso request builder. (e.g. Picasso.with(context).load(imageUrl))
      * @return The BaseAdapterHelper for chaining.

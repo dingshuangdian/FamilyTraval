@@ -26,6 +26,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import www.aiyi.com.myapplicatuon.common.AppContext;
 import www.aiyi.com.myapplicatuon.model.NewsParam;
+import www.aiyi.com.myapplicatuon.model.RecomantParam;
 
 /**
  * Created by tiansj on 15/2/27.
@@ -148,18 +149,25 @@ public class HttpClient {
 
     //*************************************************************//
     private static final String HTTP_DOMAIN = "http://v.juhe.cn/toutiao/index?type=top&key=c0aa53b4b2fee9ca8cb6ee0776ad25f3";
+    public static final int PAGE_SIZE = 10;
+    private static final String SHOP_RECOMMEND = "dpSearch.recommendShop"; // 推荐商家
 
     public static void getRecommendNews(NewsParam param, HttpResponseHandler httpResponseHandler) {
+
+        //param.setPsize(PAGE_SIZE);
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("date", param.getDate());
         params.put("author_name", param.getAuthor_name());
         params.put("title", param.getTitle());
         params.put("type", param.getType());
         params.put("realtype", param.getRealtype());
+        //params.put("psize", param.getPsize());
         String paramStr = JSON.toJSONString(param);
         paramStr = Base64.encodeToString(paramStr.getBytes(), Base64.DEFAULT);
 
         HashMap<String, String> rq = new HashMap<>();
+        rq.put("m", SHOP_RECOMMEND);
+
         rq.put("p", paramStr);
 //        String url = HTTP_DOMAIN + "?" + URLEncodedUtils.format(rq, UTF_8);
         get(HTTP_DOMAIN, rq, httpResponseHandler);

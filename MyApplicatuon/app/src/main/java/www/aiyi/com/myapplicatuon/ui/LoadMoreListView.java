@@ -12,11 +12,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.yuzhi.fine.R;
-import com.yuzhi.fine.http.HttpClient;
-
 import java.util.List;
+
+import www.aiyi.com.myapplicatuon.R;
+import www.aiyi.com.myapplicatuon.http.HttpClient;
 
 /**
  * Created by tiansj on 15/9/4.
