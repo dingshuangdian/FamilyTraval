@@ -1,7 +1,5 @@
 package www.aiyi.com.myapplicatuon.model;
 
-import com.alibaba.fastjson.JSON;
-
 import java.io.Serializable;
 
 /**
@@ -19,6 +17,20 @@ public class NewsParam implements Serializable {
     private Integer pno; // 页码
     private Integer psize; //分页大小
 
+    public NewsParam() {
+    }
+
+    public NewsParam(String date, String author_name, String title, String thumbnail_pic_s, String realtype, String type, Integer pno, String uniquekey, Integer psize) {
+        this.date = date;
+        this.author_name = author_name;
+        this.title = title;
+        this.thumbnail_pic_s = thumbnail_pic_s;
+        this.realtype = realtype;
+        this.type = type;
+        this.pno = pno;
+        this.uniquekey = uniquekey;
+        this.psize = psize;
+    }
 
     public String getDate() {
         return date;

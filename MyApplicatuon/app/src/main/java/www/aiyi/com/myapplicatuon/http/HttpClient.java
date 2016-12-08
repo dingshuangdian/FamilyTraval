@@ -83,7 +83,7 @@ public class HttpClient {
 
     public static void get(String url, Map<String, String> param, final HttpResponseHandler httpResponseHandler) {
         if (!isNetworkAvailable()) {
-            Toast.makeText(AppContext.getInstance(), "网络连接失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AppContext.getInstance(), "网络连接失败111", Toast.LENGTH_SHORT).show();
             return;
         }
         if (param != null && param.size() > 0) {
@@ -150,7 +150,7 @@ public class HttpClient {
     //*************************************************************//
     private static final String HTTP_DOMAIN = "http://v.juhe.cn/toutiao/index?type=top&key=c0aa53b4b2fee9ca8cb6ee0776ad25f3";
     public static final int PAGE_SIZE = 10;
-    private static final String SHOP_RECOMMEND = "dpSearch.recommendShop"; // 推荐商家
+    //private static final String SHOP_RECOMMEND = "dpSearch.recommendShop"; // 推荐商家
 
     public static void getRecommendNews(NewsParam param, HttpResponseHandler httpResponseHandler) {
 
@@ -166,11 +166,12 @@ public class HttpClient {
         paramStr = Base64.encodeToString(paramStr.getBytes(), Base64.DEFAULT);
 
         HashMap<String, String> rq = new HashMap<>();
-        rq.put("m", SHOP_RECOMMEND);
+        //rq.put("m", SHOP_RECOMMEND);
 
         rq.put("p", paramStr);
 //        String url = HTTP_DOMAIN + "?" + URLEncodedUtils.format(rq, UTF_8);
         get(HTTP_DOMAIN, rq, httpResponseHandler);
     }
     //*************************************************************//
+
 }
