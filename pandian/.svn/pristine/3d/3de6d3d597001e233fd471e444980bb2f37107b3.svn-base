@@ -1,0 +1,10 @@
+package com.kingtangdata.inventoryassis.common;
+
+public interface OnNetworkAvalible {
+
+	/**
+	 * 网络是否可用
+	 * @return
+	 */
+	boolean isNetworkAvalible();
+}

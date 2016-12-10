@@ -1,0 +1,153 @@
+//package com.kingtangdata.inventoryassis.tools;
+//
+//import java.io.IOException;
+//import java.util.List;
+//import java.util.concurrent.Callable;
+//import java.util.concurrent.ExecutionException;
+//import java.util.concurrent.ExecutorService;
+//import java.util.concurrent.Executors;
+//import java.util.concurrent.Future;
+//
+//import org.apache.http.client.ClientProtocolException;
+//
+//import android.content.Context;
+//import android.content.Intent;
+//import android.util.Log;
+//
+//import com.google.gson.Gson;
+//import com.kingtangdata.inventoryassis.data.Plan;
+//
+//public class UploadDataAsyncTask
+//	implements Runnable
+//{
+//	private static final String LogTag = UploadDataAsyncTask.class.getCanonicalName();
+//	private Context mContext;
+//	private ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+//	private UploadMultipartEntity.ProgressListener mListener;
+//	private int mProgress;
+//	private SyncDataRequest mRequest;
+//	private int mUpType;
+//
+//	public UploadDataAsyncTask(Context paramContext, int paramInt)
+//	{
+//		this.mContext = paramContext;
+//		this.mUpType = paramInt;
+//		this.mRequest = new SyncDataRequest(paramContext);
+//		this.mListener = new UploadMultipartEntity.ProgressListener()
+//		{
+//			public void transferred(long paramAnonymousLong1, long paramAnonymousLong2)
+//			{
+//				double d = paramAnonymousLong1 / paramAnonymousLong2;
+//				UploadDataAsyncTask.this.mProgress = ((int)(100.0D * d));
+//				Intent localIntent = UploadDataAsyncTask.this.newIntentAdd("status", "ing");
+//				localIntent.putExtra("mProgress", UploadDataAsyncTask.this.mProgress);
+//				UploadDataAsyncTask.this.mContext.sendBroadcast(localIntent);
+//			}
+//		};
+//	}
+//
+//	private Intent newIntentAdd(String paramString1, String paramString2)
+//	{
+//		Intent localIntent = new Intent(this.mUpType + ".upload.service");
+//		localIntent.putExtra(paramString1, paramString2);
+//		return localIntent;
+//	}
+//
+//	public void run()
+//	{
+//		List localList = this.mHelper.getUploadPlanList(this.mUpType);
+//		String str1 = LogTag;
+//		Object[] arrayOfObject1 = new Object[2];
+//		arrayOfObject1[0] = Integer.valueOf(this.mUpType);
+//		arrayOfObject1[1] = Integer.valueOf(localList.size());
+//		Log.d(str1, String.format("上传数据 %s 有:%s 条", arrayOfObject1));
+//		if (!localList.isEmpty())
+//		{
+//			this.mContext.sendBroadcast(newIntentAdd("status", "start"));
+//			Log.i(LogTag, "上传数据获取成功:" + this.mUpType);
+//			final String str2 = new Gson().toJson(localList);
+//			String str3 = LogTag;
+//			Object[] arrayOfObject2 = new Object[2];
+//			arrayOfObject2[0] = Integer.valueOf(this.mUpType);
+//			arrayOfObject2[1] = str2;
+//			Log.d(str3, String.format("上传数据内容: %s : %s", arrayOfObject2));
+//			Future localFuture = this.mExecutor.submit(new Callable()
+//			{
+//				public String call()
+//					throws Exception
+//				{
+//					String localObject = "";
+//					try
+//					{
+//						if (UploadDataAsyncTask.this.mUpType == 2)
+//						{
+//							String str3 = UploadDataAsyncTask.LogTag;
+//							Object[] arrayOfObject2 = new Object[1];
+//							arrayOfObject2[0] = Integer.valueOf(UploadDataAsyncTask.this.mUpType);
+//							Log.d(str3, String.format("上传数据内容: %s post", arrayOfObject2));
+//							localObject = UploadDataAsyncTask.this.mRequest.post("/pandianyi/api/plan_batchSave.api", str2, UploadDataAsyncTask.this.mListener);
+//						}
+//						if (UploadDataAsyncTask.this.mUpType == 1)
+//						{
+//							String str1 = UploadDataAsyncTask.LogTag;
+//							Object[] arrayOfObject1 = new Object[1];
+//							arrayOfObject1[0] = Integer.valueOf(UploadDataAsyncTask.this.mUpType);
+//							Log.d(str1, String.format("上传数据内容: %s post", arrayOfObject1));
+//							localObject = UploadDataAsyncTask.this.mRequest.post("/pandianyi/api/plan_batchAdd.api", str2, UploadDataAsyncTask.this.mListener);
+//						}
+//						return localObject;
+//					}
+//					catch (ClientProtocolException localClientProtocolException)
+//					{
+//						Log.e(UploadDataAsyncTask.LogTag, "上传出错", localClientProtocolException);
+//						return localObject;
+//					}
+//					catch (IOException localIOException)
+//					{
+//						Log.e(UploadDataAsyncTask.LogTag, "上传出错", localIOException);
+//					}
+//					return localObject;
+//				}
+//			});
+//			try
+//			{
+//				if (((String)localFuture.get()).equalsIgnoreCase("0"))
+//				{
+//					String str4 = LogTag;
+//					Object[] arrayOfObject3 = new Object[1];
+//					arrayOfObject3[0] = Integer.valueOf(this.mUpType);
+//					Log.d(str4, String.format("上传数据内容: %s delete", arrayOfObject3));
+//				}
+//				for (int i = 0; ; i++)
+//				{
+//					if (i >= localList.size())
+//					{
+//						this.mContext.sendBroadcast(newIntentAdd("status", "end"));
+//						return;
+//					}
+//					this.mHelper.removeCheckPlan((Plan)localList.get(i));
+//				}
+//			}
+//			catch (InterruptedException localInterruptedException)
+//			{
+//				Log.e(LogTag, "下载出错", localInterruptedException);
+//				Intent localIntent2 = newIntentAdd("status", "error");
+//				localIntent2.putExtra("error", localInterruptedException);
+//				this.mContext.sendBroadcast(localIntent2);
+//				return;
+//			}
+//			catch (ExecutionException localExecutionException)
+//			{
+//				Log.e(LogTag, "下载出错", localExecutionException);
+//				Intent localIntent1 = newIntentAdd("status", "error");
+//				localIntent1.putExtra("error", localExecutionException);
+//				this.mContext.sendBroadcast(localIntent1);
+//			}
+//		}
+//	}
+//}
+//
+///* Location:					 D:\work\magic\dex2jar-0.0.9.15\classes_dex2jar.jar
+// * Qualified Name:		 com.kingtangdata.inventoryassis.tools.UploadDataAsyncTask
+// * JD-Core Version:		0.6.2
+// */

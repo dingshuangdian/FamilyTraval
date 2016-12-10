@@ -1,0 +1,388 @@
+/**   
+* @Title: HytScanCodeActivity.java 
+* @Package com.mama100.android.hyt.zxing 
+* @Description: TODO(用一句话描述该文件做什么) 
+* @author mama100   
+* @date 2013-4-17 下午8:37:57 
+* @version V1.0   
+*/ 
+
+
+package com.kingtangdata.inventoryassis.zxing;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Vector;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.graphics.Bitmap;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Vibrator;
+import android.view.Gravity;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.Result;
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.act.ActivityCheckTaskForm;
+import com.kingtangdata.inventoryassis.act.ActivityCkeckTask;
+import com.kingtangdata.inventoryassis.act.ActivityPKForm;
+import com.kingtangdata.inventoryassis.act.ActivityPY;
+import com.kingtangdata.inventoryassis.act.ActivityPYForm;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+import com.kingtangdata.inventoryassis.zxing.camera.CameraManager;
+import com.kingtangdata.inventoryassis.zxing.decode.CaptureActivityHandler;
+import com.kingtangdata.inventoryassis.zxing.decode.InactivityTimer;
+import com.kingtangdata.inventoryassis.zxing.view.ViewfinderView;
+
+
+/**
+ * 
+ * 会员通扫码界面
+ * @author liyang
+ *
+ */
+public class CaptureActivity extends Activity implements Callback {
+    public static final String ORDER_CODE = "orderCode";
+    public static final String LOG_TAG="CaptureActivity";
+	private CaptureActivityHandler handler;
+	private ViewfinderView viewfinderView;
+	private boolean hasSurface;
+	private Vector<BarcodeFormat> decodeFormats;
+	private String characterSet;
+	private InactivityTimer inactivityTimer;
+	private MediaPlayer mediaPlayer;
+	private boolean playBeep;
+	private static final float BEEP_VOLUME = 0.10f;
+	private boolean vibrate;
+	private Toast toast;
+	private String code;
+	
+	
+	private Plan plan = null;
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.ui_scanner_code);
+		
+		String msg = "" ;
+		
+		//初始化 CameraManager
+		CameraManager.init(getApplication());
+
+		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
+		viewfinderView.setMsg(msg);
+		viewfinderView.invalidate();
+		
+		hasSurface = false;
+		inactivityTimer = new InactivityTimer(this);
+
+		final Button openandcloseflashlightBtn = (Button)findViewById(R.id.openandcloseflashlight);
+		openandcloseflashlightBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				if(CameraManager.get().isFlashLightOpen()){
+					CameraManager.get().closeFlashLight();
+					//openandcloseflashlightBtn.setBackgroundResource(R.drawable.selector_regpoint_scan_open);
+				}else{
+					CameraManager.get().openFlashLight();
+					//openandcloseflashlightBtn.setBackgroundResource(R.drawable.selector_regpoint_scan_close);
+				}
+			}
+		});
+		
+		
+		findViewById(R.id.cancel).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				onBackPressed();
+			}
+		});
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		LogUtils.logd(getClass(), "CaptureActivity  onResume");
+		
+		SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+		SurfaceHolder surfaceHolder = surfaceView.getHolder();
+		if (hasSurface) {
+			initCamera(surfaceHolder);
+		} else {
+			surfaceHolder.addCallback(this);
+			surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+		}
+		decodeFormats = null;
+		characterSet = null;
+
+		playBeep = true;
+		AudioManager audioService = (AudioManager) getSystemService(AUDIO_SERVICE);
+		if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
+			playBeep = false;
+		}
+		initBeepSound();
+		vibrate = true;
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (handler != null) {
+			handler.quitSynchronously();
+			handler = null;
+		}
+		CameraManager.get().closeDriver();
+		
+		LogUtils.logd(getClass(), "CaptureActivity  onPause");
+	}
+	
+	@Override
+	public void onBackPressed() {
+	    finish();
+	}
+
+	@Override
+	protected void onDestroy() {
+		inactivityTimer.shutdown();
+		super.onDestroy();
+	}
+
+	private void initCamera(SurfaceHolder surfaceHolder) {
+		try {
+			CameraManager.get().openDriver(surfaceHolder);
+		} catch (Exception ioe) {
+			makeText("您的设备有问题,无法使用扫描功能,请点击手动输入");
+			return;
+		} 
+		
+		if (handler == null) {
+			handler = new CaptureActivityHandler(this, decodeFormats,characterSet);
+		}
+	}
+
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,int height) {
+		LogUtils.logd(getClass(), "CaptureActivity  surfaceChanged");
+	}
+
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		LogUtils.logd(getClass(), "CaptureActivity  surfaceCreated");
+		
+		if (!hasSurface) {
+			hasSurface = true;
+			initCamera(holder);
+		}
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		LogUtils.logd(getClass(), "CaptureActivity  surfaceDestroyed");
+		
+		hasSurface = false;
+	}
+
+	public ViewfinderView getViewfinderView() {
+		return viewfinderView;
+	}
+
+	public Handler getHandler() {
+		return handler;
+	}
+
+	public void drawViewfinder() {
+		viewfinderView.drawViewfinder();
+
+	}
+
+	public void handleDecode(Result obj, Bitmap barcode) {
+		inactivityTimer.onActivity();
+		code = obj.getText();
+		
+		//开始根据扫描到的rfid数据从数据库查找对应的记录
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("select * from plans  where label_code = ?");
+		List<Plan> plans = PlanManager.getInstance(this).getPlans(buffer, new String[]{code});
+		
+		//不管找到几条符合记录  就只取第一条 
+		if(!plans.isEmpty()){
+			Plan plan = plans.get(0);
+			
+			if("py".equals(plan.getCheck_result())){
+				Intent i = new Intent(this, ActivityPYForm.class);
+				i.putExtra("plan", plan);
+				i.putExtra("type", ActivityPY.PY_MODIFY);
+				startActivity(i);
+			}
+			
+			//找到的记录是已经盘亏过的记录则询问是否正常盘点
+			else if("pk".equals(plan.getCheck_result())){
+				showDialog(0);
+			}
+			
+			//正常盘点
+			else{
+				Intent i = new Intent(this, ActivityCheckTaskForm.class);
+				i.putExtra("plan", plan);
+				i.putExtra("type", ActivityCkeckTask.PD_CHECK);
+				startActivityForResult(i, 100);
+			}
+		}else{
+			showDialog(1);
+		}
+	}
+
+	private void initBeepSound() {
+		if (playBeep && mediaPlayer == null) {
+			// The volume on STREAM_SYSTEM is not adjustable, and users found it
+			// too loud,
+			// so we now play on the music stream.
+			setVolumeControlStream(AudioManager.STREAM_MUSIC);
+			mediaPlayer = new MediaPlayer();
+			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			mediaPlayer.setOnCompletionListener(beepListener);
+
+			AssetFileDescriptor file = getResources().openRawResourceFd(R.raw.beep);
+			try {
+				mediaPlayer.setDataSource(file.getFileDescriptor(),
+						file.getStartOffset(), file.getLength());
+				file.close();
+				mediaPlayer.setVolume(BEEP_VOLUME, BEEP_VOLUME);
+				mediaPlayer.prepare();
+			} catch (IOException e) {
+				mediaPlayer = null;
+			}
+		}
+	}
+
+	private static final long VIBRATE_DURATION = 200L;
+
+	private void playBeepSoundAndVibrate() {
+		if (playBeep && mediaPlayer != null) {
+			mediaPlayer.start();
+		}
+		if (vibrate) {
+			Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+			vibrator.vibrate(VIBRATE_DURATION);
+		}
+	}
+
+	/**
+	 * When the beep has finished playing, rewind to queue up another one.
+	 */
+	private final OnCompletionListener beepListener = new OnCompletionListener() {
+		public void onCompletion(MediaPlayer mediaPlayer) {
+			mediaPlayer.seekTo(0);
+		}
+	};
+	
+	/**
+	 * 这样实现主要是为了防止用户一直点击一直弹出新的toast
+	 * @param msg
+	 */
+	protected void makeText(String msg) {
+		if (toast == null) {
+            toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+    		toast.setGravity(Gravity.CENTER, 0, 0);//这样使Toast显示在屏幕中间位置
+		} else {
+            toast.setText(msg);
+        }
+        toast.show();   
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode == RESULT_OK && requestCode == 100){			
+			  setResult(RESULT_OK,data);			
+			  finish();			
+		}
+	}
+	
+	
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		if(id == 0){
+			AlertDialog.Builder builder= new AlertDialog.Builder(this);
+			builder.setTitle("温馨提示");
+			builder.setMessage("该设备已经存在盘亏记录，是否需要重新盘点？");
+			builder.setNeutralButton("是", new LeftListener());
+			builder.setNegativeButton("否", new RightListener());
+			return builder.create();
+		}
+		else if(id == 1){
+			AlertDialog.Builder builder= new AlertDialog.Builder(this);
+			builder.setTitle("温馨提示");
+			builder.setMessage("没有找到匹配的标签,是否需要盘盈?");
+			builder.setNeutralButton("是", new AddListener());
+			builder.setNegativeButton("否", null);
+			return builder.create();
+		} else {
+			return super.onCreateDialog(id);
+		}
+	}
+	
+	
+	/**
+	 * 盘亏时进行重新盘点的监听事件
+	 */
+	class LeftListener implements DialogInterface.OnClickListener{
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent i = new Intent(CaptureActivity.this, ActivityCheckTaskForm.class);
+			i.putExtra("plan", plan);
+			i.putExtra("type", ActivityCkeckTask.PD_CHECK);
+			startActivity(i);
+		}
+	} 
+	
+	/**
+	 * 盘亏时不进行重新盘点的监听事件
+	 */
+	class RightListener implements DialogInterface.OnClickListener{
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(CaptureActivity.this, ActivityPKForm.class);
+			intent.putExtra("plan", plan);
+			startActivity(intent);
+		}
+	} 
+	
+	/**
+	 * 确认盘盈的按钮监听
+	 */
+	class AddListener implements DialogInterface.OnClickListener{
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(CaptureActivity.this, ActivityPYForm.class);
+			intent.putExtra("type", ActivityPY.PY_ADD);
+			intent.putExtra("rfid", code);
+			startActivity(intent);
+		}
+	} 
+}

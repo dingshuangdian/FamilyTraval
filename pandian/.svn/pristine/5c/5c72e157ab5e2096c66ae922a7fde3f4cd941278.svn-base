@@ -1,0 +1,46 @@
+package com.kingtangdata.inventoryassis.tools;
+
+import java.io.IOException;
+
+import org.apache.http.client.ClientProtocolException;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+
+public class NetworkChecker{
+	
+	private Context mContext;
+
+	public NetworkChecker(Context context){
+		this.mContext = context;
+	}
+
+	public boolean isConnected(){
+		return ((ConnectivityManager)this.mContext.getSystemService("connectivity")).getActiveNetworkInfo().isConnected();
+	}
+
+	public int ping(Context context){
+		int i = -1;
+		SyncDataRequest dataRequest = new SyncDataRequest(context);
+		try{
+			boolean bool = dataRequest.ping("/pandianyi/api/plan_save.api", null).equalsIgnoreCase("1");
+			if (bool)i = 1;
+			return i;
+		}catch (IllegalArgumentException localIllegalArgumentException)
+		{
+			return -1;
+		}
+		catch (ClientProtocolException localClientProtocolException)
+		{
+			return -1;
+		}
+		catch (IOException localIOException)
+		{
+			return 0;
+		}
+		catch (Exception localException)
+		{
+		}
+		return 0;
+	}
+}

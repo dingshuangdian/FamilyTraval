@@ -1,0 +1,30 @@
+package com.kingtangdata.inventoryassis.util;
+
+
+/**
+ * @author liyang
+ * 用来定义文件路径
+ */
+public class FilePath {
+	
+	//mama100会员通数据在sdcard里存放的路径
+	public  static String APP_DATA_PATH = "/mama100_hyt"; 
+	//mama100系统拍摄照片及临时照片在sdcard里存放的路径，多张，要删除
+	public  static String APP_TEMP_PATH = "/temppic"; 
+	//mama100首页活动的图片及压缩过的照片在sdcard里存放的路径，可覆盖
+	public  static String APP_STORE_PATH ="/storepic"; 
+	//mama100出错日志存放的路径，可覆盖
+	public  static String APP_LOG_PATH ="/log"; 
+	//mama100铃声存放的路径
+	public  static String APP_AUDIO_PATH ="/audio"; 
+	//二维码存放路径
+	public  static String APP_QRCODE_PATH ="/qrcode"; 
+
+	//未经裁剪的大图, 无后缀，代码里加
+	public final static String TEMP_BIG_PICTURE_NAME = "/temp_big_pic.jpg";
+	//裁剪后的图片, 无后缀，代码里加
+	public final static String TEMP_CROP_PICTURE_NAME = "/temp_crop_pic.jpg";
+	
+	//拍照时，是否自己定义Uri,如果false,则证明从媒体库获取系统生成图片的uri
+	public final static boolean TAKE_PHOTO_IS_USE_LOCAL_URI = true; 
+}

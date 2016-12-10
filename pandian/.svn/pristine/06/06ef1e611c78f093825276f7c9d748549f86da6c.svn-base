@@ -1,0 +1,62 @@
+<resources>
+    
+    <!-- 通用设置 -->
+    <!-- 间距 -->
+    <dimen name="margin_0">8dp</dimen>
+    <dimen name="margin_1">12dp</dimen>
+    <dimen name="margin_2">13.33dp</dimen>
+    <dimen name="margin_3">15dp</dimen>
+    <dimen name="margin_4">18dp</dimen>
+    <dimen name="margin_5">20dp</dimen>
+    <dimen name="margin_6">22dp</dimen>
+    <dimen name="margin_7">14dp</dimen>
+    <dimen name="margin_8">16dp</dimen>
+    <dimen name="margin_9">10dp</dimen>
+    <dimen name="margin_m">10dp</dimen>
+    <dimen name="margin_l">8dp</dimen>
+    <dimen name="margin_h">12dp</dimen>
+    <dimen name="margin_xh">20dp</dimen>
+    
+    <!-- 字体 -->
+    <dimen name="common_text_a1">21.33dp</dimen>
+    <dimen name="common_text_a2">16dp</dimen>
+    <dimen name="common_text_a3">12dp</dimen>
+    <dimen name="common_text_a4">18dp</dimen>
+    <dimen name="common_text_20">20dp</dimen>
+    <dimen name="common_text_a6">13.33dp</dimen>
+    <dimen name="common_text_a7">10.67dp</dimen>
+    <dimen name="common_text_a8">14dp</dimen>     
+
+    <!-- 14号字体 -->
+    <dimen name="font14">14dp</dimen>
+    <!-- 18号字体 -->
+    <dimen name="font18">18dp</dimen>
+    <!-- 16号字体 -->
+    <dimen name="font16">16dp</dimen>
+    <!-- 20号字体 -->
+    <dimen name="font20">20dp</dimen>
+    <!-- 24号字体 -->
+    <dimen name="font24">24dp</dimen>
+
+    <!-- 间距 -->
+    <dimen name="margin_m">10dp</dimen>
+    <dimen name="margin_l">8dp</dimen>
+    <dimen name="margin_h">12dp</dimen>
+    <dimen name="margin_xh">20dp</dimen>
+    
+    
+    <!-- 14号字体 -->
+    <dimen name="font_l">14dp</dimen>
+    <!-- 18号字体 -->
+    <dimen name="font_m">16dp</dimen>
+    <!-- 16号字体 -->
+    <dimen name="font_h">18dp</dimen>
+    <!-- 20号字体 -->
+    <dimen name="font_xh">20dp</dimen>
+    <!-- 24号字体 -->
+    <dimen name="font_xxh">24dp</dimen>
+    
+ 	<!-- 表格行高度 -->
+    <dimen name="table_row_height">25dp</dimen>
+
+</resources>

@@ -1,0 +1,453 @@
+//package com.kingtangdata.inventoryassis.common;
+//
+//import java.sql.SQLException;
+//import java.util.List;
+//
+//import android.app.Dialog;
+//import android.content.Context;
+//import android.text.Editable;
+//import android.text.TextWatcher;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.widget.AbsListView;
+//import android.widget.BaseAdapter;
+//import android.widget.Button;
+//import android.widget.EditText;
+//import android.widget.ImageView;
+//import android.widget.ListView;
+//import android.widget.RadioGroup;
+//import android.widget.TextView;
+//
+//import com.kingtangdata.inventoryassis.R;
+//import com.kingtangdata.inventoryassis.data.DataDefine;
+//import com.kingtangdata.inventoryassis.data.Plan;
+//
+//public abstract class CommonDialog extends Dialog{
+//	
+//	protected Button mBtnCancel;
+//	protected Button mBtnEdit;
+//	protected Button mBtnPrint;
+//	protected Button mBtnSave;
+//	protected RadioGroup mCheckRadio;
+//	protected Context mContext;
+//	protected Plan mData;
+//	protected LayoutInflater mInflater;
+//	protected InventoryHelper mOperater;
+//	protected ResultOperateAdapter mOperaterAdapter;
+//	protected ListView mTableLayout;
+//	protected TextView mTitle;
+//
+//	public CommonDialog(Context context){
+//		
+//		super(context);
+//		requestWindowFeature(1);
+//		mContext = context;
+//		mInflater = LayoutInflater.from(context);
+//		mOperater = new InventoryHelper(context);
+//		setContentView(R.layout.dialog_result_operate);
+//		mOperaterAdapter = new ResultOperateAdapter(mOperater.getDataDefines());
+//		//是否相符：是或否
+//		mCheckRadio = ((RadioGroup)findViewById(R.id.check_right));
+//		//下拉选择
+//		mTableLayout = ((ListView)findViewById(R.id.operate_list));
+//		//保存
+//		mBtnSave = ((Button)findViewById(R.id.operate_save));
+//		//修改
+//		mBtnEdit = ((Button)findViewById(R.id.operate_edit));
+//		//打印
+//		mBtnPrint = ((Button)findViewById(R.id.operate_print));
+//		//取消
+//		mBtnCancel = ((Button)findViewById(R.id.operate_cancel));
+//    
+//		mBtnCancel.setOnClickListener(new CancelAction());
+//		mBtnPrint.setOnClickListener(new PrintAction());
+//		
+//		//返回上一页面
+//		mTitle = ((TextView)findViewById(R.id.text_top_banner_title));
+//		findViewById(R.id.btn_back).setVisibility(8);
+//		
+//		//盘点数据
+//		mData = new Plan();
+//		//List视图
+//		mTableLayout.setAdapter(mOperaterAdapter);
+//		
+//		mCheckRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+//			public void onCheckedChanged(RadioGroup radioGroup, int paramInt){
+//				if (paramInt == R.id.radio_check_no){
+//					
+//					((ResultOperateAdapter)mTableLayout.getAdapter()).setCanEdit(true);
+//					
+//				}else{
+//					
+//					((ResultOperateAdapter)mTableLayout.getAdapter()).setCanEdit(false);
+//					
+//				}
+//			}
+//		});
+//		
+//		mTableLayout.setOnScrollListener(new AbsListView.OnScrollListener(){
+//			
+//			public void onScroll(AbsListView absListView, int a, int b, int c){
+//			}
+//
+//			public void onScrollStateChanged(AbsListView absListView, int a){
+//				if (a != 0){
+//					absListView.requestFocus();
+//				}
+//			}
+//			
+//		});
+//	}
+//
+//	protected boolean isDataCorrect(Plan checkPlan){
+//		InventoryHelper.getRealData(checkPlan, "deviceNo");
+//		return true;
+//	}
+//
+//	public abstract void setData(Plan checkPlan, boolean paramBoolean);
+//
+//	public class CancelAction implements View.OnClickListener{
+//		
+//		public CancelAction(){
+//			
+//		}
+//
+//		public void onClick(View view){
+//			dismiss();
+//		}
+//	}
+//
+//	public class CancelShortageAction implements View.OnClickListener{
+//		public CancelShortageAction(){
+//		}
+//
+//		public void onClick(View view){
+//			
+//			/*
+//			 * 常量值为View.VISIBLE:0，意思是可见的 ,常量值为View.INVISIBLE:4，意思是不可见的 
+//			 * 常量值为View.GONE:8，意思是不可见的，而且不占用布局空间
+//			 */
+//			mCheckRadio.setVisibility(View.GONE);
+//			mBtnEdit.setText(R.string.dialog_btn_edit);      	
+//			mBtnEdit.setOnClickListener(new EditShortageAction());
+//			
+//			dismiss();
+//		}
+//	}
+//
+//	public class ChangeShortageAction implements View.OnClickListener{
+//		
+//		public ChangeShortageAction(){
+//			
+//		}
+//
+//		public void onClick(View view){
+//			if(mCheckRadio.getCheckedRadioButtonId() == R.id.radio_check_yes){
+//				
+//				InventoryHelper.setRealData(mData, "verifystatus", "1");
+//				
+//			}else{
+//				InventoryHelper.setRealData(mData, "type", "3");
+//				try{
+//					mOperater.update(mData);
+//					mCheckRadio.setVisibility(8);
+//					mBtnEdit.setText(R.string.dialog_btn_edit);
+//					mBtnEdit.setOnClickListener(new EditShortageAction());
+//					dismiss();
+//				}catch (SQLException sqlException){
+//					sqlException.printStackTrace();
+//				}finally{
+//					InventoryHelper.setRealData(mData, "verifystatus", "0");
+//				}
+//			}
+//		}
+//  }
+//
+//  public class EditRDIDAction implements View.OnClickListener{
+//	  
+//	  public EditRDIDAction(){
+//		  
+//	  }
+//
+//	  public void onClick(View view){
+//		  
+//		  mOperaterAdapter.setCanEdit(true);
+//		  mBtnEdit.setText(R.string.dialog_btn_save);
+//		  mBtnEdit.setOnClickListener(new SaveRFIDAction());
+//	  }
+//	  
+//  }
+//  
+//  public class EditShortageAction implements View.OnClickListener{
+//	  
+//	  public EditShortageAction(){
+//	  }
+//
+//	  public void onClick(View view){
+//		  mCheckRadio.setVisibility(0);
+//		  mBtnEdit.setText(R.string.dialog_btn_save);
+//		  mBtnEdit.setOnClickListener(new ChangeShortageAction());
+//	  }
+//  }
+//
+//  public class PrintAction implements View.OnClickListener{
+//	  
+//	  public PrintAction(){
+//	  }
+//
+//	  public void onClick(View view){
+//		  String[] array1 = mContext.getResources().getStringArray(R.array.print_fields);
+//		  String[] array2 = new String[5];
+//		  for (int i = 0; ; i++){
+//			  if (i >= array1.length){
+//				  //BluetoothPrintServer.printData(mContext, array1[0], array2[1], array2[2], array2[3], array2[4]);
+//				  return;
+//			  }
+//			  array2[i] = InventoryHelper.getRealData(mData, mOperater.getPrintFieldName(array1[i]));
+//		  }
+//	  }
+//  }
+//
+//  public class RemoveAction implements View.OnClickListener{
+//	  
+//	  public RemoveAction(){
+//	  }
+//
+//	  public void onClick(View view){
+//		  
+//      	mOperater.removeCheckPlan(mData);
+//      	dismiss();
+//      	
+//	  }
+//  }
+//
+//  public class ResultOperateAdapter extends BaseAdapter{
+//	  
+//	  private boolean canEdit;
+//	  private List<DataDefine> mFields;
+//	  private OperatorTextWatcher watcher;
+//
+//	  public ResultOperateAdapter(List<DataDefine> mFields){
+//		  this.mFields=mFields;
+//		  this.watcher = new OperatorTextWatcher(0);
+//		  
+//	  }
+//
+//	  public int getCount(){
+//		  
+//		  if (this.mFields.size() == 0){
+//			  return 0;
+//		  }else{
+//			  return 1 + mFields.size();
+//		  }
+//	  }
+//
+//	  public Object getItem(int paramInt){
+//		  
+//		  return mFields.get(paramInt);
+//		  
+//	  }
+//
+//	  public long getItemId(int paramInt){
+//		  return paramInt;
+//	  }
+//
+//	  public View getView(int paramInt, View view, ViewGroup viewGroup){
+//		  
+//		  String str1 = "";
+//		  String str2 = "";
+//		  
+//		  int i = 0;
+//		  int j = 0;
+//
+//		  EditText editText = null;
+//		  if (paramInt < mFields.size()){
+//			  str1 = ((DataDefine)mFields.get(paramInt)).getName();
+//			  if (paramInt >= mFields.size()){
+//				  i = 1;
+//			  }
+//			  
+//			  if (mData == null){
+//				  j = 1;
+//			  }
+//			  
+//			  if ((i & j) == 0){
+//
+//				  String str3 = InventoryHelper.getFieldName((DataDefine)mFields.get(paramInt));
+//	        
+//				  str2 = InventoryHelper.getRealData(mData, str3);
+//			  }
+//			  
+//			  if (view == null){
+//				  view = mInflater.inflate(R.layout.commom_result_operater, null);
+//				  editText = (EditText)view.findViewById(R.id.operate_edit_text);
+//			  }
+//        
+//			  if (paramInt >= mFields.size()){
+//				  editText.setLines(1);
+//				  editText.setMaxLines(1);
+//				  editText.setSingleLine(true);
+//			  }
+//		  }else{
+//			  str1 = "说明";
+//			  str2 = InventoryHelper.getRealData(mData, "dsc");
+//			  
+//			  editText.setTag(Integer.valueOf(paramInt));
+//			  editText.removeTextChangedListener(this.watcher);
+//			  editText.setText(str2);
+//			  editText.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+//				  
+//				  public void onFocusChange(View pView, boolean pBoolean){
+//					  int i = ((Integer)pView.getTag()).intValue();
+//					  watcher.setID(i);
+//					  if (pBoolean){
+//						  ((EditText)pView).addTextChangedListener(watcher);
+//					  }else{
+//						  
+//						  ((EditText)pView).removeTextChangedListener(watcher);
+//					  
+//					  }
+//				  }
+//			  });
+//			  //?取不到值
+//			  
+//			  ((TextView)view.findViewById(R.id.operate_key_text)).setText(str1);
+//			  ImageView imageView = (ImageView)view.findViewById(R.id.btn_edit_del);
+//			  imageView.setOnClickListener(new View.OnClickListener(){
+//				  public void onClick(View pView){
+//					  
+//					  int i = ((Integer)((EditText)((ViewGroup)pView.getParent()).getChildAt(0)).getTag()).intValue();
+//					  if (i < mFields.size());
+//					  for (String str = InventoryHelper.getFieldName(mFields.get(i)); ; str = "dsc"){
+//						  InventoryHelper.setRealData(mData, str, "");
+//						  ((EditText)((ViewGroup)pView.getParent()).getChildAt(0)).setText("");
+//						  //return;
+//					  }
+//				  }
+//			  });
+//			  
+//			  if (paramInt >= mFields.size()) {
+//				  editText.setEnabled(true);
+//			      imageView.setVisibility(0);
+//				  
+//			  }
+//			  if (!this.canEdit){
+//				  editText.setEnabled(false);
+//			      imageView.setVisibility(4);
+//			  }
+//			  
+//			  editText.setMaxLines(3);
+//			  editText.setSingleLine(false);
+//		  }
+//      
+//		  return view;
+//    }
+//
+//	  public void resetData(){
+//		  notifyDataSetChanged();
+//	  }
+//
+//	  public void setCanEdit(boolean pBoolean){
+//		  canEdit = pBoolean;
+//		  notifyDataSetChanged();
+//	  }
+//
+//	  private class OperatorTextWatcher implements TextWatcher{
+//		  	
+//		  private int textID = 0;
+//		  
+//		  public OperatorTextWatcher(int arg2){
+//			  int i = 0;
+//			  textID = i;
+//		  }
+//		  
+//		  public void afterTextChanged(Editable editable){    	
+//		  }
+//		  
+//		  public void beforeTextChanged(CharSequence charSequence, int a, int b, int c){    	
+//		  }
+//		  
+//		  public void onTextChanged(CharSequence charSequence, int a, int b, int c){    	  
+//			  if (textID < mFields.size());    		
+//			  for (String str = InventoryHelper.getFieldName(mFields.get(this.textID)); ; str = "dsc"){
+//				  InventoryHelper.setRealData(mData, str, charSequence.toString());
+//				  //return;
+//			  }
+//		  }
+//		  
+//		  public void setID(int paramInt){
+//			  textID = paramInt;
+//		  }		  
+//	  	}
+//    }
+//
+//  	public class SaveInventoryAction implements View.OnClickListener{
+//  		public SaveInventoryAction(){
+//  		}
+//
+//  		public void onClick(View view){
+//  			if (mCheckRadio.getCheckedRadioButtonId() == R.id.radio_check_yes){
+//  				InventoryHelper.setRealData(mData, "verifystatus", "1");
+//  			}else{
+//  				InventoryHelper.setRealData(mData, "type", "3");
+//  				try{
+//  					mOperater.update(mData);  					
+//  					InventoryHelper.setRealData(mData, "verifystatus", "0");
+//  					dismiss();
+//  				}catch (SQLException sqlException){
+//  					sqlException.printStackTrace();
+//  				}
+//  			}
+//  		}
+//  	}
+//
+//  	public class SaveRFIDAction implements View.OnClickListener{
+//  		public SaveRFIDAction(){
+//  		}
+//
+//  		public void onClick(View view){
+//  			try{
+//  				mOperater.update(mData);
+//  				dismiss();
+//  			}catch(SQLException sqlException){
+//				sqlException.printStackTrace();
+//			}
+//  		}
+//  	}
+//
+//
+//  	public class SaveShortageAction implements View.OnClickListener{
+//  		
+//  		public SaveShortageAction(){
+//  			
+//  		}
+//
+//  		public void onClick(View view){
+//  			InventoryHelper.setRealData(mData, "type", "2");
+//  			try{
+//  				mOperater.update(mData);  				
+//  				mCheckRadio.setVisibility(8);
+//  				mBtnEdit.setText(R.string.dialog_btn_edit);
+//  				mBtnEdit.setOnClickListener(new EditShortageAction());
+//  				dismiss();
+//  			}catch (SQLException sqlException){
+//  				sqlException.printStackTrace();
+//  			}
+//  		}
+//  	}
+//
+//  	public class SaveSurplusAction implements View.OnClickListener{
+//  		public SaveSurplusAction(){
+//  			
+//  		}
+//
+//  		public void onClick(View view){
+//  			InventoryHelper.setRealData(mData, "type", "1");
+//  			System.out.println("save an surplus!");
+//  			mOperater.save(mData);
+//  			dismiss();
+//  		}
+//  	}
+//  	
+//}

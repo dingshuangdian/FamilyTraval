@@ -1,0 +1,165 @@
+package com.kingtangdata.inventoryassis.act;
+
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.app.Service;
+import android.content.ComponentName;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.version.VersionBinder;
+import com.kingtangdata.inventoryassis.version.VersionService;
+
+/**
+ * 基础设置类
+ * 
+ * @author Administrator
+ * 
+ */
+public class ActivitySet extends BaseActivity {
+	
+	Intent serviceIntent = null;
+	
+	@Override
+	public void onCreate(Bundle paramBundle) {
+		super.onCreate(paramBundle);
+		super.setContentView(R.layout.activity_set);
+		super.setTopLabel("系统设置");
+		
+		serviceIntent = new Intent(ActivitySet.this, VersionService.class);
+	}
+
+	public void setIp(View view) {
+		startActivity(new Intent(this,ActivitySetIP.class));
+	}
+
+	public void setAccount(View view) {
+		startActivity(new Intent(this,ActivitySetAccount.class));
+	}
+
+	public void doFeedBack(View view) {
+		Intent data=new Intent(Intent.ACTION_SEND);  
+		data.setData(Uri.parse("mailto:leo.li@kingtangdata.com")); 
+		data.putExtra(Intent.EXTRA_SUBJECT, "盘点易问题反馈");
+	    startActivity(data);      
+	}
+
+	public void doCheckVersion(View view) {
+		startService(serviceIntent);
+	}
+
+	public void doAbout(View view) {
+		startActivity(new Intent(this,ActivityAbout.class));
+	}
+
+	public void doCall(View view) {
+		showBottomOperationMenu() ;
+	}
+	
+	ServiceConnection connection = new ServiceConnection() {
+		VersionBinder mBinder;
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			// TODO Auto-generated method stub
+			mBinder= null;
+		}
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			// TODO Auto-generated method stub
+			mBinder = (VersionBinder)service;
+			mBinder.setActivity(ActivitySet.this);
+		}
+	};
+	
+	
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		//绑定service
+		getApplicationContext().bindService(serviceIntent,connection, Service.BIND_AUTO_CREATE);
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		//解除service绑定
+		getApplicationContext().unbindService(connection);
+		//销毁service
+		stopService(serviceIntent);
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("温馨提示");
+		builder.setMessage("确认要退出应用？");
+		builder.setNegativeButton("取消", null);
+		builder.setNeutralButton("确定", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
+		builder.create().show();
+	}
+	
+	/**
+	 * 显示底部call菜单
+	 */
+	public void showBottomOperationMenu() {
+		View view = View.inflate(getApplicationContext(),R.layout.ui_call_menu, null);
+		TextView tvNumber = (TextView) view.findViewById(R.id.tv_number);
+		tvNumber.setText("4001004168");
+		final Dialog call_menu = new AlertDialog.Builder(this).create();
+		call_menu.show();
+		call_menu.getWindow().setWindowAnimations(R.style.PopupAnimation);
+		view.findViewById(R.id.imgV_call).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:4008301055"));
+						startActivity(intent);
+						call_menu.dismiss();
+					}
+				});
+		view.findViewById(R.id.imgV_cancel).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						call_menu.dismiss();
+					}
+				});
+		Window window = call_menu.getWindow();
+		WindowManager.LayoutParams wl = window.getAttributes();
+		DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		int widthPixels = dm.widthPixels;
+		int heightPixels = dm.heightPixels;
+		wl.y = 0;
+		wl.y += heightPixels / 2 - view.getHeight() / 2;
+		// 对话框宽度
+		wl.width = widthPixels;
+		window.setAttributes(wl);
+		window.setContentView(view);
+	}
+}

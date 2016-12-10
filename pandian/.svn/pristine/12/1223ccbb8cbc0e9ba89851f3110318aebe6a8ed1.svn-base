@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp" >
+
+
+        <com.kingtangdata.inventoryassis.view.SliderPopupChoicer
+            android:id="@id/checker_choice"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="2.0dip"
+            android:background="@drawable/bg_slide_choose"
+            android:ems="4"
+            android:paddingRight="5dp"
+            android:singleLine="true"
+            android:hint="请选择任务"
+            android:textSize="18sp" 
+            android:gravity="left"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10.0dip" >
+
+        <CheckBox
+            android:id="@id/check_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:checked="true"
+            android:text="同步用户数据" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/progress_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/lightgray"
+                android:textSize="@dimen/font16" />
+
+            <ProgressBar
+                android:id="@+id/progress_download1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_text1"
+                android:indeterminateDrawable="@drawable/progress_bg_drawable"
+                android:indeterminateOnly="false"
+                android:progressDrawable="@drawable/progress_bg_drawable" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10.0dip" >
+
+        <CheckBox
+            android:id="@+id/check_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="同步盘点任务" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/progress_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/lightgray"
+                android:textSize="@dimen/font16" />
+
+            <ProgressBar
+                android:id="@+id/progress_download2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_text2"
+                android:indeterminateDrawable="@drawable/progress_bg_drawable"
+                android:indeterminateOnly="false"
+                android:progressDrawable="@drawable/progress_bg_drawable" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@id/btn_start_download"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_favorite_bg"
+        android:onClick="doStart"
+        android:shadowColor="#ff555555"
+        android:shadowRadius="1.0"
+        android:text="@string/start_download"
+        android:textColor="#ffffffff" />
+
+</LinearLayout>

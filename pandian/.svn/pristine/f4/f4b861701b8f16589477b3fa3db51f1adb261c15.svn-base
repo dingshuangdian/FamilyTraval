@@ -1,0 +1,89 @@
+package com.kingtangdata.inventoryassis.url;
+
+import java.io.IOException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+
+import android.util.Log;
+
+public class HttpUtil {
+
+	// 基础URL
+    public static String BASE_URL="http://160.0.0.85:8888/eam2012/ADServer";
+	static HttpUtil _mySelf=new HttpUtil();
+	
+	/**
+	 * 获得对象本身 
+	 * 
+	 * @return HttpUtil
+	 */
+	public static HttpUtil getInstance() {
+		return _mySelf;
+	}
+    
+	public static void init(String ip,String port,String root) {
+    	BASE_URL="http://"+ip+":"+port+root+"/ADServer";
+    }
+	
+	// 获得Post请求对象request
+	public static HttpPost getHttpPost(String url) throws Exception {
+		 HttpPost request = new HttpPost(url); 
+     	 request.addHeader("charset", HTTP.UTF_8); 
+		 return request;
+	}
+	
+	// 根据请求获得响应对象response
+	public static HttpResponse getHttpResponse(HttpPost request) throws ClientProtocolException, IOException {
+		HttpResponse response = new DefaultHttpClient().execute(request);
+		return response;
+	}
+	
+	// 发送Post请求，获得响应查询结果
+	public static String CallWebPage(String url) { 
+		// 根据url获得HttpPost对象
+		HttpPost request ;
+		Log.i("queryListForPost",BASE_URL+url);
+		try {
+			request = HttpUtil.getHttpPost(BASE_URL+url);
+		} catch (Exception e) {
+			Log.e("Network",e.toString());
+			return null;
+		}
+		return queryForURL(request);
+    }
+
+	// 发送请求HttpPost，获得响应查询结果
+	public static String queryForURL(HttpPost request ) { 
+		try {
+			// 获得响应对象
+			HttpResponse response = HttpUtil.getHttpResponse(request);
+			// 判断是否请求成功
+			if(response.getStatusLine().getStatusCode()== HttpStatus.SC_OK){
+				// 获得响应 
+				String strResult="";
+				HttpEntity entity = response.getEntity();
+				if (entity != null)
+					strResult = EntityUtils.toString(entity);//, HTTP.UTF_8);
+
+				return strResult;
+			}
+		} catch (ClientProtocolException e) {
+			Log.e("Network", e.toString());
+			return "0";
+		} catch (IOException e) {
+			Log.e("Network", e.toString());
+			return "0";
+		} catch (Exception e) {
+			Log.e("Network", e.toString());
+			return "0";
+		}
+        return "0";
+    }
+}

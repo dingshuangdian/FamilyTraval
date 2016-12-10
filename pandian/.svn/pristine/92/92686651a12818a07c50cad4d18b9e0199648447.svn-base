@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:gravity="center" >
+
+    <TextView
+        android:id="@+id/text_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/selector_radio"
+        android:checked="true"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/font14" />
+
+    <TextView
+        android:id="@+id/text_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:button="@drawable/selector_radio"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/font14" />
+
+    <TextView
+        android:id="@+id/text_shartage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:button="@drawable/selector_radio"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/font14" />
+
+    <TextView
+        android:id="@+id/text_surplus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:button="@drawable/selector_radio"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/font14" />
+
+</LinearLayout>

@@ -1,0 +1,56 @@
+package com.kingtangdata.inventoryassis.widget;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.widget.HorizontalScrollView;
+
+public class MyHScrollView extends HorizontalScrollView {
+	
+	GestureDetector mGestureDetector;  
+	
+	boolean flag = false;
+	
+	public MyHScrollView(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+	}
+
+	public MyHScrollView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+	}
+
+	public MyHScrollView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	}
+	
+
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		// TODO Auto-generated method stub
+		return super.onInterceptTouchEvent(ev) ;
+	}
+
+//	
+//	@Override
+//	public boolean onTouchEvent(MotionEvent ev) {
+//		// TODO Auto-generated method stub
+//		float firstY = ev.getY();
+//		float lastY = 0f;
+//		
+//		
+//		
+//		switch (ev) {
+//		case value:
+//			
+//			break;
+//
+//		default:
+//			break;
+//		}
+//		
+//		
+//		return super.onTouchEvent(ev);
+//	}
+}

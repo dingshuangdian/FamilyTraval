@@ -1,0 +1,42 @@
+package com.kingtangdata.inventoryassis.act;
+
+import android.os.Bundle;
+import android.view.View;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.PagerActivity;
+
+
+/**
+ * 条码查询的界面
+ * @author Administrator
+ *
+ */
+public class ActivityBarcodeQuery extends PagerActivity{
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setStatusBarVisibility(View.VISIBLE);
+		super.setTopLabel(R.string.title_activity_print);
+		super.setLeftButtonText("返回");
+	}
+	
+	@Override
+	public void doClickLeftBtn() {
+		// TODO Auto-generated method stub
+		onBackPressed();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		finish();
+	}
+
+	public void doSearch(View view){
+		
+	}
+}

@@ -1,0 +1,222 @@
+package com.kingtangdata.inventoryassis.view;
+
+import java.util.List;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+
+public class SliderMutiChoicer extends EditText{
+	
+	private PopItemAdapter mItemAdapter;
+	private PopupWindow mPopupChoicer;
+	private int showLine = 3;
+
+	public SliderMutiChoicer(Context context){
+		this(context, null);
+	}
+
+	public SliderMutiChoicer(Context context, AttributeSet attributeSet){
+		this(context, attributeSet, 0);
+	}
+
+	public SliderMutiChoicer(Context context, AttributeSet attributeSet, int paramInt){
+		super(context, attributeSet, paramInt);
+		inital();
+	}
+
+	private void inital(){
+		setLongClickable(false);
+		mItemAdapter = new PopItemAdapter(new String[0]);
+		mPopupChoicer = new PopupWindow(getContext());
+		ListView listView = (ListView)LayoutInflater.from(getContext()).inflate(R.layout.popup_content, null);
+		listView.setAdapter(mItemAdapter);
+		
+		mPopupChoicer.setContentView(listView);
+		mPopupChoicer.setFocusable(true);
+		mPopupChoicer.setTouchable(true);
+		mPopupChoicer.setBackgroundDrawable(getContext().getResources().getDrawable(R.drawable.popup_bg));
+		
+		setOnClickListener(new View.OnClickListener(){
+			public void onClick(View view){
+				if(mPopupChoicer.isShowing()){
+					mPopupChoicer.dismiss();
+				}
+				mPopupChoicer.showAsDropDown(SliderMutiChoicer.this);
+			}
+		});
+		
+		mPopupChoicer.setOnDismissListener(new PopupWindow.OnDismissListener(){
+			public void onDismiss(){
+				setText(mItemAdapter.getCheckedText());
+			}
+		});
+	}
+
+	public String getCheckedData(){
+		return mItemAdapter.getCheckDepartmentData();
+	}
+
+	protected void onMeasure(int a, int b){
+		super.onMeasure(a, b);
+		mPopupChoicer.setWidth(getMeasuredWidth());
+		mPopupChoicer.setHeight(getMeasuredHeight() * showLine);
+	}
+
+	public void setChoicerLine(int paramInt){
+		showLine = paramInt;
+	}
+
+	public void setPopupData(List<String> list){
+	    int i = 1;
+	    int j = 0;
+	    if (list != null){
+	    	j = i;
+	    	if (list.size() == 0){
+	    		i = 0;
+	    		j = 0;
+	    	}
+	    }
+
+	    if ((j & i) != 0){
+	    	setText((CharSequence)list.get(0));
+	    	mItemAdapter.resetData(list);
+	    	setText(mItemAdapter.getCheckedText());
+	    }     
+	}
+
+	public void setPopupData(String[] array){
+		
+		if (array.length == 0){
+			setText(R.string.choicer_no_res);
+		}
+		mItemAdapter.resetData(array);
+		setText(mItemAdapter.getCheckedText());
+	}
+
+	private class PopItemAdapter extends BaseAdapter{
+		
+		public boolean[] checkStatus;
+		public String[] mData;
+
+		public PopItemAdapter(String[] arg2){
+			mData = arg2;
+			checkStatus = new boolean[mData.length];
+			setDefaultStatus();
+		}
+
+		private void setDefaultStatus(){
+			for (int i = 0; ; i++){
+				if (i >= checkStatus.length){
+					break;
+				}
+				checkStatus[i] = true;
+			}
+		}
+
+		public String getCheckDepartmentData(){
+    	
+			if (mData.length == 0){
+				return "未选择部门";
+			}
+    	
+	    	if (mData[0].equals("全部授权部门")){
+	    		return "";
+	    	}
+	    	
+	    	StringBuilder sb = new StringBuilder();
+	    	int i = 0;
+	    	for (int j = 0;j<mData.length; j++){
+	    		if (j >= checkStatus.length){
+	    			if (i != 0){		
+	    				return "未选择部门";
+	    			}
+	    		}
+	    		if (checkStatus[j] != false){
+	    			sb.append(mData[j] + ",");
+	    			i++;
+	    		}
+	    	}
+	    	
+	    	return sb.substring(0, -1 + sb.length());
+	    }
+	
+	    public String getCheckedText(){
+	    	
+	        StringBuilder sb = new StringBuilder();
+	
+	        for (int m = 0;m<mData.length; m++){
+	        
+	          sb.append(mData[m] + ",");
+	        }
+	
+	        return sb.substring(0, -1 + sb.length());
+	
+	    }
+	
+	    public int getCount(){
+	    	return mData.length;
+	    }
+	
+	    public Object getItem(int paramInt){
+	    	return mData[paramInt];
+	    }
+	
+	    public long getItemId(int paramInt){
+	    	return paramInt;
+	    }
+	
+	    public View getView(int paramInt, View view, ViewGroup viewGroup){
+	    	if (view == null){
+	    		view = LayoutInflater.from(getContext()).inflate(R.layout.pop_choicer, null);
+	    	}
+	    	((TextView)view).setText(mData[paramInt]);
+	    	((CheckBox)view).setChecked(checkStatus[paramInt]);
+	    	
+	    	view.setTag(Integer.valueOf(paramInt));
+	    	
+	    	view.setOnClickListener(new View.OnClickListener(){
+	    		public void onClick(View view){
+	    			int i = ((Integer)view.getTag()).intValue();
+	    			boolean[] arrayCs = checkStatus;
+	
+	    			for (int j = 0; j < arrayCs.length; j++){
+	    				arrayCs[i] = (j==0?false:true);
+	    				//((CheckBox)view).setChecked(checkStatus[i]);
+	    				((CheckBox)view).setChecked(arrayCs[i]);
+	    			}
+	    		}
+	    	});
+	    	
+	    	return view;
+	    }
+	
+	    public void resetData(List<String> list){
+	    	mData = new String[list.size()];
+	    	for (int i = 0; i < mData.length ; i++){
+	    		if (i >= list.size()){
+	    			setDefaultStatus();
+	    			notifyDataSetChanged();
+	    		}
+	    		mData[i] = ((String)list.get(i));
+	    	}
+	    }
+	
+	    public void resetData(String[] arg){
+	    	mData = arg;
+	    	checkStatus = new boolean[mData.length];
+	    	setDefaultStatus();
+	    	notifyDataSetChanged();
+	    }
+	}
+}

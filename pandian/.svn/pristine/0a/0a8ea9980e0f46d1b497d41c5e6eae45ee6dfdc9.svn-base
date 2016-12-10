@@ -1,0 +1,132 @@
+/**
+ * 
+ */
+package com.kingtangdata.inventoryassis.act;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.common.AsyncReqTask;
+
+/**
+ * @author liyang 
+ * 问题反馈界面
+ */
+public class ActivityFeedBack extends BaseActivity implements
+		OnClickListener {
+	public static final String LOG_TAG = ActivityFeedBack.class
+			.getSimpleName();
+
+	// 异步任务
+	private AsyncReqTask task;
+	private EditText etContent;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_feed_back);
+		super.setTopLabel("问题反馈");
+		super.setLeftButtonText("返回");
+		// 反馈内容输入框
+		etContent = (EditText) findViewById(R.id.et_content);
+		// 提交事件
+		findViewById(R.id.bt_confirm).setOnClickListener(this);
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		switch (id) {
+		case 1:
+			builder.setTitle("提示");
+			builder.setMessage("提交成功，感谢您的支持！");
+			builder.setNegativeButton("确认",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							finish();//点击"好的"按钮后,直接OK跳本activity,返回TAB(更多)选项卡界面
+						}
+					});
+			break;
+
+		default:
+			break;
+		}
+		return builder.create();
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		super.onClick(v);
+		switch (v.getId()) {
+		case R.id.bt_confirm:
+			showDialog(1);
+//			String content = etContent.getText().toString();
+//			// 输入内容
+//			if (StringUtils.isBlank(content)) {
+//				makeText("请说点什么吧");
+//				return;
+//			}
+//			
+//			FeedBackReq req = new FeedBackReq();
+//			req.setContent(content);
+//			task = new CustomAsyncTask(ActivityFeedBack.this);
+//			task.displayProgressDialog(R.string.doing_req_message);
+//			task.execute(req);
+			break;
+		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		// 界面销毁的时候取消正在执行的异步任务
+		if (task != null && !task.isCancelled()) {
+			task.cancel(true);
+		}
+	}
+
+//	/**
+//	 * 意见反馈异步请求
+//	 * 
+//	 * @author liyang
+//	 * 
+//	 */
+//	class CustomAsyncTask extends AsyncReqTask {
+//		public CustomAsyncTask(Context context) {
+//			super(context);
+//		}
+//
+//		@Override
+//		protected BaseRes doRequest(BaseReq request) {
+//			return SystemProvider.getInstance(getApplicationContext())
+//					.feedBack((FeedBackReq) request);
+//		}
+//
+//		@Override
+//		protected void handleResponse(BaseRes response) {
+//			closeProgressDialog();
+//
+//			if (response == null)
+//				return;
+//
+//			// 验证成功都跳转到选择门店页面
+//			// if(SPECIAL_CODE1.equals(response.getCode())){
+//			if (DeviceResponseCode.SUCCESS.equals(response.getCode())) {
+//				// makeText("提交成功！感谢您的支持！");
+//				showDialog(1);
+//			} else {
+//				makeText(response.getDesc());
+//			}
+//		}
+//	}
+}

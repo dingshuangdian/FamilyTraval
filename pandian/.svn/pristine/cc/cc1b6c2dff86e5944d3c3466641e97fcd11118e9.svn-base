@@ -1,0 +1,174 @@
+package com.kingtangdata.inventoryassis.act;
+/*
+ * 盘查任务盘查的类
+ */
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+
+public class ActivityCheckTaskForm extends BaseActivity{
+	
+	private EditText etMarks;
+	private EditText etMeanscode;
+	private EditText etDevicecode;
+	private EditText etDevicename;
+	private EditText etXinghao;
+	private EditText etGuige;
+	private EditText etChuchangcode;
+	private EditText etChuchangdate;
+	private EditText etBuildaddress;
+	private EditText etRemarks;
+	
+	//相符
+	private RadioButton radioRight;
+	//不相符
+	private RadioButton radioWrong;
+	
+	
+	//隐藏和显示相符不相符的VIEW
+	private View hiddenView;
+	//保存按钮
+	private Button btn_save;
+	//盘亏和盘查控制标识
+	private String type = "";
+	
+	private Plan plan = null;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_checktask_form);
+		super.setLeftButtonImage(R.drawable.btn_back_bg);
+		
+		//控件初始化
+		etMarks = (EditText)findViewById(R.id.et_marks);
+		etMarks.setEnabled(false);
+		etMeanscode = (EditText)findViewById(R.id.et_meanscode);
+		etMeanscode.setEnabled(false);
+		etDevicecode = (EditText)findViewById(R.id.et_devicecode);
+		etDevicecode.setEnabled(false);
+		etDevicename = (EditText)findViewById(R.id.et_devicename);
+		etDevicename.setEnabled(false);
+		etXinghao = (EditText)findViewById(R.id.et_xinghao);
+		etXinghao.setEnabled(false);
+		etGuige = (EditText)findViewById(R.id.et_guige);
+		etGuige.setEnabled(false);
+		etChuchangcode = (EditText)findViewById(R.id.et_chuchangcode);
+		etChuchangcode.setEnabled(false);
+		etChuchangdate = (EditText)findViewById(R.id.et_chuchangdate);
+		etChuchangdate.setEnabled(false);
+		etBuildaddress = (EditText)findViewById(R.id.et_buildaddress);
+		etBuildaddress.setEnabled(false);
+		etRemarks = (EditText)findViewById(R.id.et_remarks);
+		etRemarks.requestFocus();
+		
+		radioRight = (RadioButton)findViewById(R.id.radio_right);//相符
+		radioWrong = (RadioButton)findViewById(R.id.radio_wrong);//不相符
+		
+		//隐藏相符不相符的布局
+		hiddenView = (View)findViewById(R.id.radioLayout);
+		btn_save = (Button)findViewById(R.id.btn_save);
+		
+	    type = getIntent().getStringExtra("type");
+		if(ActivityCkeckTask.PD_CHECK.equals(type)){
+			//盘点处理
+			super.setTopLabel(R.string.title_check);
+		}else{
+			//盘亏处理
+			super.setTopLabel(R.string.title_pankui);
+			hiddenView.setVisibility(View.GONE);
+			btn_save.setText("盘亏");
+		}
+		
+		plan = (Plan)getIntent().getSerializableExtra("plan");
+		if(plan != null){
+			setPlanText(plan);
+		}
+	}
+	
+	
+	/**
+	 * 根据plan对象给当前界面赋值
+	 * @param plan
+	 */
+	public void setPlanText(Plan plan){
+		
+		if(plan.isNormal()){
+			radioRight.setChecked(true);
+		}else{
+			radioWrong.setChecked(true);
+		}
+		
+		etMarks.setText(plan.getLabel_code());
+		etMeanscode .setText(plan.getAssetno());
+		etDevicecode .setText(plan.getDevice_code());
+		etDevicename .setText(plan.getDevice_name());
+		etXinghao.setText(plan.getDevice_type());
+		etGuige.setText(plan.getDevice_type());
+		etChuchangcode .setText(plan.getOutno());
+		etChuchangdate .setText(plan.getOutdate());
+		etBuildaddress .setText(plan.getInstall_place());
+		etRemarks .setText(plan.getMemo());
+	}
+	
+	
+	/**
+	 * 保存方法
+	 * @param view
+	 */
+	public void doSave(View view){
+		
+		if(plan == null){
+			return;
+		}
+		
+		//如果
+		if(ActivityCkeckTask.PK_CHECK.equals(type)){
+			plan.setCheck_result("pk");
+			plan.setMemo(etRemarks.getText().toString());
+			plan.setIs_normal(plan.getIs_normal());
+			plan.setIs_upload("0"); //表示该记录已经变化  需要重新上传
+			
+			boolean result = PlanManager.getInstance(this).updatePlan(plan, plan.getDet_id());
+			
+			if(result){
+				makeText("保存成功");
+				Intent intent = new Intent();
+				intent.putExtra("plan",plan);
+				setResult(RESULT_OK,intent);
+				finish();
+			}else{
+				makeText("保存失败");
+			}
+		}
+		
+		//表示是修改
+		if(ActivityCkeckTask.PD_CHECK.equals(type)) {
+			plan.setIs_normal(radioRight.isChecked()?"1":"0");
+			plan.setMemo(etRemarks.getText().toString());
+			plan.setCheck_result("zc");
+			plan.setIs_upload("0"); //表示该记录已经变化  需要重新上传
+			
+			boolean result = PlanManager.getInstance(this).updatePlan(plan, plan.getDet_id());
+			
+			if(result){
+				makeText("保存成功");
+				Intent intent = new Intent();
+				intent.putExtra("plan",plan);
+				setResult(RESULT_OK,intent);
+				finish();
+			}else{
+				makeText("保存失败");
+			}
+		}
+	}
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp" >
+
+        <TextView
+            android:id="@id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/set_des1" />
+
+        <EditText
+            android:id="@id/input_server_addr"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_edittext"
+            android:padding="10dp"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp" >
+
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_favorite_bg"
+            android:gravity="center"
+            android:onClick="doTest"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:shadowColor="#ff333333"
+            android:shadowRadius="1.0"
+            android:text="测试连接"
+            android:textColor="#ffffffff" />
+
+        <View
+            android:layout_width="8.0dip"
+            android:layout_height="1.0dip" />
+
+        <Button
+            android:id="@id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_favorite_bg"
+            android:gravity="center"
+            android:onClick="doSave"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:shadowColor="#ff333333"
+            android:shadowRadius="1.0"
+            android:text="保存"
+            android:textColor="#ffffffff" />
+    </LinearLayout>
+
+</LinearLayout>

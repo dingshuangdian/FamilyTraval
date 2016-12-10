@@ -1,0 +1,149 @@
+package com.kingtangdata.inventoryassis.activity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.HorizontalScrollView;
+import android.widget.ListView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.adapter.PagerListAdapter;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+import com.kingtangdata.inventoryassis.widget.RefreshLayout;
+
+/**
+ * 带左右滑动的activity父类
+ * @author Administrator
+ *
+ */
+public abstract class PagerActivity  extends RefreshActivity implements OnItemClickListener{
+	public PagerListAdapter adapter = null; 
+	
+	public List<Plan> plans = null;
+	
+	private ListView mListView;
+	private RefreshLayout mPullDownView;
+	
+	private View mHead;
+	
+	/**
+	 * 从子类传plans进来
+	 * @param page
+	 * @return
+	 */
+	protected void setData(List<Plan> plans){
+		this.plans = plans;
+		this.adapter.clear();
+		onLoad();
+	}
+	
+	
+	@Override
+	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	/**
+	 * 初始化相应组件
+	 */
+	public void initCompenents(){
+	
+		
+		mHead = findViewById(R.id.head);
+		
+		if(mHead == null){
+			LogUtils.loge(getClass(), "mHead 初始化出错");
+		}
+		
+		mHead.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
+		mHead.setBackgroundColor(getResources().getColor(R.color.blue));
+		mPullDownView = (RefreshLayout) findViewById(R.id.refreshLayout);
+		
+		if(mPullDownView == null){
+			LogUtils.loge(getClass(), "mPullDownView 初始化出错");
+		}
+		
+		adapter = new PagerListAdapter(this,mHead);
+		
+		mPullDownView.setOnPullDownListener(this);
+		mPullDownView.setEnablePullDownRefresh(false);
+		
+		mListView = mPullDownView.getListView();
+		mListView.setDivider(getResources().getDrawable(R.drawable.divider));
+		mListView.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
+		mListView.setOnItemClickListener(this);
+		mListView.setAdapter(adapter);
+		mPullDownView.enableAutoFetchMore(true, 1);
+	}
+
+	class ListViewAndHeadViewTouchLinstener implements View.OnTouchListener {
+
+		@Override
+		public boolean onTouch(View arg0, MotionEvent arg1) {
+			//当在列头 和 listView控件上touch时，将这个touch的事件分发给 ScrollView
+			HorizontalScrollView headSrcrollView = (HorizontalScrollView) mHead
+					.findViewById(R.id.horizontalScrollView1);
+			headSrcrollView.onTouchEvent(arg1);
+			return false;
+		}
+	}
+	
+	@Override
+	public void getDataFromLocal() {
+		// TODO Auto-generated method stub
+		if(plans == null ){
+			return;
+		}
+		
+		List<Plan> nextPageData = new ArrayList<Plan>();
+		int currentTotalCount = adapter.getCount(); 
+		
+		if(currentTotalCount < plans.size()){
+			for (int i = 0; i < pageSize; i++) {
+				if(currentTotalCount+i < plans.size() ){
+					Plan plan = plans.get(currentTotalCount+i);
+					nextPageData.add(plan);
+				}
+			}
+		}
+		
+		adapter.addList(nextPageData);
+		adapter.notifyDataSetChanged();
+		if (state == RefreshLayout.WHAT_DID_LOAD_DATA) {
+			mPullDownView.notifyDidLoad();
+		} else if (state == RefreshLayout.WHAT_DID_MORE) {
+			mPullDownView.notifyDidMore();
+		} else if (state == RefreshLayout.WHAT_DID_REFRESH) {
+			mPullDownView.notifyDidRefresh();
+		}
+		
+		if(currentTotalCount >= plans.size()){
+			mPullDownView.notifyDidOver();
+		}
+	}
+	
+	
+	@Override
+	public void getDataFromServer() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	/**
+	 * 操作完成之后刷新数据
+	 */
+	public void refreshData(){
+		
+		
+		
+		
+	}
+}

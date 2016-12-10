@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RadioGroup
+        android:id="@+id/ui_inventory_type"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@id/radio_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font14"
+            android:checked="true" />"
+
+        <RadioButton
+            android:id="@id/radio_checked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="已盘"
+            android:textColor="@color/gray" 
+            android:textSize="@dimen/font14"/>
+
+        <RadioButton
+            android:id="@id/radio_not"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="未盘"
+            android:textColor="@color/gray" 
+            android:textSize="@dimen/font14"/>
+
+        <RadioButton
+            android:id="@id/radio_shartage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="盘亏"
+            android:textColor="@color/gray" 
+            android:textSize="@dimen/font14"/>
+
+        <RadioButton
+            android:id="@id/radio_surplus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="盘盈"
+            android:textColor="@color/gray" 
+            android:textSize="@dimen/font14"/>
+    </RadioGroup>
+
+</LinearLayout>

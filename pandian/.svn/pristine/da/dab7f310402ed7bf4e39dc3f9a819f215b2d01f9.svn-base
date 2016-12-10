@@ -1,0 +1,38 @@
+package com.kingtangdata.inventoryassis.activity ;
+
+import com.kingtangdata.inventoryassis.widget.RefreshLayout;
+import com.kingtangdata.inventoryassis.widget.RefreshLayout.OnPullDownListener;
+
+public abstract class RefreshActivity extends BaseActivity implements OnPullDownListener{
+	/**当前页码*/
+	public int pageNum = 0;
+	
+	public int pageSize = 50;
+	/**当前加载状态*/
+	public int state = RefreshLayout.WHAT_DID_LOAD_DATA;
+	
+	public abstract void getDataFromServer();
+
+	public abstract void getDataFromLocal();
+	
+	@Override
+	public void onRefresh() {
+		// TODO Auto-generated method stub
+		state = RefreshLayout.WHAT_DID_REFRESH;
+		getDataFromServer();
+	}
+
+	@Override
+	public void onMore() {
+		// TODO Auto-generated method stub
+		state = RefreshLayout.WHAT_DID_MORE;
+		getDataFromLocal();
+	}
+
+	@Override
+	public void onLoad() {
+		// TODO Auto-generated method stub
+		state = RefreshLayout.WHAT_DID_LOAD_DATA;
+		getDataFromLocal();
+	}
+}

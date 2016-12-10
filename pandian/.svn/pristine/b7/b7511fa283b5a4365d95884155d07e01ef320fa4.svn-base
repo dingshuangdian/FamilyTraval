@@ -1,0 +1,181 @@
+package com.kingtangdata.inventoryassis.act;
+/*
+ * 盘盈任务
+ */
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.util.MessageUtil;
+
+public class ActivityPYForm extends BaseActivity{
+
+	private TextView etMarks;        //标签编码
+	private EditText etMeanscode;    //资产编号
+	private EditText etDevicecode;   //设备编号
+	private EditText etDevicename;   //设备名称
+	private EditText etXinghao;      //设备型号
+	private EditText etGuige;        //设备规格
+	private EditText etChuchangcode; //出厂编号
+	private EditText etFactory;      //制造厂
+	private EditText etBuildaddress; //安装地点
+	private EditText etRemarks;      //备注
+	
+	private Plan plan = null;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_py_form);
+		super.setTopLabel(R.string.title_activity_surplus);
+		super.setLeftButtonImage(R.drawable.btn_back_bg);
+		
+		//控件初始化
+		etMarks = (TextView)findViewById(R.id.et_marks);
+		etMeanscode = (EditText)findViewById(R.id.et_meanscode);
+		etDevicecode = (EditText)findViewById(R.id.et_devicecode);
+		etDevicename = (EditText)findViewById(R.id.et_devicename);
+		etXinghao = (EditText)findViewById(R.id.et_xinghao);
+		etGuige = (EditText)findViewById(R.id.et_guige);
+		etChuchangcode = (EditText)findViewById(R.id.et_chuchangcode);
+		etFactory = (EditText)findViewById(R.id.et_factory);
+		etBuildaddress = (EditText)findViewById(R.id.et_buildaddress);
+		etRemarks = (EditText)findViewById(R.id.et_remarks);	
+		
+		String type = getIntent().getStringExtra("type");
+		if(ActivityPY.PY_ADD.equals(type)){
+			//盘盈新增
+			super.setTopLabel(R.string.title_surplus_add);
+			//在盘点任务功能，通过扫描新标签触发的盘盈新增操作，把新RFID显示出来
+			String newRfid = getIntent().getStringExtra("rfid");
+			if (newRfid != null && !newRfid.equals(""))
+				etMarks.setText(newRfid);
+		}else{
+			//盘盈修改
+			super.setTopLabel(R.string.title_surplus_info);
+			findViewById(R.id.bt_delete).setVisibility(View.VISIBLE);
+			plan = (Plan)getIntent().getSerializableExtra("plan");
+			setPlanText(plan);
+		}
+	}
+	
+	
+	/**
+	 * 根据plan对象给当前界面赋值
+	 * @param plan
+	 */
+	public void setPlanText(Plan plan){
+		
+		etMarks.setText(plan.getLabel_code());
+		etMeanscode .setText(plan.getAssetno());
+		etDevicecode .setText(plan.getDevice_code());
+		etDevicename .setText(plan.getDevice_name());
+		etXinghao.setText(plan.getDevice_type());
+		etGuige.setText(plan.getDevice_size());
+		etChuchangcode .setText(plan.getOutno());
+		etFactory .setText(plan.getFactory());
+		etBuildaddress .setText(plan.getInstall_place());
+		etRemarks .setText(plan.getMemo());
+	}
+	
+	
+	/**
+	 * 保存方法
+	 * @param view
+	 */
+	public void doSave(View view){
+		//plan为空的时候表示是新增盘亏处理
+		if (etDevicename.getText().toString().trim().equals("")) {
+			MessageUtil.setMessage("设备名称为空，不能保存！", this);
+			return;
+		}
+		
+		if (etBuildaddress.getText().toString().trim().equals("")) {
+			MessageUtil.setMessage("安装地点为空，不能保存！", this);
+			return;
+		}
+		
+		
+		if(plan == null){
+			plan = new Plan();
+			plan.setAssetno(etMeanscode.getText().toString());
+			plan.setDevice_code(etDevicecode.getText().toString());
+			plan.setDevice_name(etDevicename.getText().toString());
+			plan.setDevice_type(etXinghao.getText().toString());
+			plan.setDevice_size(etGuige.getText().toString());
+			plan.setOutno(etChuchangcode.getText().toString());
+			plan.setFactory(etFactory.getText().toString());
+			plan.setInstall_place(etBuildaddress.getText().toString());
+			plan.setMemo(etRemarks.getText().toString());
+			plan.setDet_id(String.valueOf(System.currentTimeMillis()));
+			plan.setLabel_code(getIntent().getStringExtra("rfid"));
+			
+			plan.setCheck_result("py");
+			 //表示该记录已经变化  需要重新上传
+			plan.setIs_upload("0");
+				
+			boolean result = PlanManager.getInstance(this).addPlan(plan);
+			if(result){
+				makeText("保存成功");
+				Intent intent = new Intent();
+				intent.putExtra("plan", plan);
+				setResult(RESULT_OK,intent);
+				finish();
+			}else{
+				makeText("保存失败");
+			}
+		}else{
+			plan.setAssetno(etMeanscode.getText().toString());
+			plan.setDevice_code(etDevicecode.getText().toString());
+			plan.setDevice_name(etDevicename.getText().toString());
+			plan.setDevice_type(etXinghao.getText().toString());
+			plan.setDevice_size(etGuige.getText().toString());
+			plan.setOutno(etChuchangcode.getText().toString());
+			plan.setFactory(etFactory.getText().toString());
+			plan.setInstall_place(etBuildaddress.getText().toString());
+			plan.setMemo(etRemarks.getText().toString());
+			//plan.setLabel_code(getIntent().getStringExtra("rfid"));
+				
+			boolean result = PlanManager.getInstance(this).updatePlan(plan, plan.getDet_id());
+			if(result){
+				makeText("保存成功");
+				Intent intent = new Intent();
+				intent.putExtra("plan", plan);
+				intent.putExtra("operation","modify");
+				setResult(RESULT_OK,intent);
+				finish();
+			}else{
+				makeText("保存失败");
+			}
+		}	
+	}
+	
+	
+	/**
+	 * 撤销操作
+	 */
+	public void doDelete(View view){
+		
+		if(plan != null){
+			boolean result = PlanManager.getInstance(this).deletePlan(plan);
+			
+			if(result){
+				makeText("撤销成功");
+				Intent intent = new Intent();
+				intent.putExtra("plan",plan);
+				intent.putExtra("operation","delete");
+				setResult(RESULT_OK,intent);
+				finish();
+			}else{
+				makeText("撤销失败");
+			}
+		}
+	}
+}

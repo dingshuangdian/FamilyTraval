@@ -1,0 +1,70 @@
+package com.kingtangdata.inventoryassis.tools;
+
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ContentBody;
+
+public class UploadMultipartEntity extends MultipartEntity
+{
+	private static long count;
+	private ProgressListener mListener;
+
+	public UploadMultipartEntity(ProgressListener paramProgressListener)
+	{
+		this.mListener = paramProgressListener;
+	}
+
+	public void addPart(String paramString, ContentBody paramContentBody)
+	{
+		super.addPart(paramString, paramContentBody);
+		count = getContentLength();
+	}
+
+	public void writeTo(OutputStream paramOutputStream)
+		throws IOException
+	{
+		super.writeTo(new CountingOutputStream(paramOutputStream, this.mListener));
+	}
+
+	public static class CountingOutputStream extends FilterOutputStream
+	{
+		private final UploadMultipartEntity.ProgressListener listener;
+		private long transferred;
+
+		public CountingOutputStream(OutputStream paramOutputStream, UploadMultipartEntity.ProgressListener paramProgressListener)
+		{
+			super(paramOutputStream);
+			this.listener = paramProgressListener;
+			this.transferred = 0L;
+		}
+
+		public void write(int paramInt)
+			throws IOException
+		{
+			this.out.write(paramInt);
+			this.transferred = (1L + this.transferred);
+			this.listener.transferred(this.transferred, UploadMultipartEntity.count);
+		}
+
+		public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+			throws IOException
+		{
+			this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+			this.transferred += paramInt2;
+			this.listener.transferred(this.transferred, UploadMultipartEntity.count);
+		}
+	}
+
+	public static abstract interface ProgressListener
+	{
+		public abstract void transferred(long paramLong1, long paramLong2);
+	}
+}
+
+/* Location:					 D:\work\magic\dex2jar-0.0.9.15\classes_dex2jar.jar
+ * Qualified Name:		 com.kingtangdata.inventoryassis.tools.UploadMultipartEntity
+ * JD-Core Version:		0.6.2
+ */

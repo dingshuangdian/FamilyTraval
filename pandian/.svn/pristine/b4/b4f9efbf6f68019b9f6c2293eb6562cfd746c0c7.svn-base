@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10.0dip" >
+
+        <CheckBox
+            android:id="@id/check_upload_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:checked="true"
+            android:text="已盘点数据" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/progress_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/lightgray"
+                android:textSize="@dimen/font16" />
+
+            <ProgressBar
+                android:id="@+id/progress_upload1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_text1"
+                android:indeterminateDrawable="@drawable/progress_bg_drawable"
+                android:indeterminateOnly="false"
+                android:progressDrawable="@drawable/progress_bg_drawable" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10.0dip" >
+
+        <CheckBox
+            android:id="@id/check_upload_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="新增标签编码" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/progress_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/lightgray"
+                android:textSize="@dimen/font16" />
+
+            <ProgressBar
+                android:id="@+id/progress_upload2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_text2"
+                android:indeterminateDrawable="@drawable/progress_bg_drawable"
+                android:indeterminateOnly="false"
+                android:progressDrawable="@drawable/progress_bg_drawable" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@id/btn_upload"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/btn_favorite_bg"
+        android:onClick="doStart"
+        android:shadowColor="#ff555555"
+        android:shadowRadius="1.0"
+        android:text="@string/start_upload"
+        android:textColor="#ffffffff" />
+
+</LinearLayout>

@@ -1,0 +1,32 @@
+package com.kingtangdata.inventoryassis.http;
+
+public class HttpConstants {
+	
+	/**用户数据接口*/
+	public static String USER_ACTION = "/ADServer?f=getUser";
+	
+	/**用户数据接口*/
+	public static String DEPT_ACTION = "/ADServer?f=getDept";
+	
+	/**任务接口*/
+	public static String TASK_ACTION = "/ADServer?f=getPlanList";
+	
+	/**计划接口*/
+	public static String PLAN_ACTION = "/ADServer?f=getPlan";
+	
+	/**计划接口*/
+	public static String UPLOAD_ACTION = "/ADServer?f=sendJson";
+	
+	/**测试接口*/
+	public static String TEST_ACTION = "/ADServer?f=getTest";
+	
+	
+	
+	/**服务器默认ip*/
+	public static final String DEFAULT_IP ="160.0.0.85:8888/eam11g";
+	
+	//网络请求超时时间
+	public static final int CONNECT_TIME_OUT = 3000 ;
+	public static final int READ_TIME_OUT = 3000 ;
+	
+}

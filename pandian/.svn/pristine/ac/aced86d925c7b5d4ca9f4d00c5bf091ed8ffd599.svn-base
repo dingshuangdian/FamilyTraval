@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_corner_with_white"
+        android:orientation="vertical"
+        android:padding="10.0dip" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@id/check_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:button="@drawable/selector_checkbox"
+                android:checked="true"
+                android:text="同步用户数据"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font16" />
+
+            <TextView
+                android:id="@+id/progress_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font16" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_download1"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:indeterminateDrawable="@drawable/progress_bg_drawable"
+            android:indeterminateOnly="false"
+            android:progressDrawable="@drawable/progress_bg_drawable" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bind_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_corner_with_white"
+        android:orientation="vertical"
+        android:padding="10.0dip" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/check_bind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector_checkbox"
+                android:checked="true"
+                android:text="同步绑定标签"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font16" />
+
+            <TextView
+                android:id="@+id/progress_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font16" />
+        </RelativeLayout>
+
+        <com.kingtangdata.inventoryassis.view.SliderPopupChoicer
+            android:id="@+id/checker_choice_bind"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_slide_choose"
+            android:ems="4"
+            android:gravity="left"
+            android:hint="请选择任务"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:singleLine="true"
+            android:textSize="@dimen/font16" />
+
+        <ProgressBar
+            android:id="@+id/progress_download3"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:indeterminateDrawable="@drawable/progress_bg_drawable"
+            android:indeterminateOnly="false"
+            android:progressDrawable="@drawable/progress_bg_drawable" />
+    </LinearLayout>
+
+    <LinearLayout
+        
+        android:id="@+id/plan_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_corner_with_white"
+        android:orientation="vertical"
+        android:padding="10.0dip" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/check_plan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector_checkbox"
+                android:checked="true"
+                android:text="同步盘点任务"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font16" />
+
+            <TextView
+                android:id="@+id/progress_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font16" />
+        </RelativeLayout>
+
+        <com.kingtangdata.inventoryassis.view.SliderPopupChoicer
+            android:id="@+id/checker_choice_plan"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_slide_choose"
+            android:ems="4"
+            android:gravity="left"
+            android:hint="请选择任务"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:singleLine="true"
+            android:textSize="@dimen/font16" />
+
+        <ProgressBar
+            android:id="@+id/progress_download2"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:indeterminateDrawable="@drawable/progress_bg_drawable"
+            android:indeterminateOnly="false"
+            android:progressDrawable="@drawable/progress_bg_drawable" />
+    </LinearLayout>
+
+    <Button
+        android:id="@id/btn_start_download"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_favorite_bg"
+        android:onClick="doStart"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:shadowColor="#ff555555"
+        android:shadowRadius="1.0"
+        android:text="@string/start_download"
+        android:textColor="#ffffffff" 
+        android:textSize="@dimen/font16"/>
+
+</LinearLayout>

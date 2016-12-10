@@ -1,0 +1,32 @@
+package com.kingtangdata.inventoryassis.data;
+
+import com.google.gson.annotations.Expose;
+
+/**
+ * 上传新增标签的对象
+ * @author liyang
+ *
+ */
+public class UploadLB {
+	@Expose
+	private String det_id;
+	
+	@Expose
+	private String label_code;
+
+	public String getDet_id() {
+		return det_id;
+	}
+
+	public void setDet_id(String det_id) {
+		this.det_id = det_id;
+	}
+
+	public String getLabel_code() {
+		return label_code;
+	}
+
+	public void setLabel_code(String label_code) {
+		this.label_code = label_code;
+	}
+}

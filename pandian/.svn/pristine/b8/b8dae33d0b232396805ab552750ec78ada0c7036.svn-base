@@ -1,0 +1,38 @@
+//package com.kingtangdata.inventoryassis.view;
+//
+//import android.content.Context;
+//import com.kingtangdata.inventoryassis.R;
+//import com.kingtangdata.inventoryassis.common.CommonDialog;
+//import com.kingtangdata.inventoryassis.data.Plan;
+//
+//public class InventoryDialog extends CommonDialog{
+//	
+//	public InventoryDialog(Context context, int paramInt){
+//		super(context);
+//		inital(paramInt);
+//	}
+//
+//	private void inital(int paramInt){
+//		mTitle.setText(paramInt);
+//		mBtnEdit.setVisibility(8);
+//		mBtnSave.setOnClickListener(new CommonDialog.SaveInventoryAction());
+//	}
+//
+//	public void setData(Plan checkPlan, boolean pBoolean){
+//		mData = checkPlan;
+//		mOperaterAdapter.setCanEdit(pBoolean);
+//	}
+//
+//	public void setModel(int paramInt){
+//		mTitle.setText(paramInt);
+//		//设备盘查
+//		if (paramInt == R.string.dialog_check){
+//			mBtnSave.setOnClickListener(new CommonDialog.SaveInventoryAction());
+//			mBtnPrint.setVisibility(0);
+//		}else{
+//		    mBtnSave.setOnClickListener(new CommonDialog.SaveShortageAction());
+//		    mCheckRadio.setVisibility(8);
+//		    mBtnPrint.setVisibility(8);
+//		}		
+//	}
+//}

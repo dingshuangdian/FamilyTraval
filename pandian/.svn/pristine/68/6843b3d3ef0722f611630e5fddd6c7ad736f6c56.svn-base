@@ -1,0 +1,102 @@
+package com.kingtangdata.inventoryassis.widget;
+
+import com.kingtangdata.inventoryassis.util.LogUtils;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.HorizontalScrollView;
+
+public class MyHScrollView extends HorizontalScrollView  implements OnGestureListener{
+	
+	GestureDetector mGestureDetector;  
+	
+	boolean flag = false;
+	
+	public MyHScrollView(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+		init();
+	}
+
+	public MyHScrollView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		init();
+	}
+
+	public MyHScrollView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		init();
+	}
+	
+	
+	public void init(){
+		 mGestureDetector = new GestureDetector(this);  
+		
+		this.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				return mGestureDetector.onTouchEvent(event);
+			}
+		});
+	}
+	
+
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		// TODO Auto-generated method stub
+		return super.onInterceptTouchEvent(ev);
+	}
+
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		// TODO Auto-generated method stub
+		LogUtils.logd(getClass(), "开始滑动");
+		
+		if(Math.abs(e1.getY() - e2.getY() ) > 120){
+			LogUtils.logd(getClass(), "上下滑动");
+			
+			flag = true;
+		}else{
+			flag = false;
+		}
+		return true;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

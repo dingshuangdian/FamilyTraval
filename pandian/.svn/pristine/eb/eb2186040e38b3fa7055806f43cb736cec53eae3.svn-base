@@ -1,0 +1,101 @@
+package com.kingtangdata.inventoryassis.view;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.data.Task;
+
+public class SliderPopupChoicer extends EditText {
+	private PopupWindow mPopupChoicer;
+	private ListView listView;
+	private Object selectItem;
+	private int selectIndex;
+	private int showLine = 4;
+	public SliderPopupChoicer(Context context) {
+		this(context, null);
+	}
+
+	public SliderPopupChoicer(Context context, AttributeSet attributeSet) {
+		this(context, attributeSet, 0);
+	}
+
+	public SliderPopupChoicer(Context context, AttributeSet attributeSet,
+			int paramInt) {
+		super(context, attributeSet, paramInt);
+		inital();
+	}
+
+	public void setAdapter(BaseAdapter adapter) {
+		listView.setAdapter(adapter);
+	}
+
+	public Object getSelectItem() {
+		return selectItem;
+	}
+
+	public int getSelectIndex() {
+		return selectIndex;
+	}
+
+	private void inital() {
+		// 标签数组
+		// String[] makrs = getResources().getStringArray(R.array.marks);
+		mPopupChoicer = new PopupWindow(getContext());
+		listView = (ListView) LayoutInflater.from(getContext()).inflate(
+				R.layout.popup_content, null);
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> adapterView, View view,
+					int paramInt, long paramLong) {
+				Object o = (Object) adapterView.getItemAtPosition(paramInt);
+				// 该值用于返回 提供给其他类调用
+				selectItem = o;
+				selectIndex = paramInt;
+
+				if (o instanceof Task) {
+					Task task = (Task) o;
+					setText("[" + task.getCheck_no() + "] "
+							+ task.getDept_name());
+				}
+
+				if (o instanceof String) {
+					String s = (String) o;
+					setText(s);
+				}
+
+				mPopupChoicer.dismiss();
+			}
+		});
+
+		mPopupChoicer.setContentView(listView);
+		mPopupChoicer.setFocusable(true);
+		mPopupChoicer.setTouchable(true);
+		mPopupChoicer.setBackgroundDrawable(getContext().getResources()
+				.getDrawable(R.drawable.popup_bg));
+
+		setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				if (mPopupChoicer.isShowing()) {
+					mPopupChoicer.dismiss();
+					return;
+				} else {
+					mPopupChoicer.showAsDropDown(SliderPopupChoicer.this);
+				}
+			}
+		});
+	}
+
+	@Override
+	protected void onMeasure(int paramInt1, int paramInt2) {
+		super.onMeasure(paramInt1, paramInt2);
+		mPopupChoicer.setWidth(getMeasuredWidth());
+		mPopupChoicer.setHeight(getMeasuredHeight() * showLine);
+	}
+}

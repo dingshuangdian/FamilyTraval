@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+
+    <com.kingtangdata.inventoryassis.widget.InterceptScrollContainer
+        android:id="@+id/scroollContainter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false" >
+
+        <com.kingtangdata.inventoryassis.widget.MyHScrollView
+            android:id="@+id/horizontalScrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="盘点结果"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="设备编号"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="资产编号"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="设备名称"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text5"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="使用部门"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text6"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="标签编码"
+                    android:textColor="@color/white" 
+                    android:singleLine="true"
+                    android:ellipsize="end"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="设备类别"
+                    android:textColor="@color/white" 
+                    android:singleLine="true"
+                    android:ellipsize="end"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text8"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="设备型号"
+                    android:textColor="@color/white" 
+                    android:singleLine="true"
+                    android:ellipsize="end"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text9"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="设备规格"
+                    android:textColor="@color/white"
+					android:singleLine="true"
+                    android:ellipsize="end"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text10"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="出厂年月"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text11"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="安装地点"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text12"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="出厂编号"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text13"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="制造厂"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text14"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="地理区域"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text15"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="是否相符"
+                    android:textColor="@color/white"
+                     />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/divider_v" />
+
+                <TextView
+                    android:id="@+id/text16"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="备注"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </com.kingtangdata.inventoryassis.widget.MyHScrollView>
+    </com.kingtangdata.inventoryassis.widget.InterceptScrollContainer>
+
+</LinearLayout>

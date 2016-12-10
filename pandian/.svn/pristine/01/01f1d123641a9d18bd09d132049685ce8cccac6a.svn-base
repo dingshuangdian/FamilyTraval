@@ -1,0 +1,5 @@
+package com.kingtangdata.inventoryassis.tools;
+
+public abstract interface DownloadProgressListener{
+	public abstract void downloaded(long paramLong1, long paramLong2);
+}

@@ -1,0 +1,112 @@
+package com.kingtangdata.inventoryassis.act;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+
+public class ActivityDataSearchForm extends BaseActivity{
+	
+	private TextView etMarks;
+	private TextView etMeanscode;
+	private TextView etDevicecode;
+	private TextView etDevicename;
+	private TextView etXinghao;
+	private TextView etGuige;
+	private TextView etChuchangcode;
+	private TextView etChuchangdate;
+	private TextView etBuildaddress;
+	private TextView etRemarks;
+	
+	//相符
+	private RadioButton radioRight;
+	//不相符
+	private RadioButton radioWrong;
+	
+	//
+	private Plan plan = null;
+	
+	
+	private String type = "";
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_data_search_from);
+		super.setTopLabel("设备信息");
+		super.setLeftButtonText("返回");
+		
+		//控件初始化
+		etMarks = (TextView)findViewById(R.id.et_marks);
+		etMeanscode = (TextView)findViewById(R.id.et_meanscode);
+		etDevicecode = (TextView)findViewById(R.id.et_devicecode);
+		etDevicename = (TextView)findViewById(R.id.et_devicename);
+		etXinghao = (TextView)findViewById(R.id.et_xinghao);
+		etGuige = (TextView)findViewById(R.id.et_guige);
+		etChuchangcode = (TextView)findViewById(R.id.et_chuchangcode);
+		etChuchangdate = (TextView)findViewById(R.id.et_chuchangdate);
+		etBuildaddress = (TextView)findViewById(R.id.et_buildaddress);
+		etRemarks = (TextView)findViewById(R.id.et_remarks);
+		
+		radioRight = (RadioButton)findViewById(R.id.radio_right);
+		radioWrong = (RadioButton)findViewById(R.id.radio_wrong);
+		
+		plan = (Plan) getIntent().getSerializableExtra("plan");
+		
+		if(plan != null){
+			setPlanText(plan);
+		}
+		
+		type = getIntent().getStringExtra("type");
+		if(ActivityShortage.PK_DELETE.equals(type)){
+			findViewById(R.id.btDelete).setVisibility(View.VISIBLE);
+			findViewById(R.id.btDelete).setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					plan.setCheck_result("kb");
+					boolean result = PlanManager.getInstance(ActivityDataSearchForm.this).updatePlan(plan, plan.getDet_id());
+					
+					if(result){
+						makeText("撤销成功");
+						Intent intent = new Intent();
+						intent.putExtra("plan",plan);
+						setResult(RESULT_OK,intent);
+						finish();
+					}else{
+						makeText("撤销失败");
+					}
+				}
+			});
+		}
+	}
+	
+	
+	/**
+	 * 根据plan对象给当前界面赋值
+	 * @param plan
+	 */
+	public void setPlanText(Plan plan){
+		
+		etMarks.setText(plan.getLabel_code());
+		etMeanscode .setText(plan.getAssetno());
+		etDevicecode .setText(plan.getDevice_code());
+		etDevicename .setText(plan.getDevice_name());
+		etXinghao.setText(plan.getDevice_type());
+		etGuige.setText(plan.getDevice_size());
+		etChuchangcode .setText(plan.getOutno());
+		etChuchangdate .setText(plan.getOutdate());
+		etBuildaddress .setText(plan.getInstall_place());
+		etRemarks .setText(plan.getMemo());
+		
+	}
+	
+}

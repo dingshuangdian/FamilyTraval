@@ -1,0 +1,29 @@
+//package com.kingtangdata.inventoryassis.view;
+//
+//import android.content.Context;
+//import com.kingtangdata.inventoryassis.common.CommonDialog;
+//import com.kingtangdata.inventoryassis.data.Plan;
+//
+//public class OperateDialog extends CommonDialog{
+//	
+//	public OperateDialog(Context context, int paramInt){
+//		super(context);
+//		inital(paramInt);
+//	}
+//
+//	private void inital(int paramInt){
+//		
+//	    mTitle.setText(paramInt);
+//	    mCheckRadio.setVisibility(8);
+//	    mBtnSave.setVisibility(8);
+//	    mBtnEdit.setVisibility(8);
+//	    
+//	}
+//
+//	public void setData(Plan checkPlan, boolean paramBoolean){
+//		
+//	    mData = checkPlan;
+//	    mOperaterAdapter.resetData();
+//    
+//	}
+//}

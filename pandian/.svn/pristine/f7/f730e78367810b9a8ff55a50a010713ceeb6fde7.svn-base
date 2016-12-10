@@ -1,0 +1,138 @@
+package com.kingtangdata.inventoryassis.tools;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.IBinder;
+import android.util.Log;
+
+public class DataSyncService extends Service
+{
+	private static final String LogTag = DataSyncService.class.getCanonicalName();
+	public static String _downloadingText;
+	public static int _downloadingValue;
+	public static boolean _isDownNeedConfirm;
+	private static boolean _isDownloading;
+	public static boolean _isUpNeedConfirm;
+	private static boolean _isUploading;
+	public static boolean toStop = false;
+	private final IBinder mBinder = new SyncBinder();
+	private ExecutorService mExecutor = Executors.newSingleThreadExecutor();		
+
+	/**
+	 * 获取是否正在下载
+	 * @return
+	 */
+	public static boolean isDownloading() {
+		Object[] arrayOfObject = new Object[1];
+		arrayOfObject[0] = Boolean.valueOf(_isDownloading);
+		Log.d("ben.upsilon", String.format("down status : %s ", arrayOfObject));
+		return _isDownloading;
+	}
+
+	/**
+	 * 获取是否正在上传
+	 * @return
+	 */
+	public static boolean isUploading() {
+		Object[] arrayOfObject = new Object[1];
+		arrayOfObject[0] = Boolean.valueOf(_isUploading);
+		Log.d("ben.upsilon", String.format("up status : %s ", arrayOfObject));
+		return _isUploading;
+	}
+
+	/**
+	 * 设置下载状态
+	 * @param paramBoolean
+	 */
+	public static void setDownloadStatus(boolean paramBoolean) {
+		_isDownloading = paramBoolean;
+	}
+
+	/**
+	 * 设置上传状态
+	 * @param paramBoolean
+	 */
+	public static void setUploading(boolean paramBoolean) {
+		_isUploading = paramBoolean;
+	}
+
+	public boolean isRunning() {
+		return !mExecutor.isTerminated();
+	}
+
+	public IBinder onBind(Intent paramIntent) {
+		return mBinder;
+	}
+
+	/**
+	 * 创建
+	 */
+	public void onCreate() {
+		super.onCreate();
+	}
+
+	/**
+	 * 销毁
+	 */
+	public void onDestroy() {
+		super.onDestroy();
+	}
+
+	/**
+	 * 同步部门数据
+	 * @param context
+	 */
+	public void syncDepartments(Context context) {
+		Log.d(LogTag, "sync departments");
+		//DownloadDepartmentTask localDownloadDepartmentTask = new DownloadDepartmentTask(context);
+		//mExecutor.submit(localDownloadDepartmentTask);
+	}
+
+	/**
+	 * 同步盘点任务
+	 * @param context
+	 * @param paramString
+	 */
+	public void syncPlans(Context context, String paramString) {
+		Log.d(LogTag, "sync plans");
+		DownloadPlanDatabaseTask downloadPlanData = new DownloadPlanDatabaseTask(context, paramString);
+		mExecutor.submit(downloadPlanData);
+	}
+
+	/**
+	 * 同步用户
+	 * @param context
+	 */
+	public void syncUser(Context context) {
+		Log.d(LogTag, "sync user");
+		DownloadUserDataTask downloadUserDataTask = new DownloadUserDataTask(context);
+		mExecutor.submit(downloadUserDataTask);
+	}
+
+	/**
+	 * 上传数据
+	 * @param context
+	 * @param paramInt
+	 */
+	public void uploadDatas(Context context, int paramInt) {
+		Log.d(LogTag, "upload datas");
+		//UploadDataAsyncTask localUploadDataAsyncTask = new UploadDataAsyncTask(context, paramInt);
+		//mExecutor.submit(localUploadDataAsyncTask);
+	}
+
+	public class SyncBinder extends Binder {
+		public SyncBinder()
+		{
+		}
+
+		public DataSyncService getService()
+		{
+			return DataSyncService.this;
+		}
+	}
+}

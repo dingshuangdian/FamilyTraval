@@ -1,0 +1,129 @@
+package com.kingtangdata.inventoryassis.adapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.data.Plan;
+
+public class PagerListAdapter extends PagerAdapter{
+
+	private Context context;
+	private List<Plan> list = new ArrayList<Plan>();
+	private int page;
+	
+	public PagerListAdapter(Context context,List<Plan> list,int page){
+		this.context = context;
+		
+		if(list == null){
+			this.list.clear();
+		}else{
+			this.list = list;
+		}
+		
+		this.page = page;
+	}
+	
+	@Override
+	public void setData(List<Plan> list){
+		
+		if(list == null){
+			this.list.clear();
+		}else{
+			this.list = list;
+		}
+	}
+	
+	
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return list.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return list.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		ViewHolder holder = null;
+		
+		if(convertView == null){
+			convertView = LayoutInflater.from(context).inflate(R.layout.ui_pager_listitem,null);
+			holder = new ViewHolder();
+			holder.tv1 = (TextView)convertView.findViewById(R.id.text1);
+			holder.tv2 = (TextView)convertView.findViewById(R.id.text2);
+			holder.tv3 = (TextView)convertView.findViewById(R.id.text3);
+			holder.tv4 = (TextView)convertView.findViewById(R.id.text4);
+			convertView.setTag(holder);
+		}else{
+			holder = (ViewHolder)convertView.getTag();
+		}
+		
+		Plan plan = (Plan) list.get(position);
+		String checkResult = "未盘";//盘点结果
+		//这个地方需要更具page值来显示具体的内容
+		if(page == 1){
+			//holder.tv1.setText(plan.getDet_id());
+			//holder.tv2.setText(plan.getCheck_id());
+			holder.tv1.setText(plan.getDevice_code());//设备编号
+			holder.tv2.setText(plan.getAssetno());    //资产编号
+			holder.tv3.setText(plan.getDevice_name());//设备名称
+			holder.tv4.setText(plan.getDept_name());//使用部门			
+		}else if(page ==2 ){
+			holder.tv1.setText(plan.getLabel_code());//label_code 条形码, 
+			holder.tv2.setText(plan.getType_name()); //设备类别
+			holder.tv3.setText(plan.getDevice_type());//设备型号
+			holder.tv4.setText(plan.getDevice_size());//设备规格
+		}else if(page ==3 ){
+			holder.tv1.setText(plan.getOutdate()); //出厂年月
+			holder.tv2.setText(plan.getInstall_place());//安装地点
+			if(plan.getCheck_result()=="pk"){
+				checkResult = "盘亏";
+			}else if(plan.getCheck_result()=="jc"){
+				checkResult = "正常";
+			}else if(plan.getCheck_result()=="py"){
+				checkResult = "盘盈";
+			}else{
+				checkResult = "未盘";
+			}
+			holder.tv3.setText(checkResult);//盘点结果kb 未盘,jc 正常,py 盘盈,pk 盘亏
+			holder.tv4.setText(plan.getOutno());//出厂编号
+			
+		}else if(page ==4 ){
+			//holder.tv1.setText(plan.getDevicecard_id());
+			//holder.tv2.setText(plan.getType_id());
+			holder.tv1.setText(plan.getFactory());//生产厂家		
+			holder.tv2.setText(plan.getField_name());//地理区域
+			holder.tv3.setText(plan.isCreate()?"是":"否");//是否相符
+			holder.tv4.setText(plan.getMemo());        //备注
+			
+		}
+		
+		return convertView;
+	}
+	
+	class ViewHolder {
+		public TextView tv1;
+		public TextView tv2;
+		public TextView tv3;
+		public TextView tv4;
+	}
+	
+}

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blue"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+	
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="盘点结果"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+    
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="设备编号"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="资产编号"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title3"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="设备名称"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title4"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="使用部门"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="条形码"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="设备类别"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="设备型号"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="设备规格"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="出厂年月"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="安装地点"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="出厂编号"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="生产厂家"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="地理区域"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="是否相符"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:background="@drawable/divider_v" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="备注"
+        android:textColor="@color/white" />
+
+</LinearLayout>

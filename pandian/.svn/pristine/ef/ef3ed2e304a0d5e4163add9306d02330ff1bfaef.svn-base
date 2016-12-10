@@ -1,0 +1,243 @@
+package com.kingtangdata.inventoryassis.act;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.List;
+
+import org.apache.http.client.utils.URLEncodedUtils;
+
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.act.ActivityDownloadTask.DownloadPlanTask;
+import com.kingtangdata.inventoryassis.act.ActivityDownloadTask.DownloadUserTask;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.common.AsyncReqTask;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.data.Task;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.http.HttpConstants;
+import com.kingtangdata.inventoryassis.http.business.SystemProvider;
+import com.kingtangdata.inventoryassis.http.domain.BaseReq;
+import com.kingtangdata.inventoryassis.http.domain.BaseRes;
+import com.kingtangdata.inventoryassis.http.domain.PlanReq;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+import com.kingtangdata.inventoryassis.util.StorageUtils;
+
+
+/**
+ * 数据上传界面
+ * @author leo *
+ */
+public class ActivityUploadData extends BaseActivity{
+ 
+	ProgressBar progressBar1;
+	ProgressBar progressBar2;
+	
+	TextView   progressText1;
+	TextView   progressText2;
+	
+	CheckBox uploadPlanCheckBox;
+	CheckBox uploadMarkCheckBox;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_upload_data);
+		super.setTopLabel("上传结果");
+		//显示返回按钮，这里不需要设置文字 采用图片实现
+		super.setLeftButtonText("返回");
+		
+		uploadPlanCheckBox = (CheckBox)findViewById(R.id.check_upload_1);
+		uploadMarkCheckBox = (CheckBox)findViewById(R.id.check_upload_2);
+		
+		progressBar1 = (ProgressBar)findViewById(R.id.progress_upload1);
+		progressBar2 = (ProgressBar)findViewById(R.id.progress_upload2);
+		
+		progressText1 =  (TextView)findViewById(R.id.progress_text1);
+		progressText2 =  (TextView)findViewById(R.id.progress_text2);
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if(!isNetworkAvalible()){
+			setRightButtonImage(R.drawable.icon_network_no);
+		}else{
+			TestNetworkTask task = new TestNetworkTask();
+			task.execute();
+		}
+	}
+	
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		finish();
+	}
+	
+	@Override
+	public void doClickLeftBtn() {
+		// TODO Auto-generated method stub
+		onBackPressed();
+	}
+	
+	/**
+	 * 点击开始下载的方法
+	 * @param view
+	 */
+	public void doStart(View view){
+		//至少有一个选中才开始下载
+		if(uploadPlanCheckBox.isChecked()){
+			//先判断一下网络是否可用  不可用会给出提示
+			if(isNetworkAvalible()){
+				UploadCkeckedTask task = new UploadCkeckedTask(this);
+				task.execute(new BaseReq());
+			}
+		}
+		
+		if(uploadMarkCheckBox.isChecked()){
+			if(isNetworkAvalible()){
+			}
+		}
+	} 
+	
+	
+	/**
+	 * 测试服务器是否连通
+	 * @author Administrator
+	 *
+	 */
+	class TestNetworkTask extends AsyncTask<String, Integer, Boolean>{
+		
+		@Override
+		protected Boolean doInBackground(String... params) {
+			
+			try {
+				String ip_address = StorageUtils.getString(StorageUtils.IP_ADDRESS, ActivityUploadData.this, HttpConstants.DEFAULT_IP);
+				String httpAddress = "http://" + ip_address + HttpConstants.TEST_ACTION ;
+				
+				LogUtils.logd(getClass(), "httpAddress = " + httpAddress);
+				URL url = new URL(httpAddress);
+				HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+				connection.setReadTimeout(HttpConstants.CONNECT_TIME_OUT);
+				connection.setConnectTimeout(HttpConstants.READ_TIME_OUT);
+				LogUtils.logd(getClass(), "code = " + connection.getResponseCode());
+				
+				return connection.getResponseCode() == 200 ;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				return false;
+			}
+		}
+	
+		@Override
+		protected void onPostExecute(Boolean result) {
+			// TODO Auto-generated method stub
+			if(result){
+				//目前判断服务器是否能连接成功就根据是否能调获取任务列表接口
+				setRightButtonImage(R.drawable.icon_network_ok);
+			}else{
+				setRightButtonImage(R.drawable.icon_network_no);
+			}
+		}
+	}
+ 	
+	/**
+	 * 上传已盘点数据
+	 * @author Administrator
+	 *
+	 */
+	class UploadCkeckedTask extends AsyncReqTask{
+
+		public UploadCkeckedTask(Context context) {
+			super(context);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		protected BaseRes doRequest(BaseReq request) {
+			// TODO Auto-generated method stub
+			
+			StringBuffer querySQL = new StringBuffer();
+			querySQL.append("select * from plans where (is_upload=0 or is_upload is null) and check_result in(?,?,?)");
+			List<Plan> list = PlanManager.getInstance(getApplicationContext()).getPlans(querySQL.toString(), new String[]{"zc","pk","py"});
+			
+			LogUtils.logd(getClass(), "list == null "+(list == null));
+			
+			if(list!=null && !list.isEmpty()){
+				for (int i = 0; i < list.size(); i++) {
+					
+					Plan plan = list.get(i);
+					
+
+					LogUtils.logd(getClass(), "size = "+list.size());
+					LogUtils.logd(getClass(), "check_id" +plan.getCheck_id());
+					LogUtils.logd(getClass(), "check_id" +plan.getAssetno());
+					LogUtils.logd(getClass(), "check_id" +plan.getDevice_code());
+					
+					
+					StringBuffer sql = new StringBuffer();
+					String isNormal = plan.isNormal()?"1":"0" ;
+					sql.append("update ASSET_CHECK_DET set memo='"+plan.getMemo()+"',check_result='"+plan.getCheck_result()+"',is_normal='"+isNormal +"' where det_id='"+plan.getDet_id()+"'");
+					String s = "";
+					try {
+						s = URLEncoder.encode(sql.toString(), "ISO-8859-1");
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					SystemProvider.getInstance(getApplicationContext()).uoloadPlan(request, plan.getCheck_id(), s);
+					publishProgress(getPercent(i, list.size()));
+				}
+				
+				publishProgress(100);
+			}
+			
+			return null;
+		}
+
+		@Override
+		protected void handleResponse(BaseRes response) {
+			// TODO Auto-generated method stub
+		}
+		
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			// TODO Auto-generated method stub
+			progressBar1.setProgress(values[0]);
+			progressText1.setText("已完成"+values[0] + "%");
+		}
+	} 
+	
+	
+	/**
+	 * 获取百分比
+	 * @param x
+	 * @param total
+	 * @return
+	 */
+	public int getPercent(int x,int total){  
+		
+		if(x == 0 || total == 0 ){
+			return 0;
+		}
+		
+		int tempresult=x*100/total;  
+		return tempresult;  
+	}  
+}

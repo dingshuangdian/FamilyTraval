@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Animation" />
+
+    <style name="PopupAnimation" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/menu_in</item>
+        <item name="android:windowExitAnimation">@anim/menu_out</item>
+    </style>
+
+</resources>

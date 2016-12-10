@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="inventory_options">
+        <item>任务下载</item>
+        <item>数据上传</item>
+        <item>盘点任务</item>
+        <item>盘亏处理</item>
+        <item>盘盈处理</item>
+        <item>条码打印</item>
+        <item>RFID入库</item>
+    </string-array>
+    <string-array name="search_type">
+        <item>标签编码</item>
+        <item>设备编码</item>
+        <item>资产编号</item>
+        <item>设备名称</item>
+        <item>设备型号</item>
+        <item>安装地点</item>
+        <item>出场时间</item>
+    </string-array>
+</resources>

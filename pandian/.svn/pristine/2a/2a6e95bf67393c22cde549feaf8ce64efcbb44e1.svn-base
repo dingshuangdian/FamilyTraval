@@ -1,0 +1,55 @@
+package com.kingtangdata.inventoryassis.data;
+
+import com.google.gson.annotations.Expose;
+
+/**
+ * 上传盘点、盘亏时候的对象
+ * @author liyang
+ *
+ */
+public class UploadPD {
+	
+	@Expose
+	private String det_id;
+	
+	@Expose
+	private String is_normal;
+	
+	@Expose
+	private String check_result;
+	
+	@Expose
+	private String memo;
+
+	public String getDet_id() {
+		return det_id;
+	}
+
+	public void setDet_id(String det_id) {
+		this.det_id = det_id;
+	}
+
+	public String getIs_normal() {
+		return is_normal;
+	}
+
+	public void setIs_normal(String is_normal) {
+		this.is_normal = is_normal;
+	}
+
+	public String getCheck_result() {
+		return check_result;
+	}
+
+	public void setCheck_result(String check_result) {
+		this.check_result = check_result;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+}

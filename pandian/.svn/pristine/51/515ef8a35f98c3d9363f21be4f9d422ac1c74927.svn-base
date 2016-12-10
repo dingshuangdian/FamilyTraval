@@ -1,0 +1,18 @@
+package com.kingtangdata.inventoryassis.act;
+
+import android.os.Bundle;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+
+public class ActivityChechAddForm extends BaseActivity{
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.ui_surplus_addandmodify);
+		super.setTopLabel(R.string.title_activity_surplus);
+		super.setLeftButtonText("返回");
+	}
+}

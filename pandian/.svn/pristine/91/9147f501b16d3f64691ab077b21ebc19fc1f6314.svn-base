@@ -1,0 +1,67 @@
+package com.kingtangdata.inventoryassis.adapter;
+
+import java.util.List;
+
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+
+public class PagerViewAdapter extends PagerAdapter{
+	private List<View> mView;
+	private List<String> titles;
+	
+	public PagerViewAdapter(List<View> paramList,List<String> titles){
+		this.mView = paramList;
+		this.titles = titles;
+	}
+
+	public void destroyItem(ViewGroup viewGroup, int paramInt, Object object){
+		viewGroup.removeView((View)object);
+	}
+
+	public int getCount(){
+		return mView.size();
+	}
+
+	public Object instantiateItem(ViewGroup viewGroup, int position){
+		View view = (View)mView.get(position);
+		
+		//设置标题
+		TextView textView1 = (TextView)view.findViewById(R.id.title1);
+		TextView textView2 = (TextView)view.findViewById(R.id.title2);
+		TextView textView3 = (TextView)view.findViewById(R.id.title3);
+		TextView textView4 = (TextView)view.findViewById(R.id.title4);
+		
+		
+		int index1 = position * 4  ; 
+		int index2 = position * 4 + 1 ; 
+		int index3 = position * 4 + 2 ; 
+		int index4 = position * 4 + 3 ; 
+		
+		if(index1 < titles.size()){
+			textView1.setText(titles.get(index1));
+		}
+		
+		if(index2 < titles.size()){
+			textView2.setText(titles.get(index2));
+		}
+		
+		if(index3 < titles.size()){
+			textView3.setText(titles.get(index3));
+		}
+		
+		if(index4 < titles.size()){
+			textView4.setText(titles.get(index4));
+		}
+		
+		viewGroup.addView(view);
+		return view;
+	}
+
+	public boolean isViewFromObject(View view, Object object){
+		return view.equals(object);
+	}
+}

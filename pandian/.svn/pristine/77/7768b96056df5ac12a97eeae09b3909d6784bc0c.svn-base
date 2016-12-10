@@ -1,0 +1,428 @@
+package com.kingtangdata.inventoryassis.act;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
+
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.adapter.PopForTaskAdapter;
+import com.kingtangdata.inventoryassis.common.AsyncReqTask;
+import com.kingtangdata.inventoryassis.data.Dept;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.data.Task;
+import com.kingtangdata.inventoryassis.data.User;
+import com.kingtangdata.inventoryassis.db.DeptManager;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.db.UserManager;
+import com.kingtangdata.inventoryassis.http.HttpConstants;
+import com.kingtangdata.inventoryassis.http.HttpResponseCode;
+import com.kingtangdata.inventoryassis.http.business.SystemProvider;
+import com.kingtangdata.inventoryassis.http.domain.BaseReq;
+import com.kingtangdata.inventoryassis.http.domain.BaseRes;
+import com.kingtangdata.inventoryassis.http.domain.DeptRes;
+import com.kingtangdata.inventoryassis.http.domain.PlanReq;
+import com.kingtangdata.inventoryassis.http.domain.PlanRes;
+import com.kingtangdata.inventoryassis.http.domain.TaskRes;
+import com.kingtangdata.inventoryassis.http.domain.UserRes;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+import com.kingtangdata.inventoryassis.util.StorageUtils;
+import com.kingtangdata.inventoryassis.view.SliderPopupChoicer;
+
+/**
+ * 任务下载界面
+ * @author leo
+ */
+public class ActivityDownloadTask extends BaseActivity{
+	
+	private static final int PAGE_SIZE = 10;  
+	
+	//进度条
+	ProgressBar progressBar1;
+	ProgressBar progressBar2;
+	
+	//文本框
+	TextView   progressText1;
+	TextView   progressText2;
+	
+	//复选框
+	CheckBox downloadPlanCheckBox;
+	CheckBox downloadUserCheckBox;
+	
+	//下拉选项框控件
+	SliderPopupChoicer choicer;
+	
+	//异步任务
+	TestNetworkTask tnTask = null;
+	DownloadUserTask duTask = null;
+	GetListTask glTask = null;
+	DownloadPlanTask dpTask = null;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_download_task);
+		super.setTopLabel("下载任务");
+		super.setLeftButtonImage(R.drawable.btn_back_bg);
+		
+		downloadUserCheckBox = (CheckBox)findViewById(R.id.check_person);
+		downloadPlanCheckBox = (CheckBox)findViewById(R.id.check_plan);
+		
+		progressBar1 = (ProgressBar)findViewById(R.id.progress_download1);
+		progressBar2 = (ProgressBar)findViewById(R.id.progress_download2);
+		
+		progressText1 =  (TextView)findViewById(R.id.progress_text1);
+		progressText2 =  (TextView)findViewById(R.id.progress_text2);
+		
+		choicer = (SliderPopupChoicer)findViewById(R.id.checker_choice);
+		
+		glTask = new GetListTask(this);
+		glTask.execute(new BaseReq());
+	}
+	
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		
+		if(!isNetworkAvalible()){
+			setRightButtonImage(R.drawable.icon_network_no);
+		}else{
+			tnTask = new TestNetworkTask();
+			tnTask.execute();
+		}
+	}
+	
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		finish();
+	}
+	
+	
+	@Override
+	public void doClickLeftBtn() {
+		// TODO Auto-generated method stub
+		onBackPressed();
+	}
+	
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		
+		//在界面销毁的时候销毁所有的进程
+		if(tnTask != null && !tnTask.isCancelled()){
+			tnTask.cancel(true);
+		}
+		
+		if(duTask != null && !duTask.isCancelled()){
+			duTask.cancel(true);
+		}
+		
+		if(glTask != null && !glTask.isCancelled()){
+			glTask.cancel(true);
+		}
+		
+		if(dpTask != null && !dpTask.isCancelled()){
+			dpTask.cancel(true);
+		}
+	}
+	
+	/**
+	 * 点击开始下载的方法
+	 * @param view
+	 */
+	public void doStart(View view){
+		
+		//至少有一个选中才开始下载
+		if(downloadUserCheckBox.isChecked()){
+			//先判断一下网络是否可用  不可用会给出提示
+			if(isNetworkAvalible()){
+				duTask = new DownloadUserTask(this);
+				duTask.execute(new BaseReq());
+			}
+		}
+		
+		if(downloadPlanCheckBox.isChecked()){
+			if(isNetworkAvalible()){
+				Object o = choicer.getSelectItem();
+				//加这样一个控制主要是进一步保证类型转换不会出错
+				if(o instanceof Task){
+					Task t = (Task)o;
+					
+					//第一次请求数据
+					PlanReq req = new PlanReq();
+					req.setCheckId(t.getCheck_id());
+					req.setEachnum(PAGE_SIZE);
+					dpTask = new DownloadPlanTask(this);
+					dpTask.execute(req);
+				}
+			}
+		}
+	} 
+	
+	
+	/**
+	 * 获取百分比
+	 * @param x
+	 * @param total
+	 * @return
+	 */
+	public int getPercent(int x,int total){  
+		
+		if(x == 0 || total == 0 ){
+			return 0;
+		}
+		
+		int tempresult=x*100/total;  
+		return tempresult;  
+	}  
+	
+	/**
+	 * 测试服务器是否连通
+	 * @author Administrator
+	 *
+	 */
+	class TestNetworkTask extends AsyncTask<String, Integer, Boolean>{
+		
+		@Override
+		protected Boolean doInBackground(String... params) {
+			
+			try {
+				String ip_address = StorageUtils.getString(StorageUtils.IP_ADDRESS, ActivityDownloadTask.this, HttpConstants.DEFAULT_IP);
+				String httpAddress = "http://" + ip_address + HttpConstants.TEST_ACTION ;
+				
+				URL url = new URL(httpAddress);
+				HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+				connection.setReadTimeout(HttpConstants.CONNECT_TIME_OUT);
+				connection.setConnectTimeout(HttpConstants.READ_TIME_OUT);
+				LogUtils.logd(getClass(), "code = " + connection.getResponseCode());
+				
+				return connection.getResponseCode() == 200 ;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				return false;
+			}
+		}
+	
+		@Override
+		protected void onPostExecute(Boolean result) {
+			// TODO Auto-generated method stub
+			if(result){
+				//目前判断服务器是否能连接成功就根据是否能调获取任务列表接口
+				setRightButtonImage(R.drawable.icon_network_ok);
+			}else{
+				setRightButtonImage(R.drawable.icon_network_no);
+			}
+		}
+	}
+	
+	/**
+	 * 获取任务
+	 * @author Administrator
+	 *
+	 */
+	class GetListTask extends AsyncReqTask{
+
+		public GetListTask(Context context) {
+			super(context);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		protected BaseRes doRequest(BaseReq request) {
+			// TODO Auto-generated method stub
+			return SystemProvider.getInstance(getApplicationContext()).getTask(request);
+		}
+
+		@Override
+		protected void handleResponse(BaseRes response) {
+			// TODO Auto-generated method stub
+			if(response == null){
+				return ;
+			}
+			
+			if(HttpResponseCode.SUCCESS.equals(response.getCode())){
+				TaskRes res = (TaskRes)response;
+				List<Task> tasks = res.getDatas();
+				
+				PopForTaskAdapter adapter = new PopForTaskAdapter(ActivityDownloadTask.this, tasks);
+				choicer.setAdapter(adapter);
+				
+				//目前判断服务器是否能连接成功就根据是否能调获取任务列表接口
+				setRightButtonImage(R.drawable.icon_network_ok);
+			}else{
+				setRightButtonImage(R.drawable.icon_network_no);
+			}
+		}
+	}
+	
+	
+	class DownloadPlanTask extends AsyncReqTask{
+		//总记录数
+		int totalNum = 0;
+		//总页数
+		int totalPage = 0;
+		//页码
+		int pageNum = 0;
+		
+		public DownloadPlanTask(Context context) {
+			super(context);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		protected BaseRes doRequest(BaseReq request) {
+			// TODO Auto-generated method stub
+			PlanReq req = (PlanReq)request;
+			PlanRes pres = SystemProvider.getInstance(getApplicationContext()).getPlan(req);
+			
+			//总记录数
+			totalNum = Integer.valueOf(pres.getTotalnum());
+			
+			//计算总页数
+			if(totalNum % PAGE_SIZE == 0){
+				totalPage = totalNum/PAGE_SIZE;
+			}else{
+				totalPage = totalNum/PAGE_SIZE + 1;
+			}
+			
+			//如果总页数小于等于0直接返回
+			if(totalPage <= 0){
+				return null;
+			}
+			
+			PlanManager.getInstance(getApplicationContext()).deletePlans();
+			//根据总页数循环去服务器获取数据插入本地数据库
+			for (int i = 0; i < totalPage; i++) {
+				req.setPagenum(i+1);
+				pres =  SystemProvider.getInstance(getApplicationContext()).getPlan(req);
+				List<Plan> plans = pres.getDatas();
+				PlanManager.getInstance(getApplicationContext()).addPlans(plans);
+				
+				//最后完成显示100%
+				if(i == totalPage - 1){
+					publishProgress(100);
+				}else{
+					publishProgress(getPercent(i, totalPage));
+				}
+			}
+			return  pres;
+		}
+
+		@Override
+		protected void handleResponse(BaseRes response) {
+			// TODO Auto-generated method stub
+			if(response == null){
+				return;
+			}
+		}
+		
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			// TODO Auto-generated method stub
+			LogUtils.logd(getClass(), "value = " + values[0]);
+			progressBar2.setProgress(values[0]);
+			progressText2.setText("已完成"+values[0] + "%");
+		}
+	}
+	
+	/**
+	 * 异步任务  
+	 * @author Administrator
+	 *
+	 */
+	class DownloadUserTask extends AsyncReqTask{
+
+		public DownloadUserTask(Context context) {
+			super(context);
+		}
+
+		@Override
+		protected BaseRes doRequest(BaseReq request) {
+			// TODO Auto-generated method stub
+			UserRes ures = null;
+			DeptRes dres = null;
+			
+			List<User> users= null;
+			List<Dept> depts = null;
+			
+			//计算总个数  用来判断百分比
+			int totalcount = 0;
+			int current = 0;
+			
+			//如果选中了同步用户选项框
+			if(downloadUserCheckBox.isChecked()){
+				ures =  SystemProvider.getInstance(getApplicationContext()).getUser(request);
+				dres =  SystemProvider.getInstance(getApplicationContext()).getDept(request);
+			
+				users = ures.getDatas();
+				depts = dres.getDatas(); 
+				
+				if(users != null ){
+					totalcount  += users.size();  
+				}
+				
+				if(depts != null ){
+					totalcount  += depts.size();  
+				}
+			}
+			
+			if(users!=null && !users.isEmpty()){
+				current = 0;
+				UserManager.getInstance(getApplicationContext()).deleteUsers();
+				for (int i = 0; i < users.size(); i++) {
+					UserManager.getInstance(getApplicationContext()).addUser(users.get(i));
+					publishProgress(getPercent(i, totalcount));
+				}
+			}
+			
+			if(depts!=null && !depts.isEmpty()){
+				if(users!=null)current = users.size(); 
+				DeptManager.getInstance(getApplicationContext()).deleteDepts(null);
+				for (int i = 0; i < depts.size(); i++) {
+					DeptManager.getInstance(getApplicationContext()).addDept(depts.get(i));
+					publishProgress(getPercent(current+i, totalcount));
+				}
+			}
+			
+			
+			return ures;
+		}
+
+		@Override
+		protected void handleResponse(BaseRes response) {
+			// TODO Auto-generated method stub
+			if(response == null){
+				return;
+			}
+			
+			if(HttpResponseCode.SUCCESS.equals(response.getCode())){
+				publishProgress(100);
+			}else{
+				makeText(response.getDesc());
+			}
+		}
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			// TODO Auto-generated method stub
+			LogUtils.logd(getClass(), "value = " + values[0]);
+			progressBar1.setProgress(values[0]);
+			progressText1.setText("已完成"+values[0] + "%");
+		}
+	}
+}

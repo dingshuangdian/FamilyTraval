@@ -1,0 +1,408 @@
+/*
+ * Copyright (C) 2008 ZXing authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.kingtangdata.inventoryassis.zxing;
+
+import java.io.IOException;
+import java.util.List;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.google.zxing.Result;
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.act.ActivityCheckTaskForm;
+import com.kingtangdata.inventoryassis.act.ActivityCkeckTask;
+import com.kingtangdata.inventoryassis.act.ActivityPKForm;
+import com.kingtangdata.inventoryassis.act.ActivityPY;
+import com.kingtangdata.inventoryassis.act.ActivityPYForm;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+
+/**
+ * This activity opens the camera and does the actual scanning on a background
+ * thread. It draws a viewfinder to help the user place the barcode correctly,
+ * shows feedback as the image processing is happening, and then overlays the
+ * results when a scan is successful.
+ * 
+ * @author dswitkin@google.com (Daniel Switkin)
+ * @author Sean Owen
+ */
+public final class CaptureActivity extends Activity implements
+		SurfaceHolder.Callback {
+
+	private static final String TAG = CaptureActivity.class.getSimpleName();
+
+	public static final int HISTORY_REQUEST_CODE = 0x0000bacc;
+
+	private CameraManager cameraManager;
+	private CaptureActivityHandler handler;
+	private ViewfinderView viewfinderView;
+	private boolean hasSurface;
+	private InactivityTimer inactivityTimer;
+	private BeepManager beepManager;
+	private AmbientLightManager ambientLightManager;
+
+	private Plan plan = null;
+	private String code = "";
+
+	ViewfinderView getViewfinderView() {
+		return viewfinderView;
+	}
+
+	public Handler getHandler() {
+		return handler;
+	}
+
+	CameraManager getCameraManager() {
+		return cameraManager;
+	}
+
+	@Override
+	public void onCreate(Bundle icicle) {
+		super.onCreate(icicle);
+
+		Window window = getWindow();
+		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		setContentView(R.layout.ui_capture);
+
+		hasSurface = false;
+		inactivityTimer = new InactivityTimer(this);
+		beepManager = new BeepManager(this);
+		ambientLightManager = new AmbientLightManager(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		// CameraManager must be initialized here, not in onCreate(). This is
+		// necessary because we don't
+		// want to open the camera driver and measure the screen size if we're
+		// going to show the help on
+		// first launch. That led to bugs where the scanning rectangle was the
+		// wrong size and partially
+		// off screen.
+		cameraManager = new CameraManager(getApplication());
+
+		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
+		viewfinderView.setCameraManager(cameraManager);
+
+		handler = null;
+		resetStatusView();
+
+		SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+		SurfaceHolder surfaceHolder = surfaceView.getHolder();
+		if (hasSurface) {
+			// The activity was paused but not stopped, so the surface still
+			// exists. Therefore
+			// surfaceCreated() won't be called, so init the camera here.
+			initCamera(surfaceHolder);
+		} else {
+			// Install the callback and wait for surfaceCreated() to init the
+			// camera.
+			surfaceHolder.addCallback(this);
+			surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+		}
+
+		beepManager.updatePrefs();
+		ambientLightManager.start(cameraManager);
+
+		inactivityTimer.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		if (handler != null) {
+			handler.quitSynchronously();
+			handler = null;
+		}
+		inactivityTimer.onPause();
+		ambientLightManager.stop();
+		cameraManager.closeDriver();
+		if (!hasSurface) {
+			SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+			SurfaceHolder surfaceHolder = surfaceView.getHolder();
+			surfaceHolder.removeCallback(this);
+		}
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		inactivityTimer.shutdown();
+		super.onDestroy();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			break;
+		case KeyEvent.KEYCODE_FOCUS:
+		case KeyEvent.KEYCODE_CAMERA:
+			return true;
+		case KeyEvent.KEYCODE_VOLUME_DOWN:
+			cameraManager.setTorch(false);
+			return true;
+		case KeyEvent.KEYCODE_VOLUME_UP:
+			cameraManager.setTorch(true);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		if (resultCode == RESULT_OK) {
+			if (requestCode == HISTORY_REQUEST_CODE) {
+				Toast.makeText(this, "onActivityResult", Toast.LENGTH_LONG)
+						.show();
+			}
+		}
+	}
+
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		if (holder == null) {
+			Log.e(TAG,
+					"*** WARNING *** surfaceCreated() gave us a null surface!");
+		}
+		if (!hasSurface) {
+			hasSurface = true;
+			initCamera(holder);
+		}
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		hasSurface = false;
+	}
+
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+
+	}
+
+	/**
+	 * A valid barcode has been found, so give an indication of success and show
+	 * the results.
+	 * 
+	 * @param rawResult
+	 *            The contents of the barcode.
+	 * @param scaleFactor
+	 *            amount by which thumbnail was scaled
+	 * @param barcode
+	 *            A greyscale bitmap of the camera data which was decoded.
+	 */
+	public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
+		inactivityTimer.onActivity();
+		ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(
+				this, rawResult);
+
+		Log.d("DEBUG", "scaleFactor = " + scaleFactor);
+		if (barcode != null) {
+			// Then not from history, so beep/vibrate and we have an image to
+			// draw on
+			beepManager.playBeepSoundAndVibrate();
+		}
+
+		handleDecodeInternally(rawResult, resultHandler, barcode);
+	}
+
+	// Put up our own UI for how to handle the decoded contents.
+	private void handleDecodeInternally(Result rawResult,
+			ResultHandler resultHandler, Bitmap barcode) {
+		viewfinderView.setVisibility(View.GONE);
+
+		Log.d("DEBUG", "TEXT = " + rawResult.getText());
+
+		code = rawResult.getText();
+		// 开始根据扫描到的rfid数据从数据库查找对应的记录
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("select * from plans  where label_code = ?");
+		List<Plan> plans = PlanManager.getInstance(this).getPlans(buffer,
+				new String[] { code });
+
+		// 不管找到几条符合记录 就只取第一条
+		if (!plans.isEmpty()) {
+			plan = plans.get(0);
+
+			if ("py".equals(plan.getCheck_result())) {
+				Intent i = new Intent(this, ActivityPYForm.class);
+				i.putExtra("plan", plan);
+				i.putExtra("type", ActivityPY.PY_MODIFY);
+				startActivity(i);
+			}
+
+			// 找到的记录是已经盘亏过的记录则询问是否正常盘点
+			else if ("pk".equals(plan.getCheck_result())) {
+				showDialog(0);
+			}
+
+			// 正常盘点
+			else {
+				Intent i = new Intent(this, ActivityCheckTaskForm.class);
+				i.putExtra("plan", plan);
+				i.putExtra("type", ActivityCkeckTask.PD_CHECK);
+				startActivity(i);
+			}
+		} else {
+			showDialog(1);
+		}
+	}
+
+	private void initCamera(SurfaceHolder surfaceHolder) {
+		if (surfaceHolder == null) {
+			throw new IllegalStateException("No SurfaceHolder provided");
+		}
+		if (cameraManager.isOpen()) {
+			Log.w(TAG,
+					"initCamera() while already open -- late SurfaceView callback?");
+			return;
+		}
+		try {
+			cameraManager.openDriver(surfaceHolder);
+			// Creating the handler starts the preview, which can also throw a
+			// RuntimeException.
+			if (handler == null) {
+				handler = new CaptureActivityHandler(this, null, null, "",
+						cameraManager);
+			}
+		} catch (IOException ioe) {
+			Log.w(TAG, ioe);
+			displayFrameworkBugMessageAndExit();
+		} catch (RuntimeException e) {
+			Log.w(TAG, "Unexpected error initializing camera", e);
+			displayFrameworkBugMessageAndExit();
+		}
+	}
+
+	private void displayFrameworkBugMessageAndExit() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(getString(R.string.app_name));
+		builder.setMessage("抱歉，相机可能遇到了问题，请您重启一下手机再试试看~~");
+		builder.setPositiveButton("确定", new FinishListener(this));
+		builder.setOnCancelListener(new FinishListener(this));
+		builder.show();
+	}
+
+	private void resetStatusView() {
+		viewfinderView.setVisibility(View.VISIBLE);
+	}
+
+	public void drawViewfinder() {
+		viewfinderView.drawViewfinder();
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		if (id == 0) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("温馨提示");
+			builder.setMessage("该设备已经存在盘亏记录，是否需要重新盘点？");
+			builder.setNeutralButton("是", new LeftListener());
+			builder.setNegativeButton("否", new RightListener());
+			return builder.create();
+		} else if (id == 1) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("温馨提示");
+			builder.setMessage("没有找到匹配的标签,是否需要盘盈?");
+			builder.setNeutralButton("是", new AddListener());
+			builder.setNegativeButton("否", null);
+			return builder.create();
+		} else {
+			return super.onCreateDialog(id);
+		}
+	}
+
+	/**
+	 * 盘亏时进行重新盘点的监听事件
+	 */
+	class LeftListener implements DialogInterface.OnClickListener {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent i = new Intent(CaptureActivity.this,
+					ActivityCheckTaskForm.class);
+			i.putExtra("plan", plan);
+			i.putExtra("type", ActivityCkeckTask.PD_CHECK);
+			startActivity(i);
+		}
+	}
+
+	/**
+	 * 盘亏时不进行重新盘点的监听事件
+	 */
+	class RightListener implements DialogInterface.OnClickListener {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(CaptureActivity.this,
+					ActivityPKForm.class);
+			intent.putExtra("plan", plan);
+			startActivity(intent);
+		}
+	}
+
+	/**
+	 * 确认盘盈的按钮监听
+	 */
+	class AddListener implements DialogInterface.OnClickListener {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(CaptureActivity.this,
+					ActivityPYForm.class);
+			intent.putExtra("type", ActivityPY.PY_ADD);
+			intent.putExtra("rfid", code);
+			startActivity(intent);
+		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		setResult(RESULT_OK);
+		finish();
+	}
+	
+	boolean flag = false;
+	public void doCancel(View view ){
+		flag = !flag;
+		cameraManager.setTorch(flag);
+	}
+	
+	public void doSubmit(View view){
+		setResult(RESULT_OK);
+		finish();
+	}
+}

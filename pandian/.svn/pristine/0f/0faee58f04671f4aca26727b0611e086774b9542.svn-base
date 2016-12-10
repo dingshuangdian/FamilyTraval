@@ -1,0 +1,334 @@
+package com.kingtangdata.inventoryassis.act;
+
+import java.util.List;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.nfc.NfcAdapter;
+import android.nfc.Tag;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.PagerActivity;
+import com.kingtangdata.inventoryassis.adapter.PopForStringAdapter;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.hardware.nfc.Convert;
+import com.kingtangdata.inventoryassis.hardware.nfc.NfcDispatcher;
+import com.kingtangdata.inventoryassis.util.DialogUtil;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+import com.kingtangdata.inventoryassis.view.SliderPopupChoicer;
+
+
+
+/**
+ * 盘点任务界面
+ * @author leo
+ *
+ */
+public class ActivityCkeckTask extends PagerActivity{
+	//标签编码的下拉选项框
+	private SliderPopupChoicer choicer;
+	
+	//盘查按钮
+	private Button btnCheck;
+	
+	//查找字段输入内容
+	private EditText search_input;
+	
+	private String rfid = "";
+	
+	public static final String PD_CHECK = "pandian";  //盘点处理
+	public static final String PK_CHECK = "pankui";   //盘亏处理
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_checktask);
+		super.setStatusBarVisibility(View.VISIBLE);
+		super.setTopLabel(getString(R.string.title_activity_inventory));
+		super.setLeftButtonImage(R.drawable.btn_back_bg);
+		super.setRightButtonImage(R.drawable.rfid_connect2);
+		super.initCompenents();
+		
+		//在盘点任务界面需要显示盘查按钮
+		btnCheck = (Button)findViewById(R.id.btn_check);
+		btnCheck.setVisibility(View.VISIBLE);
+		
+		//查找条件
+		search_input = (EditText)findViewById(R.id.search_input);
+			
+		
+		String[] mData = getResources().getStringArray(R.array.marks); 
+		PopForStringAdapter adapter = new PopForStringAdapter(this, mData); 
+		choicer = (SliderPopupChoicer)findViewById(R.id.checker_choice);
+		choicer.setAdapter(adapter);
+		
+		//启动NFC适配器
+		NfcDispatcher.initial(this, NfcDispatcher.TECH_DISCOVERED_FILTERS);
+	
+		
+		StringBuffer querySQL = new StringBuffer("select * from plans where check_result='kb'");
+		List<Plan> plans = PlanManager.getInstance(this).getPlans(querySQL.toString(),null);
+		setData(plans);
+	}
+	
+	@Override
+	public void doClickLeftBtn() {
+		// TODO Auto-generated method stub
+		onBackPressed();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		finish();
+	}
+	
+	@Override
+	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+		// TODO Auto-generated method stub
+		super.onItemClick(adapterView, view, i, l);
+		Plan plan = (Plan)adapterView.getItemAtPosition(i);
+		
+		Intent intent = new Intent(this, ActivityCheckTaskForm.class);
+		intent.putExtra("plan", plan);
+		intent.putExtra("type", PK_CHECK);
+		startActivityForResult(intent, 101);
+	}
+	
+	public void onResume(){ 
+		super.onResume();
+		
+		Intent intent = new Intent();
+		intent.setClass(this,this.getClass());
+		NfcDispatcher.enableDispatch(this,intent,NfcDispatcher.TECH_DISCOVERED_FILTERS,NfcDispatcher.ALL_TECH_LISTS);
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		NfcDispatcher.disableDispatch(this);
+	}	
+	
+	
+	@Override
+	protected void onNewIntent(Intent intent) {
+		// TODO Auto-generated method stub
+		super.onNewIntent(intent);
+		LogUtils.logd(getClass(), "onNewIntent");
+		
+		//开始接收rfid数据并处理逻辑
+		String action = intent.getAction();
+		if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
+			//应用程序接收到Intent对象时，从该Intent对象中获取Tag对象
+			Tag tagFromIntent =intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+			
+			//【读取的标签UID为：12345678 】
+			rfid = Convert.bytesToHexString(tagFromIntent.getId());
+			
+			//在日志种打印扫描到的rfid数据，最好保留
+			LogUtils.logd(getClass(), "rfid = " + rfid);
+			
+			//开始根据扫描到的rfid数据从数据库查找对应的记录
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("select * from plans  where label_code = ?");
+			List<Plan> plans = PlanManager.getInstance(this).getPlans(buffer.toString(), new String[]{rfid});
+			
+			//不管找到几条符合记录  就只取第一条 
+			if(plans != null  && !plans.isEmpty()){
+				Plan plan = plans.get(0);
+				
+				//找到的记录是已经盘盈过的记录则直接打开盘盈修改界面
+				if("py".equals(plan.getCheck_result())){
+					Intent i = new Intent(this, ActivityChechAddForm.class);
+					i.putExtra("plan", plan);
+					i.putExtra("type", ActivitySurplus.PY_MODIFY);
+					startActivity(i);
+				}
+				
+				//找到的记录是已经盘亏过的记录则询问是否正常盘点
+				if("pk".equals(plan.getCheck_result())){
+					DialogUtil.show(ActivityCkeckTask.this,"温馨提示", "该设备已经存在盘亏记录，是否需要重新盘点？", "是", "否", new LeftListener(plan), new RightListener(plan));
+				}
+				
+				//正常盘点
+				else{
+					Intent i = new Intent(this, ActivityCheckTaskForm.class);
+					i.putExtra("plan", plan);
+					i.putExtra("type", PD_CHECK);
+					startActivityForResult(i, 100);
+				}
+			}else{
+				DialogUtil.show(ActivityCkeckTask.this, "温馨提示", "没有找到匹配的标签,是否需要盘盈?", "是", "否", new AddListener(), null);
+			}
+		}
+	}
+	
+	
+	/**
+	 * 盘亏时进行重新盘点的监听事件
+	 */
+	class LeftListener implements DialogInterface.OnClickListener{
+		private Plan plan ;
+		
+		public LeftListener(Plan plan){
+			this.plan = plan;
+		}
+		
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent i = new Intent(ActivityCkeckTask.this, ActivityCheckTaskForm.class);
+			i.putExtra("plan", plan);
+			i.putExtra("type", PD_CHECK);
+			startActivity(i);
+		}
+	} 
+	
+	/**
+	 * 盘亏时不进行重新盘点的监听事件
+	 */
+	class RightListener implements DialogInterface.OnClickListener{
+		
+		private Plan plan ;
+		
+		public RightListener(Plan plan){
+			this.plan = plan;
+		}
+		
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(ActivityCkeckTask.this, ActivityDataSearchForm.class);
+			intent.putExtra("plan", plan);
+			intent.putExtra("type", ActivityShortage.PK_DELETE);
+			startActivity(intent);
+		}
+	} 
+	
+	/**
+	 * 确认盘盈的按钮监听
+	 */
+	class AddListener implements DialogInterface.OnClickListener{
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(ActivityCkeckTask.this, ActivityChechAddForm.class);
+			intent.putExtra("type", ActivitySurplus.PY_ADD);
+			intent.putExtra("rfid", rfid);
+			startActivity(intent);
+		}
+	} 
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		LogUtils.logd(getClass(), "执行     onActivityResult");
+		
+		//盘点的请求吗100
+		if(resultCode == RESULT_OK && requestCode == 100){
+			Plan plan =(Plan)data.getSerializableExtra("plan");
+			List<Plan> list = adapter.getList();
+			
+			int index = 0;
+			for (int i=0 ; i<list.size() ; i++) {
+				if(plan.getDet_id().equals(list.get(i).getDet_id())){
+					index = i;
+				}
+			}
+			
+			adapter.getList().remove(list.get(index));
+			adapter.notifyDataSetChanged();
+		}
+		
+		//盘亏的请求吗101
+		if(resultCode == RESULT_OK && requestCode == 101 ){
+			Plan plan=(Plan)data.getSerializableExtra("plan");
+			List<Plan> list = adapter.getList();
+			
+			int index = 0;
+			for (int i=0 ; i<list.size() ; i++) {
+				if(plan.getDet_id().equals(list.get(i).getDet_id())){
+					index = i;
+				}
+			}
+			
+			adapter.getList().remove(list.get(index));
+			adapter.notifyDataSetChanged();
+		}
+	}
+	
+	/**
+	 * 查询操作
+	 * @param view
+	 */
+	public void doSearch(View view){
+		//隐藏软键盘
+		hideSoftKeyboard(view);
+		
+		StringBuffer querySQL = new StringBuffer("select * from  plans");
+		
+		//输入查找条件
+		String where_value = search_input.getText().toString();
+		
+		String[] params = null;
+		
+		//查找array.xml查询字段信息
+		String[] arrayStr = getResources().getStringArray(R.array.ids); 		
+		
+		//下拉选择对应的字段
+		String where_col = arrayStr[choicer.getSelectIndex()];		
+				
+		if(!where_value.equals("")){
+			querySQL.append(" where "+where_col+" like '%'||?||'%' ");
+			params =new String[]{where_value};
+		}
+		
+		List<Plan>  plans = PlanManager.getInstance(this).getPlans(querySQL.toString(),params);
+		setData(plans);
+	}
+	
+	/**
+	 * 盘查操作
+	 * @param view
+	 */
+	public void doCheck(View view){
+		
+		//隐藏软键盘
+		hideSoftKeyboard(view);
+		
+		StringBuffer querySQL = new StringBuffer("select * from  plans");
+		
+		//输入查找条件
+		String where_value = search_input.getText().toString();
+		
+		String[] params = null;
+		
+		//查找array.xml查询字段信息
+		String[] arrayStr = getResources().getStringArray(R.array.ids); 		
+		
+		//下拉选择对应的字段
+		String where_col = arrayStr[choicer.getSelectIndex()];		
+				
+		if(!where_value.equals("")){
+			querySQL.append(" where "+where_col+" like '%'||?||'%' ");
+			params =new String[]{where_value};
+		}
+		
+		List<Plan>  plans = PlanManager.getInstance(this).getPlans(querySQL.toString(),params);
+		//只查出一条记录
+		if(plans!=null && !plans.isEmpty()){
+			Intent intent = new Intent(this, ActivityCheckTaskForm.class);
+			intent.putExtra("plan", plans.get(0));
+			intent.putExtra("type", PD_CHECK);
+			startActivityForResult(intent,100);
+		}
+	}
+}

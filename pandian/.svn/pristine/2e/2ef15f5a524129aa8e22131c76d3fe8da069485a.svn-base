@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_des3"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font18" />
+
+            <EditText
+                android:id="@+id/text_user_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="@string/user_id_hint"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font18" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_des2"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font18" />
+
+            <EditText
+                android:id="@+id/text_password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font18" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_des2"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font18"
+                android:visibility="invisible" />
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:button="@drawable/selector_checkbox"
+                android:gravity="center"
+                android:text="显示密码"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_favorite_bg"
+            android:onClick="doLogin"
+            android:text="@string/btn_login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/splash_show"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg"
+        android:orientation="horizontal" />
+
+</RelativeLayout>

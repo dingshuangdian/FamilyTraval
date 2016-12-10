@@ -1,0 +1,15 @@
+package com.kingtangdata.inventoryassis.tools;
+
+public abstract interface TaskStatusLinstener{
+	
+	public abstract void onCancelled();
+
+	public abstract void onCompleteTask();
+
+	public abstract void onError(Exception paramException);
+
+	public abstract void onProgressUpdate(int paramInt);
+
+	public abstract void onStartTask();
+	
+}

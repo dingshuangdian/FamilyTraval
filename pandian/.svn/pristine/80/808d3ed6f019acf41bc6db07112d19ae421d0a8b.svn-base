@@ -1,0 +1,129 @@
+package com.kingtangdata.inventoryassis.adapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.widget.MyHScrollView;
+import com.kingtangdata.inventoryassis.widget.MyHScrollView.OnScrollChangedListener;
+
+public class PagerListAdapterForPDAndPK extends BaseAdapter{
+
+	private Context context;
+	private List<Plan> list = new ArrayList<Plan>();
+	private View item;
+	
+	public PagerListAdapterForPDAndPK(Context context,View item){
+		this.context = context;
+		this.item = item;
+	}
+	
+	public void addList(List<Plan> list){
+		if(list != null){
+			this.list.addAll(list);
+		}
+	}
+	
+	public List<Plan> getList(){
+		return list;
+	}
+	
+	
+	public void clear(){
+		if(list != null){
+			this.list.clear();
+		}
+	}
+	
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return list.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return list.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
+	
+	class OnScrollChangedListenerImp implements OnScrollChangedListener {
+		MyHScrollView mScrollViewArg;
+
+		public OnScrollChangedListenerImp(MyHScrollView scrollViewar) {
+			mScrollViewArg = scrollViewar;
+		}
+
+		@Override
+		public void onScrollChanged(int l, int t, int oldl, int oldt) {
+			mScrollViewArg.smoothScrollTo(l, t);
+		}
+	};
+	
+	
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		ViewHolder holder = null;
+		
+		if(convertView == null){
+			convertView = LayoutInflater.from(context).inflate(R.layout.ui_pager_item_for_pdandpk,null);
+			
+			holder = new ViewHolder();
+			holder.tv1 = (TextView)convertView.findViewById(R.id.text1);
+			holder.tv2 = (TextView)convertView.findViewById(R.id.text2);
+			holder.tv3 = (TextView)convertView.findViewById(R.id.text3);
+			holder.tv4 = (TextView)convertView.findViewById(R.id.text4);
+			holder.tv5 = (TextView)convertView.findViewById(R.id.text5);
+			
+			holder.scrollView = (MyHScrollView)convertView.findViewById(R.id.horizontalScrollView1);
+			
+			convertView.setTag(holder);
+		}else{
+			holder = (ViewHolder)convertView.getTag();
+		}
+		
+		final Plan plan = (Plan) list.get(position);
+		
+		holder.tv1.setText(plan.getDevice_code());//设备编号
+		holder.tv1.setTextColor(context.getResources().getColor(R.color.gray));		
+		holder.tv2.setText(plan.getDevice_name());//设备名称
+		holder.tv2.setTextColor(context.getResources().getColor(R.color.gray));		
+		holder.tv3.setText(plan.getDevice_type());//设备型号
+		holder.tv3.setTextColor(context.getResources().getColor(R.color.gray));
+		holder.tv4.setText(plan.getDevice_size());//设备规格
+		holder.tv4.setTextColor(context.getResources().getColor(R.color.gray));
+		holder.tv5.setText(plan.getInstall_place());//安装地点			
+		holder.tv5.setTextColor(context.getResources().getColor(R.color.gray));
+		
+		MyHScrollView headSrcrollView = (MyHScrollView) item.findViewById(R.id.horizontalScrollView1);
+		headSrcrollView.AddOnScrollChangedListener(new OnScrollChangedListenerImp(holder.scrollView));
+
+		return convertView;
+	}
+	
+	class ViewHolder {
+		public TextView tv0;
+		public TextView tv1;
+		public TextView tv2;
+		public TextView tv3;
+		public TextView tv4;
+		public TextView tv5;
+		
+		MyHScrollView scrollView;
+	}
+}

@@ -1,0 +1,170 @@
+package com.kingtangdata.inventoryassis.act;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.common.AsyncReqTask;
+import com.kingtangdata.inventoryassis.http.HttpConstants;
+import com.kingtangdata.inventoryassis.http.HttpResponseCode;
+import com.kingtangdata.inventoryassis.http.business.SystemProvider;
+import com.kingtangdata.inventoryassis.http.domain.BaseReq;
+import com.kingtangdata.inventoryassis.http.domain.BaseRes;
+import com.kingtangdata.inventoryassis.http.domain.GetPicRes;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+import com.kingtangdata.inventoryassis.util.StorageUtils;
+
+public class ActivitySplash extends BaseActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_splash);
+		super.setTopViewVisibility(View.GONE);
+		super.setStatusBarVisibility(View.GONE);
+
+		new SplashShowTask(this).execute(new BaseReq());
+	}
+	
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		// TODO Auto-generated method stub
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("提示");
+		builder.setMessage("盘点易暂不支持该品牌的手机使用");
+		builder.setCancelable(false);
+		builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
+		
+		return builder.create();
+	}
+	
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+	}
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if(resultCode == RESULT_OK && requestCode == 100){
+			startActivity(new Intent(ActivitySplash.this, ActivityLogin.class));
+			finish();
+		}
+	}
+	
+	/*
+	 * AsyncTask,是android提供的轻量级的异步类, 可以直接继承AsyncTask,在类中实现异步操作,
+	 * 并提供接口反馈当前异步执行的程度(可以通过接口实现UI进度更新), 最后反馈执行的结果给UI主线程.
+	 * 该task只能被执行一次，否则多次调用时将会出现异常；
+	 */
+	private class SplashShowTask extends AsyncReqTask {
+		public SplashShowTask(Context context) {
+			super(context);
+		}
+
+		@Override
+		protected BaseRes doRequest(BaseReq request) {
+			// TODO Auto-generated method stub
+			long start = System.currentTimeMillis();
+			GetPicRes res = SystemProvider.getInstance(getApplicationContext()).getPic(request);
+			long end = System.currentTimeMillis();
+			
+			if(end - start > 2000){
+				return res;
+			}else{
+				//保存欢迎页面能停留2秒钟左右的时候
+				try {
+					Thread.sleep(2000 - (end - start));
+				} catch (InterruptedException exception) {
+				}
+			}
+			
+			return res;
+		}
+
+		@Override
+		protected void handleResponse(BaseRes response) {
+			// TODO Auto-generated method stub
+			//打印手机设备信息
+			LogUtils.logd(getClass(), "BRAND = " + android.os.Build.BRAND);
+			LogUtils.logd(getClass(), "BOARD = " + android.os.Build.BOARD);
+			LogUtils.logd(getClass(), "BOOTLOADER = " + android.os.Build.BOOTLOADER);
+			LogUtils.logd(getClass(), "CPU_ABI = " + android.os.Build.CPU_ABI);
+			LogUtils.logd(getClass(), "CPU_ABI2 = " + android.os.Build.CPU_ABI2);
+			LogUtils.logd(getClass(), "DEVICE = " + android.os.Build.DEVICE);
+			LogUtils.logd(getClass(), "DISPLAY = " + android.os.Build.DISPLAY);
+			LogUtils.logd(getClass(), "FINGERPRINT = " + android.os.Build.FINGERPRINT);
+			LogUtils.logd(getClass(), "HARDWARE = " + android.os.Build.HARDWARE);
+			LogUtils.logd(getClass(), "HOST = " + android.os.Build.HOST);
+			LogUtils.logd(getClass(), "ID = " + android.os.Build.ID);
+			LogUtils.logd(getClass(), "MANUFACTURER = " + android.os.Build.MANUFACTURER);
+			LogUtils.logd(getClass(), "MODEL = " + android.os.Build.MODEL);
+			LogUtils.logd(getClass(), "PRODUCT = " + android.os.Build.PRODUCT);
+			LogUtils.logd(getClass(), "RADIO = " + android.os.Build.RADIO);
+			LogUtils.logd(getClass(), "SERIAL = " + android.os.Build.SERIAL);
+			LogUtils.logd(getClass(), "TAGS = " + android.os.Build.TAGS);
+			LogUtils.logd(getClass(), "TIME = " + android.os.Build.TIME);
+			LogUtils.logd(getClass(), "TYPE = " + android.os.Build.TYPE);
+			
+			
+			//判断当前手机是否在允许的品牌之内
+			List<String> list = new ArrayList<String>();
+			list.add("xiaomi");
+			list.add("lenovo");
+			list.add("coolpad");
+			list.add("huawei");
+			list.add("zte");
+			list.add("motorola");
+			list.add("htc");
+			list.add("lg");
+			list.add("samsung");
+			list.add("qcom");
+			
+			String manufacturer = android.os.Build.MANUFACTURER ;
+			//该品牌的手机是否在我们支持的范围中
+			if(!list.contains(manufacturer.toLowerCase())){
+				showDialog(0);
+				return;
+			}	
+			
+			//获取服务器的背景   只有在打开的是才重置 
+			//如果服务器改变了该设置 客户端必须重启才能刷新
+			GetPicRes res = (GetPicRes)response;
+			
+			String filename = res.getFilename();
+			if(!TextUtils.isEmpty(filename)){
+				String filepath = "http://"+StorageUtils.getString(StorageUtils.IP_ADDRESS, ActivitySplash.this, HttpConstants.DEFAULT_IP) + "/imagehot/client_wallpaper/" + filename;
+				StorageUtils.setProperty(StorageUtils.BG_PATH, filepath, ActivitySplash.this);
+			}
+			//判断是否初始化了用户数据	
+			if(StorageUtils.getBoolean(StorageUtils.ISINIT, ActivitySplash.this)){
+				startActivity(new Intent(ActivitySplash.this, ActivityLogin.class));
+				finish();
+			}else{
+				startActivityForResult(new Intent(ActivitySplash.this, ActivitySetIP.class), 100);
+			}
+		}
+	}
+}

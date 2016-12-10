@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/sys_setting"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference android:title="@string/pref_default_user_id" android:summary="@string/des_pref_default_user_id" android:dialogTitle="@string/defaule_user_id" />
+    <EditTextPreference android:title="@string/pref_server_address" android:summary="@string/des_server_address" android:dialogTitle="@string/server_address" />
+</PreferenceScreen>

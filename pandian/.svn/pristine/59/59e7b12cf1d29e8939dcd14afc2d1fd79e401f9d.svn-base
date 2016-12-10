@@ -1,0 +1,21 @@
+package com.kingtangdata.inventoryassis.act;
+
+import android.os.Bundle;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+
+public class ActivityAbout extends BaseActivity{
+	
+	public void onCreate(Bundle paramBundle){
+		super.onCreate(paramBundle);
+		super.setContentView(R.layout.activity_about);
+		super.setTopLabel("帮助");
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+}

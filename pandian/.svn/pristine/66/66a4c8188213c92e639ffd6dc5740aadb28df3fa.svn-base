@@ -1,0 +1,45 @@
+package com.kingtangdata.inventoryassis.data;
+
+
+public class DataDefine
+{
+	private int gid;
+
+	private String label;
+
+	private String name;
+
+	private String rank;
+
+	public int getGid() {
+		return gid;
+	}
+	
+	public void setGid(int gid) {
+		this.gid = gid;
+	}
+	
+	public String getLabel() {
+		return label;
+	}
+	
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getRank() {
+		return rank;
+	}
+	
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+}

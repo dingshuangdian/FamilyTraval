@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btn_dialog_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_all"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_dialog_button"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="全部"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16" />
+
+        <ImageView
+            android:id="@+id/selected_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tv_all"
+            android:src="@drawable/selected" 
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_checked"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_dialog_button"
+        android:onClick="doChecked"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="已绑定"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16" />
+
+        <ImageView
+            android:id="@+id/selected_checked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tv_all"
+            android:src="@drawable/selected" 
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_not"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_dialog_button"
+        android:onClick="doNot"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="未绑定"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16" />
+
+        <ImageView
+            android:id="@+id/selected_not"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tv_all"
+            android:src="@drawable/selected"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_dialog_cancel"
+        android:text="取消"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font16" />
+
+</LinearLayout>

@@ -1,0 +1,26 @@
+package com.kingtangdata.inventoryassis.http.domain;
+
+import java.util.List;
+
+import com.google.gson.annotations.Expose;
+import com.kingtangdata.inventoryassis.data.Plan;
+
+public class PlanRes extends BaseRes {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Expose
+	private List<Plan> datas;
+
+	public List<Plan> getDatas() {
+		return datas;
+	}
+
+	public void setDatas(List<Plan> datas) {
+		this.datas = datas;
+	}
+
+}

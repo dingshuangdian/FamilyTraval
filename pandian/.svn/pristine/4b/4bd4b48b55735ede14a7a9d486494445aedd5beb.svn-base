@@ -1,0 +1,45 @@
+package com.kingtangdata.inventoryassis.test;
+
+import android.content.Intent;
+import android.os.SystemClock;
+import android.test.InstrumentationTestCase;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class AppsTestBO extends InstrumentationTestCase {
+	
+	private TextView text = null;
+	//private SyncDataRequest ob = null;
+	private Button button = null;
+	/*
+     * 初始设置
+     * @see junit.framework.TestCase#setUp()
+     */
+    @Override
+    protected void setUp()  {
+        try {
+            super.setUp();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Intent intent = new Intent();
+    }
+
+	 /*
+     * 活动功能测试
+     */
+    public void testActivity() throws Exception {
+        Log.v("testActivity", "test the Activity");
+        SystemClock.sleep(1500);
+    }
+
+	/*
+     * 测试类中的方法
+     */
+    public void testAdd() throws Exception{
+        String tag = "testAdd";
+    }
+
+
+}

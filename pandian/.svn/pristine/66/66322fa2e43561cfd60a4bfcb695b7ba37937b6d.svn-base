@@ -1,0 +1,288 @@
+package com.kingtangdata.inventoryassis.act;
+
+import java.util.List;
+
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
+import android.widget.HorizontalScrollView;
+import android.widget.ListView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.AbstractPagingAct;
+import com.kingtangdata.inventoryassis.adapter.PagerListAdapterForPDAndPK;
+import com.kingtangdata.inventoryassis.adapter.PopForStringAdapter;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+import com.kingtangdata.inventoryassis.util.MessageUtil;
+import com.kingtangdata.inventoryassis.view.SliderPopupChoicer;
+
+/**
+ * 
+ * 盘亏处理界面
+ * @author Administrator
+ *
+ */
+public class ActivityPK extends AbstractPagingAct  implements OnItemClickListener{
+	
+	//查找字段输入内容
+	private EditText search_input;
+	
+	//标签编码的下拉选项框
+	private SliderPopupChoicer choicer;
+	
+	//点击选择的记录
+	private Plan plan = null;
+	
+	private View  mHead = null;
+	private PagerListAdapterForPDAndPK adapter = null;
+	
+	// 请求查看第几页面
+	public int nextpage = 0; 
+	/**
+	* 是否正在加载的标志
+	*/
+	public boolean  isLoading  = false;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_pk);
+		super.setStatusBarVisibility(View.VISIBLE);
+		super.setTopLabel(R.string.title_activity_shortage);
+		super.setLeftButtonImage(R.drawable.btn_back_bg);
+		
+		//查找条件
+		search_input = (EditText)findViewById(R.id.search_input);
+
+		String[] mData = getResources().getStringArray(R.array.marks); 
+		PopForStringAdapter psadapter = new PopForStringAdapter(this, mData); 
+		choicer = (SliderPopupChoicer)findViewById(R.id.checker_choice);
+		choicer.setAdapter(psadapter);
+		
+		mHead = findViewById(R.id.head);
+		mHead.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
+		mHead.setBackgroundColor(getResources().getColor(R.color.blue));
+		
+		adapter = new PagerListAdapterForPDAndPK(this,mHead);
+		ListView listView  = (ListView) findViewById(R.id.listview);
+		listView.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
+		listView.setOnScrollListener(this);
+		listView.setOnItemClickListener(this);
+		listView.setAdapter(adapter);
+		//加载数据
+		DataLoadTask task = new DataLoadTask();
+		task.execute();
+	}
+	
+	@Override
+	public void doClickLeftBtn() {
+		// TODO Auto-generated method stub
+		onBackPressed();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		finish();
+	}
+	
+	class ListViewAndHeadViewTouchLinstener implements View.OnTouchListener {
+		@Override
+		public boolean onTouch(View arg0, MotionEvent arg1) {
+			//当在列头 和 listView控件上touch时，将这个touch的事件分发给 ScrollView
+			HorizontalScrollView headSrcrollView = (HorizontalScrollView) mHead.findViewById(R.id.horizontalScrollView1);
+			headSrcrollView.onTouchEvent(arg1);
+			return false;
+		}
+	}
+	
+	
+	@Override
+	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+		// TODO Auto-generated method stub
+		plan = (Plan)adapterView.getItemAtPosition(i);
+		
+		Intent intent = new Intent(this, ActivityPKForm.class);
+		intent.putExtra("plan", plan);
+		startActivityForResult(intent, 100);
+	}
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		//盘亏的请求吗101
+		if(resultCode == RESULT_OK && requestCode == 100 ){
+			Plan p =(Plan)data.getSerializableExtra("plan");
+			String type = data.getStringExtra("type");
+			
+			if(ActivityPKForm.PK_SAVE.equals(type)){
+				//进行盘亏信息修改保存的刷新
+				plan.copyFrom(p);
+				adapter.notifyDataSetChanged();
+			}else if(ActivityPKForm.PK_DELETE.equals(type)){
+				//进行盘亏信息撤销的刷新
+				List<Plan> list = adapter.getList();
+				
+				Plan s = null;
+				for (Plan plan : list) {
+					if(plan.getDet_id().equals(p.getDet_id())){
+						s = plan;
+					}
+				}
+				
+				if(s != null){
+					list.remove(s);
+				}
+				
+				adapter.notifyDataSetChanged();
+			}
+		}		
+	}
+	
+	/**
+	 * 查询操作
+	 * @param view
+	 */
+	public void doSearch(View view){
+		//隐藏软键盘
+		hideSoftKeyboard(view);
+		
+		adapter.clear();
+		
+		DataLoadTask task = new DataLoadTask();
+		task.execute();
+	}
+
+	class DataLoadTask extends AsyncTask<String,Void,Object>{
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			isLoading = true;
+		}
+		
+		@Override
+		protected Object doInBackground(String... s) {
+			// TODO Auto-generated method stub
+			nextpage = getCurrent4DisplayPageNo();
+			
+
+			StringBuffer querySQL = new StringBuffer("select * from plans where check_result='pk'  and running='c'");
+			//输入查找条件
+			String where_value = search_input.getText().toString();
+			
+			String[] params = null;;
+			
+			//查找array.xml查询字段信息
+			String[] arrayStr = getResources().getStringArray(R.array.ids); 		
+			
+			//下拉选择对应的字段
+			String where_col = arrayStr[choicer.getSelectIndex()];		
+					
+			if(!where_value.equals("")){
+				querySQL.append(" and "+where_col+" like '%'||?||'%' ");
+				params = new String[]{where_value};
+			}
+			querySQL.append(" order by dept_id, device_code ");
+			
+			LogUtils.logd(getClass(), "nextpage = "+ nextpage);
+			
+			return PlanManager.getInstance(getApplicationContext()).getPlans(querySQL, params, nextpage);
+		}
+		
+		@Override
+		protected void onPostExecute(Object result) {
+			// TODO Auto-generated method stub
+			isLoading = false;
+			
+			List<Plan> plans = (List<Plan>)result;
+			
+			if(plans.isEmpty()){
+				MessageUtil.setMessage("没有任何盘亏记录", ActivityPK.this);
+			}else{
+				adapter.addList(plans);
+				adapter.notifyDataSetChanged();
+			}
+		}
+	}
+
+	
+	@Override
+	protected int getTotalNum() {
+		// TODO Auto-generated method stub
+		
+		StringBuffer querySQL = new StringBuffer("select count(*) as sumId from  plans  where check_result='pk'  and running='c'");
+		
+		//输入查找条件
+		String where_value = search_input.getText().toString();
+		
+		String[] params = null;
+		
+		//查找array.xml查询字段信息
+		String[] arrayStr = getResources().getStringArray(R.array.ids); 		
+		
+		//下拉选择对应的字段
+		String where_col = arrayStr[choicer.getSelectIndex()];		
+				
+		if(!where_value.equals("")){
+			querySQL.append(" and "+where_col+" like '%'||?||'%' ");
+			params =new String[]{where_value};
+		}
+		querySQL.append(" order by dept_id, device_code");
+		
+		return PlanManager.getInstance(getApplicationContext()).getPlanCount(querySQL.toString(), params);
+	}
+	
+	
+	
+	@Override
+	protected void loadNextPageData() {
+		// TODO Auto-generated method stub
+		DataLoadTask task = new DataLoadTask();
+		task.execute();
+	}
+	
+	@Override
+	protected void showPageHint() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected void updatePageHint(String content) {
+		// TODO Auto-generated method stub
+		makeText(content);
+	}
+
+	@Override
+	protected void hidePageHint() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected int getDownloadedItemSize() {
+		// TODO Auto-generated method stub
+		return adapter.getCount();
+	}
+
+	@Override
+	protected int getPageSize() {
+		// TODO Auto-generated method stub
+		return DEFAULT_PAGE_SIZE;
+	}
+
+	@Override
+	protected boolean isLoading() {
+		// TODO Auto-generated method stub
+		return isLoading;
+	}
+}

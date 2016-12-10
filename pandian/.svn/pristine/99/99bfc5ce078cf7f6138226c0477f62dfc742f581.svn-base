@@ -1,0 +1,51 @@
+package com.kingtangdata.inventoryassis.test;
+
+import android.test.AndroidTestCase;
+
+public class FileTestBO extends AndroidTestCase {
+	private final static String TAG = "FileTest";
+	
+    public void testSave(){
+    
+    	System.out.println("*************开始单元测试类！*************");
+    	/*
+    	InventorySQLiteOpenHelper mHelper = new InventorySQLiteOpenHelper(getContext());
+    	
+    	try {
+			System.out.println("--------------------------------->查找用户信息:"+mHelper.getDao(User.class).countOf());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    	
+    	SyncDataRequest dataRequest =new SyncDataRequest(getContext());
+    	try {
+			String str = dataRequest.ping("/pandianyi/api/plan_save.api",null);
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}*/
+    	/*
+    	boolean ret=false;
+    	File file = mContext.getDatabasePath("admin");
+    	try {
+    		ret=new SyncDataRequest(getContext()).getDepartments("/pandianyi/api/plan_downloadSqliteDB.api", "", file, new DownloadProgressListener(){
+				public void downloaded(long pLong1, long pLong2){
+					
+				}
+			});
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	System.out.println("*************测试过程中单元测试类返回值！*************"+ret);
+    	
+    	DownloadPlanDatabaseTask ob =new DownloadPlanDatabaseTask(getContext(),"");
+    	new Thread(ob).start();
+    	 */
+    }
+
+}

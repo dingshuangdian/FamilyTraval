@@ -1,0 +1,114 @@
+package com.kingtangdata.inventoryassis.act;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.PagerActivity;
+import com.kingtangdata.inventoryassis.adapter.PagerListAdapter;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+
+/**
+ * 
+ * 盘盈处理界面
+ * @author Administrator
+ *
+ */
+public class ActivitySurplus extends PagerActivity{
+	
+	private Button btnAdd ;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_surplus);
+		super.setStatusBarVisibility(View.VISIBLE);
+		super.setTopLabel(R.string.title_activity_surplus);
+		super.setLeftButtonText("返回");
+		
+		btnAdd = (Button)findViewById(R.id.add);
+		btnAdd.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(ActivitySurplus.this, ActivityChechAddForm.class));
+			}
+		});
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		finish();
+	}
+	
+	@Override
+	public void doClickLeftBtn() {
+		// TODO Auto-generated method stub
+		onBackPressed();
+	}
+
+	@Override
+	protected void buildAdapter() {
+		// TODO Auto-generated method stub
+		StringBuffer querySQL = new StringBuffer("select * from plans ");
+		
+		List<Plan> plans = PlanManager.getInstance(this).getPlans(querySQL.toString(),null);
+		
+		LogUtils.logd(getClass(), "size = " + plans.size());
+		
+		adapter1 = new PagerListAdapter(this, plans, 1);
+		adapter2 = new PagerListAdapter(this, plans, 2);
+		adapter3 = new PagerListAdapter(this, plans, 3);
+		adapter4 = new PagerListAdapter(this, plans, 4);
+	}
+	
+
+	@Override
+	protected List<String> getTitles() {
+		// TODO Auto-generated method stub
+		List<String> titles = new ArrayList<String>(); 
+		titles.add("部门编号");
+		titles.add("部门名称");
+		titles.add("设备名称");
+		titles.add("设备型号");
+		titles.add("标题5");
+		titles.add("标题6");
+		titles.add("标题7");
+		titles.add("标题8");
+		titles.add("标题9");
+		titles.add("标题10");
+		titles.add("标题11");
+		titles.add("标题12");
+		titles.add("标题13");
+		titles.add("标题14");
+		titles.add("标题15");
+		titles.add("标题16");
+		
+		return titles;
+	}
+
+	
+	@Override
+	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+		// TODO Auto-generated method stub
+		super.onItemClick(adapterView, view, i, l);
+		
+		Plan plan = (Plan)adapterView.getItemAtPosition(i);
+		
+	}
+	
+	public void doSearch(View view){
+		
+	 }
+}

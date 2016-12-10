@@ -1,0 +1,118 @@
+package com.kingtangdata.inventoryassis.activity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.adapter.PagerAdapter;
+import com.kingtangdata.inventoryassis.adapter.PagerViewAdapter;
+
+/**
+ * 带左右滑动的activity父类
+ * @author Administrator
+ *
+ */
+public abstract class PagerActivity  extends BaseActivity  implements OnItemClickListener{
+
+	protected ViewPager viewPager;
+	
+	public PagerAdapter adapter1;
+	public PagerAdapter adapter2;
+	public PagerAdapter adapter3;
+	public PagerAdapter adapter4;
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
+	
+	/**
+	 * 从子类传listview的adapter进来
+	 * 
+	 * @param page 第几页
+	 * @return
+	 */
+	protected abstract void buildAdapter();
+	
+	/**
+	 * 从子类传标题进来
+	 * @param page
+	 * @return
+	 */
+	protected abstract List<String> getTitles();
+	
+	
+	/**
+	 * 如果子类需要实现list选项点击事件  则必须override该方法
+	 */
+	@Override
+	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		
+		//在oncreate调用玩之后才能初始化  不然会报空指针异常
+		viewPager = (ViewPager)findViewById(R.id.pager_view);
+		
+		//用来左右滑动的4个view
+		View view1 = getLayoutInflater().inflate(R.layout.ui_pager_item, null);
+		View view2 = getLayoutInflater().inflate(R.layout.ui_pager_item, null);
+		View view3 = getLayoutInflater().inflate(R.layout.ui_pager_item, null);
+		View view4 = getLayoutInflater().inflate(R.layout.ui_pager_item, null);
+		
+		ListView listView1 = (ListView)view1.findViewById(R.id.listview);
+		ListView listView2 = (ListView)view2.findViewById(R.id.listview);
+		ListView listView3 = (ListView)view3.findViewById(R.id.listview);
+		ListView listView4 = (ListView)view4.findViewById(R.id.listview);
+		
+		buildAdapter();
+		//设置listviewadapter
+		if(adapter1 != null){
+			listView1.setAdapter(adapter1);
+		}
+		
+		if(adapter2 != null){
+			listView2.setAdapter(adapter2);
+		}
+		
+		if(adapter3 != null){
+			listView3.setAdapter(adapter3);
+		}
+		
+		if(adapter4 != null){
+			listView4.setAdapter(adapter4);
+		}
+		
+		//设置点击事件
+		listView1.setOnItemClickListener(this);
+		listView2.setOnItemClickListener(this);
+		listView3.setOnItemClickListener(this);
+		listView4.setOnItemClickListener(this);
+		
+		List<View> views = new ArrayList<View>();
+		views.add(view1);
+		views.add(view2);
+		views.add(view3);
+		views.add(view4);
+		
+		//pagerview适配器
+		PagerViewAdapter adapter = new PagerViewAdapter(views,getTitles());
+		viewPager.setAdapter(adapter);
+	}
+}

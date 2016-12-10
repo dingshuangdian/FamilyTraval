@@ -1,0 +1,34 @@
+package com.kingtangdata.inventoryassis.activity.set;
+
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.base.BaseActivity;
+
+public class ActivityAbout extends BaseActivity{
+	
+	public void onCreate(Bundle paramBundle){
+		super.onCreate(paramBundle);
+		super.setContentView(R.layout.activity_about);
+		super.setTopLabel("关于我们");
+		super.setLeftButtonText("返回");
+		//初始化版本信息
+		try {
+			PackageManager pm = getPackageManager();
+			PackageInfo pi = pm.getPackageInfo(getPackageName(), 0);
+			String info = "android 版本 v"+ pi.versionName;
+			TextView tvVersionName = (TextView) this.findViewById(R.id.version_name);
+			tvVersionName.setText(info);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}		
+	}
+	
+	@Override
+	protected void onResume() {		
+		super.onResume();
+	}
+}

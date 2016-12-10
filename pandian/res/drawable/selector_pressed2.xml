@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 更多界面   切换门店点击样式   -->
+<!-- 其他相同样式均使用此点击效果 -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_corner_with_pressed2" android:state_pressed="true"></item>
+    <item android:drawable="@drawable/bg_corner_with_pressed2" android:state_selected="true"></item>
+    <item android:drawable="@drawable/bg_corner_with_pressed2" android:state_focused="true"></item>
+    <item android:drawable="@android:color/transparent"></item>
+</selector>

@@ -1,0 +1,110 @@
+package com.kingtangdata.inventoryassis.act;
+
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.adapter.PopForStringAdapter;
+import com.kingtangdata.inventoryassis.util.DialogUtil;
+import com.kingtangdata.inventoryassis.util.MessageUtil;
+import com.kingtangdata.inventoryassis.view.SliderPopupChoicer;
+
+public class ActivityRegister extends BaseActivity{
+	
+	private EditText etName;
+	private EditText etPwd;
+	private EditText etMob;
+	private EditText etMail;
+	private SliderPopupChoicer choicer;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_register);
+		super.setTopLabel("用户注册");
+		super.setLeftButtonText("返回");
+		
+		etName = (EditText)findViewById(R.id.et_name);
+		etPwd = (EditText)findViewById(R.id.et_pwd);
+		etMob = (EditText)findViewById(R.id.et_mob);
+		etMail = (EditText)findViewById(R.id.et_email);
+		
+		//下拉列表初始化设置
+		String[] mData = getResources().getStringArray(R.array.trade); 
+		PopForStringAdapter psadapter = new PopForStringAdapter(this, mData); 
+		choicer = (SliderPopupChoicer)findViewById(R.id.trade_choice);
+		choicer.setAdapter(psadapter);		
+	}
+	
+	/**
+	 * 获取验证码
+	 * @param view
+	 */
+	public void getCode(View view){
+		
+	}
+	
+	public void doSubmit(View view){
+		String account = etName.getText().toString();
+		String pwd = etPwd.getText().toString();
+		String rep = etMob.getText().toString();
+		
+		if(TextUtils.isEmpty(account)){
+			makeText("请输入账号");
+			return;
+		}
+		
+//		if(!(ValidateUtils.checkEmail(account)||ValidateUtils.checkMobile(account))){
+//			makeText("请输入正确的账号");
+//			return;
+//		}
+		
+		if(TextUtils.isEmpty(pwd)){
+			makeText("请输入密码");
+			return;
+		}
+		
+//		if(ValidateUtils.checkPassword(pwd)){
+//			makeText("请输入正确的密码");
+//			return;
+//		}
+		
+		if(TextUtils.isEmpty(rep)){
+			makeText("请输入手机号码");
+			return;
+		}
+		
+		showDialog(0);
+	}
+	
+	
+	private OnClickListener listener = new OnClickListener() {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			finish();
+		}
+	};
+
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		// TODO Auto-generated method stub
+		if(id == 0){
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("提示");
+			builder.setMessage("注册成功");
+			builder.setNeutralButton("确定", listener);
+			return builder.create();
+		}
+		return super.onCreateDialog(id);
+	}
+}

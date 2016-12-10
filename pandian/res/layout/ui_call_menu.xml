@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btn_dialog_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电话："
+            android:textColor="@color/white"
+            android:textSize="@dimen/font16" />
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4001004168"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/imgV_call"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/selector_dialog_special"
+        android:text="拨打电话"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font16" />
+
+    <Button
+        android:id="@+id/imgV_cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_dialog_cancel"
+        android:text="取消"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font16" />
+
+</LinearLayout>

@@ -1,0 +1,515 @@
+package com.kingtangdata.inventoryassis.activity;
+
+import java.math.BigDecimal;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.base.AsyncReqTask;
+import com.kingtangdata.inventoryassis.base.BaseActivity;
+import com.kingtangdata.inventoryassis.bean.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.http.HttpConstants;
+import com.kingtangdata.inventoryassis.http.HttpResponseCode;
+import com.kingtangdata.inventoryassis.http.business.SystemProvider;
+import com.kingtangdata.inventoryassis.http.domain.BaseReq;
+import com.kingtangdata.inventoryassis.http.domain.BaseRes;
+import com.kingtangdata.inventoryassis.http.domain.UploadReq;
+import com.kingtangdata.inventoryassis.util.DialogUtil;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+import com.kingtangdata.inventoryassis.util.StorageUtils;
+
+
+/**
+ * 数据上传界面
+ * @author leo *
+ */
+public class ActivityUploadData extends BaseActivity{
+	private static final int PAGE_SIZE = 20;  
+	//进度条
+	ProgressBar progressBar1;
+	ProgressBar progressBar2;
+	
+	//文本框
+	TextView   progressText1;
+	TextView   progressText2;
+	
+	//复选框
+	CheckBox uploadPlanCheckBox;
+	CheckBox uploadBindheckBox;
+	
+	//正在上传中的标志
+	boolean isUploadingBind= false;
+	boolean isUploadingPlan = false;
+	
+	boolean isUploadBindSuccess = false;
+	boolean isUploadPlanSuccess = false;
+	//异步处理类
+	TestNetworkTask tnTask = null;
+	UploadCkeckedTask upcTask = null;
+	UploadBindTask  ubTask = null;
+	
+	DialogUtil dialogUtil = null;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_upload_data);
+		super.setTopLabel("上传结果");
+		//显示返回按钮，这里不需要设置文字 采用图片实现
+		super.setLeftButtonText("返回");
+		
+		dialogUtil = new DialogUtil(this);
+		
+		uploadPlanCheckBox = (CheckBox)findViewById(R.id.check_upload_1);
+		uploadBindheckBox = (CheckBox)findViewById(R.id.check_upload_2);
+		
+		progressBar1 = (ProgressBar)findViewById(R.id.progress_upload1);
+		progressBar2 = (ProgressBar)findViewById(R.id.progress_upload2);
+		
+		progressText1 =  (TextView)findViewById(R.id.progress_text1);
+		progressText2 =  (TextView)findViewById(R.id.progress_text2);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if(!isNetworkAvalible()){
+			setRightButtonImage(R.drawable.icon_network_no);
+		}else{
+			tnTask = new TestNetworkTask();
+			tnTask.execute();
+		}
+	}
+	
+	@Override
+	public void doClickLeftBtn() {
+		onBackPressed();
+	}
+	
+	
+	@Override
+	public void onBackPressed() {
+		if(isUploadingBind || isUploadingPlan){
+			showDialog(0);
+		}else{
+			finish();
+		}
+	}
+	
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		if(id == 0){
+			AlertDialog.Builder builder= new AlertDialog.Builder(this);
+			builder.setTitle("提示");
+			builder.setMessage("正在上传数据到服务器，是否确认要退出？");
+			builder.setNeutralButton("确定", new LeftListener());
+			builder.setNegativeButton("取消", null);
+			return builder.create();
+		}
+		else {
+			return super.onCreateDialog(id);
+		}
+	}
+	
+	class LeftListener implements DialogInterface.OnClickListener {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			finish();
+		}
+	}
+	
+	
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		
+		//在界面销毁的时候销毁所有的进程
+		if(tnTask != null && !tnTask.isCancelled()){
+			tnTask.cancel(true);
+		}
+		
+		if(upcTask != null && !upcTask.isCancelled()){
+			upcTask.cancel(true);
+		}
+		
+		if(ubTask != null && !ubTask.isCancelled()){
+			ubTask.cancel(true);
+		}
+	}
+	
+	
+	/**
+	 * 点击开始上传的方法
+	 * @param view
+	 */
+	public void doStart(View view){
+		//至少有一个选中才开始下载
+		if(uploadPlanCheckBox.isChecked() && !isUploadingPlan && !isUploadPlanSuccess){
+			//先判断一下网络是否可用  不可用会给出提示
+			if(isNetworkAvalible()){
+				upcTask = new UploadCkeckedTask(this);
+				upcTask.execute(new BaseReq());
+			}
+		}
+		
+		if(uploadBindheckBox.isChecked() && !isUploadingBind && !isUploadBindSuccess){
+			if(isNetworkAvalible()){
+				ubTask = new UploadBindTask(this);
+				ubTask.execute(new BaseReq());
+			}
+		}
+	} 
+	
+	
+	/**
+	 * 测试服务器是否连通
+	 * @author Administrator
+	 *
+	 */
+	class TestNetworkTask extends AsyncTask<String, Integer, Boolean>{
+		
+		@Override
+		protected Boolean doInBackground(String... params) {
+			
+			try {
+				String ip_address = StorageUtils.getString(StorageUtils.IP_ADDRESS, ActivityUploadData.this, HttpConstants.DEFAULT_IP);
+				String port = StorageUtils.getString(StorageUtils.PORT, ActivityUploadData.this, HttpConstants.DEFAULT_PORT);
+				String app = StorageUtils.getString(StorageUtils.APP, ActivityUploadData.this, HttpConstants.DEFAULT_APP);
+				String httpAddress = "http://" + ip_address + ":" + port + "/" + app + HttpConstants.TEST_ACTION;
+				
+				LogUtils.logd(getClass(), "httpAddress = " + httpAddress);
+				URL url = new URL(httpAddress);
+				HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+				connection.setReadTimeout(HttpConstants.CONNECT_TIME_OUT);
+				connection.setConnectTimeout(HttpConstants.READ_TIME_OUT);
+				LogUtils.logd(getClass(), "code = " + connection.getResponseCode());
+				
+				return connection.getResponseCode() == 200 ;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+	
+		@Override
+		protected void onPostExecute(Boolean result) {
+			if(result){
+				//目前判断服务器是否能连接成功就根据是否能调获取任务列表接口
+				setRightButtonImage(R.drawable.icon_network_ok);
+			}else{
+				setRightButtonImage(R.drawable.icon_network_no);
+			}
+		}
+	}
+ 	
+	/**
+	 * 上传已盘点数据
+	 * @author Administrator
+	 *
+	 */
+	class UploadCkeckedTask extends AsyncReqTask{
+		//总记录数
+		int totalNum = 0;
+		//总页数
+		int totalPage = 0;
+		//页码
+		int pageNum = 0;		
+
+		public UploadCkeckedTask(Context context) {
+			super(context);
+		}
+		
+		@Override
+		protected void onPreExecute() {
+			isUploadingPlan = true;
+		}
+
+		@Override
+		protected BaseRes doRequest(BaseReq request) {
+			//查询需要上传的总记录数
+			String whereSql = " is_upload='0' and running='c' and check_result in(?,?,?) ";
+			String[] params = new String[]{"zc","pk","py"};
+			String sql = "select count(*) as sumId  from plans where " + whereSql;			
+
+			totalNum = PlanManager.getInstance(getApplicationContext()).getPlanCount(sql.toString(), params);
+			
+			//如果总记录数等于0直接返回
+			if(totalNum == 0) {
+				Message msg = new Message();
+				msg.obj = "没有数据需要上传";
+				msg.what = 1;
+				handler.sendMessage(msg);
+				isUploadingPlan =false;
+				return new BaseRes();
+			}
+			
+			//计算总页数
+			if(totalNum % PAGE_SIZE == 0){
+				totalPage = totalNum/PAGE_SIZE;
+			}else{
+				totalPage = totalNum/PAGE_SIZE + 1;
+			}
+			LogUtils.logd(getClass(), "--------------------totalNum = " + totalNum + "#PAGE_SIZE=" + PAGE_SIZE + "#totalPage=" + totalPage);
+			
+			//开始循环上传
+			for (int i = 0; i < totalPage; i++) {
+				//查询需要上传的记录
+				StringBuffer querySQL = new StringBuffer();
+				querySQL.append("select * from plans where ").append(whereSql).append(" order by det_id ");
+				List<Plan> list = PlanManager.getInstance(getApplicationContext()).getPlans(querySQL, params, i+1);
+				LogUtils.logd(getClass(), "第 " + i +  "页");
+				LogUtils.logd(getClass(), "size = " + list.size());
+				// 转换器
+				GsonBuilder builder = new GsonBuilder();
+				// 不转换没有 @Expose 注解的字段
+				builder.excludeFieldsWithoutExposeAnnotation();
+				Gson gson = builder.create();
+				String jsonStr =gson.toJson(list);
+				
+				LogUtils.logd(getClass(), "jsonStr = " + jsonStr);
+				String checkid = StorageUtils.getString(StorageUtils.CHECK_ID, ActivityUploadData.this,"");
+
+				LogUtils.logd(getClass(), "checkid = " + checkid);
+				
+				UploadReq req = new UploadReq();
+				req.setCheck_id(checkid);
+				req.setJson(jsonStr);
+				
+				BaseRes res = SystemProvider.getInstance(getApplicationContext()).uoloadPlan(req);
+				
+				//插入成功 更新数据库字段 is_upload = 1
+				if(HttpResponseCode.SUCCESS.equals(res.getCode())){
+					/*for (Plan plan : list) {
+						plan.setIs_upload("1");
+						PlanManager.getInstance(getApplicationContext()).updatePlan(plan, plan.getDet_id());
+					}*/
+					
+					if(i == totalPage-1) {
+						StringBuffer sql3 = new StringBuffer();
+						sql3.append("select * from plans where ").append(whereSql);
+						List<Plan> lsPlan = PlanManager.getInstance(getApplicationContext()).getPlans(sql3, params);
+						for (Plan plan : lsPlan) {
+							plan.setIs_upload("1");
+							PlanManager.getInstance(getApplicationContext()).updatePlan(plan, plan.getDet_id());							
+						}						
+						
+						publishProgress(100);
+						
+						isUploadPlanSuccess = true;
+					}else{
+						publishProgress(div(i, totalPage));
+					}
+				}else{
+					Message msg = new Message();
+					msg.obj = res.getDesc();
+					msg.what = 0;
+					handler.sendMessage(msg);
+					isUploadingPlan =false;
+					return new BaseRes();
+				}
+			}
+			isUploadingPlan =false;
+			return new BaseRes();
+		}
+
+		@Override
+		protected void handleResponse(BaseRes response) {
+			resultHandler.obtainMessage().sendToTarget();
+		}
+		
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			progressBar1.setProgress(values[0]);
+			if(values[0] == 100){
+				progressText1.setText("已完成");
+			}else{
+				progressText1.setText("已上传"+values[0] + "%");
+			}
+		}
+	} 
+	
+	private Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			String s = (String)msg.obj;
+			if(msg.what == 0){
+				makeText(s);	
+			}else if(msg.what == 1){
+				progressText1.setText(s);
+			}else if(msg.what == 2){
+				progressText2.setText(s);
+			}
+		}
+	};
+	
+	/**
+	 * 上传完成后显示提示
+	 */
+	private Handler resultHandler = new Handler(){
+		public void handleMessage(Message msg) {
+			StringBuffer buffer =  new StringBuffer();
+			if(isUploadPlanSuccess){
+				buffer.append("上传已盘点任务成功");
+			}
+			
+			if(isUploadBindSuccess){
+				buffer.append("\n");
+				buffer.append("上传新增标签成功");
+			}
+			
+			if((!isUploadingBind && !isUploadingPlan)&& (isUploadBindSuccess||isUploadPlanSuccess)){
+				dialogUtil.show("提示", buffer.toString(), "确定", null);
+			}
+		}
+	};
+	
+	/**
+	 * 上传新增标签编码
+	 * @author Administrator
+	 *
+	 */
+	class UploadBindTask extends AsyncReqTask{
+		//总记录数
+		int totalNum = 0;
+		//总页数
+		int totalPage = 0;
+		//页码
+		int pageNum = 0;
+
+		public UploadBindTask(Context context) {
+			super(context);
+		}
+
+		@Override
+		protected void onPreExecute() {
+			isUploadingBind = true;
+		}
+		
+		@Override
+		protected BaseRes doRequest(BaseReq request) {
+			String whereSql = " is_bind='0' and running='b' ";
+			String sql = "select count(*) as sumId from plans where " + whereSql;
+			//查出需要上传的总记录数
+			totalNum = PlanManager.getInstance(getApplicationContext()).getPlanCount(sql, null);
+			
+			//如果总记录数等于0直接返回
+			if(totalNum == 0){
+				Message msg = new Message();
+				msg.obj = "没有数据需要上传";
+				msg.what = 2 ;
+				handler.sendMessage(msg);
+				isUploadingBind = false;
+				return new BaseRes();
+			}
+
+			//计算总页数
+			if(totalNum % PAGE_SIZE == 0){
+				totalPage = totalNum/PAGE_SIZE;
+			}else{
+				totalPage = totalNum/PAGE_SIZE + 1;
+			}
+				
+			//开始循环上传
+			for (int i = 0; i < totalPage; i++) {
+				//查询需要上传的记录
+				StringBuffer querySQL = new StringBuffer();
+				querySQL.append("select * from plans where ").append(whereSql).append(" order by det_id ");
+				List<Plan> list = PlanManager.getInstance(getApplicationContext()).getPlans(querySQL,null,i+1);
+				LogUtils.logd(getClass(), "第 " + i +  "页");
+				LogUtils.logd(getClass(), "size = " + list.size());
+				// 转换器
+				GsonBuilder builder = new GsonBuilder();
+				// 不转换没有 @Expose 注解的字段
+				builder.excludeFieldsWithoutExposeAnnotation();
+				Gson gson = builder.create();
+				String jsonStr =gson.toJson(list);
+				String checkid = StorageUtils.getString(StorageUtils.CHECK_ID, ActivityUploadData.this,"");
+				
+				UploadReq req = new UploadReq();
+				req.setCheck_id(checkid);
+				req.setJson(jsonStr);
+				
+				BaseRes res = SystemProvider.getInstance(getApplicationContext()).uoloadPlan(req);
+				
+				//插入成功 更新数据库字段 is_upload = 1
+				if(HttpResponseCode.SUCCESS.equals(res.getCode())){
+					/*for (Plan plan : list) {
+						plan.setIs_bind("1");
+						PlanManager.getInstance(getApplicationContext()).updatePlan(plan, plan.getDet_id());
+					}*/
+					
+
+					if(i == totalPage-1){
+						StringBuffer sql3 = new StringBuffer();
+						sql3.append("select * from plans where ").append(whereSql);
+						List<Plan> lsPlan = PlanManager.getInstance(getApplicationContext()).getPlans(sql3, null);
+						for (Plan plan : lsPlan) {
+							plan.setIs_bind("1");
+							PlanManager.getInstance(getApplicationContext()).updatePlan(plan, plan.getDet_id());							
+						}
+						
+						publishProgress(100);
+						
+						isUploadBindSuccess = true;
+					}else{
+						publishProgress(div(i, totalPage));
+					}
+				}else{
+					Message msg = new Message();
+					msg.obj = res.getDesc();
+					msg.what = 0;
+					handler.sendMessage(msg);
+					isUploadingBind = false;
+					return new BaseRes();
+				}
+			}
+			
+			isUploadingBind = false;
+			return new BaseRes();
+		}
+
+		@Override
+		protected void handleResponse(BaseRes response) {
+			resultHandler.obtainMessage().sendToTarget();
+		}
+		
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			progressBar2.setProgress(values[0]);
+			if(values[0] == 100){
+				progressText2.setText("已完成");
+			}else{
+				progressText2.setText("已上传"+values[0] + "%");
+			}
+		}
+	} 
+	
+	/**
+	 * 获取百分比
+	 * @param x
+	 * @param total
+	 * @return
+	 */
+	 public int div(int v1, int v2) {
+		  BigDecimal b1 = new BigDecimal(Double.toString(v1));
+		  BigDecimal b2 = new BigDecimal(Double.toString(v2));
+		  double d = b1.divide(b2, 2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		  return (int)(d*100);
+	 }   
+}

@@ -1,0 +1,124 @@
+package com.kingtangdata.inventoryassis.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.CheckBox;
+import android.widget.EditText;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.set.ActivityRegister;
+import com.kingtangdata.inventoryassis.activity.set.ActivitySetIP;
+import com.kingtangdata.inventoryassis.base.BaseActivity;
+import com.kingtangdata.inventoryassis.bean.User;
+import com.kingtangdata.inventoryassis.db.UserManager;
+import com.kingtangdata.inventoryassis.tabs.TabsOfBottom;
+import com.kingtangdata.inventoryassis.util.Password;
+import com.kingtangdata.inventoryassis.util.StorageUtils;
+
+public class ActivityLogin extends BaseActivity {
+	private EditText etAccount;
+	private EditText etPassword;
+
+	// 选中显示密码
+	private CheckBox cbPassword;
+
+	public void onCreate(Bundle bundle) {
+		super.onCreate(bundle);
+		super.setContentView(R.layout.activity_login);
+		super.setTopLabel("用户登录");
+
+		etAccount = (EditText) findViewById(R.id.text_user_id);
+		etPassword = (EditText) findViewById(R.id.text_password);
+
+		cbPassword = (CheckBox) findViewById(R.id.cb_password);
+		
+		// 获取设备屏幕宽高以及密度
+		DisplayMetrics metrics = new DisplayMetrics();
+		WindowManager wm = getWindowManager();
+		wm.getDefaultDisplay().getMetrics(metrics);
+		int dpi = metrics.densityDpi;
+		// 将屏幕密度保存到文件中 方便项目其他地方使用
+		// 将dpi保存到文件中
+		StorageUtils.setProperty(StorageUtils.DPI, dpi, this);
+	}
+	
+	
+	public void setIPAddress(View view){
+		startActivity(new Intent(this,ActivitySetIP.class));
+	}
+
+	/**
+	 * 注册
+	 * 
+	 * @param view
+	 */
+	public void doRegister(View view) {
+		startActivity(new Intent(this, ActivityRegister.class));
+	}
+
+	/*
+	 * 单击登陆事件调用
+	 */
+	public void doLogin(View view) {
+		String account = etAccount.getText().toString();
+		String password = etPassword.getText().toString();
+
+		// 用户名不能为空
+		if (TextUtils.isEmpty(account)) {
+			makeText("请输入用户名！");
+			return;
+		}
+
+		// 密码不能为空
+		if (TextUtils.isEmpty(password)) {
+			makeText("密码不能为空！");
+			return;
+		}
+
+		// 开始检查用户名和密码
+		User user = login(account, password);
+		if (user != null) {
+			// 登录成功保存用户的deptid到文件中
+			StorageUtils.setProperty(StorageUtils.USER_ID, user.getUser_id(),this);
+			StorageUtils.setProperty(StorageUtils.IS_REMEMBER, cbPassword.isChecked(),this);
+			if (cbPassword.isChecked()) {
+				StorageUtils.setProperty(StorageUtils.USER_ACCOUNT,etAccount.getText().toString(), this);
+				StorageUtils.setProperty(StorageUtils.USER_PASSWORD,etPassword.getText().toString(), this);
+			} else {
+				//StorageUtils.setProperty(StorageUtils.USER_ACCOUNT, "", this);
+				StorageUtils.setProperty(StorageUtils.USER_PASSWORD, "", this);
+			}
+
+			Intent intent = new Intent();
+			intent.setClass(this, TabsOfBottom.class);
+			startActivity(intent);
+			finish();
+		} else {
+			makeText("用户名或密码错误");
+		}
+	}
+
+	private User login(String userCode, String password) {
+		// 加密
+		String md5 = Password.md5(password);
+		// 检查用户是否存在于用户表中
+		return UserManager.getInstance(this).checkUser(userCode, md5);
+	}
+
+	protected void onResume() {
+		super.onResume();
+		// 给默认值，调试用
+		String account = StorageUtils.getString(StorageUtils.USER_ACCOUNT,this, "");
+		String password = StorageUtils.getString(StorageUtils.USER_PASSWORD,this, "");
+		
+		boolean isRemember = StorageUtils.getBoolean(StorageUtils.IS_REMEMBER, this);
+		
+		etAccount.setText(account);
+		etPassword.setText(password);
+		cbPassword.setChecked(isRemember);
+	}
+}

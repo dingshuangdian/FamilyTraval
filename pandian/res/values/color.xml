@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="border">#ff969696</color>
+    <color name="red">#cc0000</color>
+    <!-- 状态栏颜色 -->
+    <color name="statuscolor">#50444444</color>
+    <color name="b1">#cecece</color>
+    <!-- 浅灰色 -->
+    <color name="b2">#96989F</color>
+    <color name="b10">#F7F7F7</color>
+    <color name="b12">#F2F2F2</color>
+    <!-- 整体的一个风格的颜色 -->
+    <color name="bg">#f8f8f8</color>
+    <!-- 橙色 -->
+    <color name="orange">#FF6600</color>
+    <!-- 橙色 点击效果色 -->
+    <color name="orange_on">#FF4400</color>
+    <!-- 绿色 -->
+    <color name="green">#339933</color>
+    <!-- 顶部标题颜色 -->
+    <color name="blue">#054893</color>
+    <!-- 深灰色 -->
+    <color name="gray">#606060</color>
+    <!-- 浅灰色 -->
+    <color name="lightgray">#96989F</color>
+    <!-- 蓝色 -->
+    <color name="lightblue">#3366FF</color>
+    
+	<!-- 界面所有深蓝色字体一律采用此颜色 -->
+    <!-- 淡蓝色背景色 -->
+    <color name="bg_e1">#e2ebf3</color>
+    <!-- 淡蓝色背景色 -->
+    <color name="bg_e2">#f8f8f8</color>
+    <!-- 底部弹出菜单背景 -->
+    <color name="bg_e3">#2274BA</color>
+
+</resources>

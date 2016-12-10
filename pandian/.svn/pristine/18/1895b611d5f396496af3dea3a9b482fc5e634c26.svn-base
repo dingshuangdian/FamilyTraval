@@ -1,0 +1,81 @@
+package com.kingtangdata.inventoryassis.act;
+
+/*
+ * 主页面通用类
+ */
+
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.adapter.HomeGridAdapter;
+
+public class ActivityMain extends BaseActivity implements OnItemClickListener{
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.ui_home_grid);
+		super.setTopViewVisibility(View.GONE);
+		super.setLogoVisibility(View.VISIBLE);
+		super.setStatusBarVisibility(View.VISIBLE);
+	
+		HomeGridAdapter adapter = new HomeGridAdapter(this);
+		GridView gridView = (GridView)findViewById(R.id.gridview);
+		gridView.setOnItemClickListener(this);
+		gridView.setAdapter(adapter);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+		// TODO Auto-generated method stub
+		switch (i) {
+		case 0://盘点任务
+			startActivity(new Intent(this, ActivityCkeckTask.class));			
+			break;
+		case 1://标签绑定
+			startActivity(new Intent(this, ActivityRFID.class));
+			break;
+		case 2://盘亏处理
+			startActivity(new Intent(this, ActivityPK.class));
+			break;
+		case 3://盘盈处理
+			startActivity(new Intent(this, ActivityPY.class));
+			break;
+		case 4://下载任务
+			startActivity(new Intent(this, ActivityDownloadTask.class));
+			break;
+		case 5://上传结果
+			startActivity(new Intent(this, ActivityUploadData.class));
+			break;
+		default:
+			break;
+		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("温馨提示");
+		builder.setMessage("确认要退出应用？");
+		builder.setNegativeButton("取消", null);
+		builder.setNeutralButton("确定", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
+		builder.create().show();
+	}
+}

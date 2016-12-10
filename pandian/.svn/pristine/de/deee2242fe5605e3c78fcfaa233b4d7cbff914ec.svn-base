@@ -1,0 +1,94 @@
+package com.kingtangdata.inventoryassis.act;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.BaseAdapter;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.PagerActivity;
+import com.kingtangdata.inventoryassis.adapter.PagerListAdapter;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+
+
+/**
+ * 条码查询的界面
+ * @author Administrator
+ *
+ */
+public class ActivityBarcodeQuery extends PagerActivity{
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.activity_barcode);
+		super.setStatusBarVisibility(View.VISIBLE);
+		super.setTopLabel(R.string.title_activity_print);
+		super.setLeftButtonText("返回");
+	}
+	
+
+	@Override
+	protected List<String> getTitles() {
+		// TODO Auto-generated method stub
+		List<String> titles = new ArrayList<String>(); 
+		titles.add("部门编号");
+		titles.add("部门名称");
+		titles.add("设备名称");
+		titles.add("设备型号");
+		titles.add("标题5");
+		titles.add("标题6");
+		titles.add("标题7");
+		titles.add("标题8");
+		titles.add("标题9");
+		titles.add("标题10");
+		titles.add("标题11");
+		titles.add("标题12");
+		titles.add("标题13");
+		titles.add("标题14");
+		titles.add("标题15");
+		titles.add("标题16");
+		
+		return titles;
+	}
+	
+	
+	@Override
+	public void doClickLeftBtn() {
+		// TODO Auto-generated method stub
+		onBackPressed();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		finish();
+	}
+
+
+	@Override
+	protected void buildAdapter() {
+		// TODO Auto-generated method stub
+		StringBuffer querySQL = new StringBuffer("select * from plans ");
+		
+		List<Plan> plans = PlanManager.getInstance(this).getPlans(querySQL.toString(),null);
+		
+		LogUtils.logd(getClass(), "size = " + plans.size());
+		
+		adapter1 = new PagerListAdapter(this, plans, 1);
+		adapter2 = new PagerListAdapter(this, plans, 2);
+		adapter3 = new PagerListAdapter(this, plans, 3);
+		adapter4 = new PagerListAdapter(this, plans, 4);
+	}
+	
+	public void doSearch(View view){
+		
+	 }
+}

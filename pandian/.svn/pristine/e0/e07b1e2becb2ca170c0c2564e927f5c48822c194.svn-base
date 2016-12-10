@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string-array name="marks">
+        <item>标签编码</item>
+        <item>设备编号</item>
+        <item>设备名称</item>
+        <item>资产编号</item>
+        <item>设备型号</item>
+        <item>设备规格</item>        
+        <item>使用部门</item>
+       	<item>安装地点</item>
+        <item>制造厂</item>
+        <item>出厂编号</item>
+        <item>备注</item>
+    </string-array>
+    
+      <string-array name="ids">
+        <item>label_code</item>
+        <item>device_code</item>
+        <item>device_name</item>
+        <item>assetno</item>
+        <item>device_type</item>
+        <item>device_size</item>        
+        <item>dept_name</item>
+       	<item>install_place</item>
+        <item>factory</item>
+        <item>outno</item>
+        <item>memo</item>
+    </string-array>
+</resources>

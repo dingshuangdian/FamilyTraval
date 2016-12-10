@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="border">#ff969696</color>
+    
+    
+    <!-- 状态栏颜色 -->
+    <color name="statuscolor">#50444444</color>
+      
+    <color name="b1">#cecece</color>
+    
+    <!-- 整体的一个风格的颜色 -->
+    <color name="bg">#F3F3F3</color>
+    
+    <!-- 橙色 -->
+    <color name="orange">#FF6600</color>
+    <!-- 绿色 -->
+    <color name="green">#339933</color>
+    <!-- 顶部标题颜色 -->
+    <color name="blue">#054893</color>
+    <!-- 深灰色 -->
+    <color name="gray">#606060</color>
+    <!-- 浅灰色 -->
+    <color name="lightgray">#96989F</color>
+    <!-- 蓝色 -->
+	<color name="lightblue">#3366FF</color>
+    
+    
+</resources>

@@ -1,0 +1,277 @@
+//package com.kingtangdata.inventoryassis.common;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//import android.app.AlertDialog;
+//import android.content.DialogInterface;
+//import android.os.AsyncTask;
+//import android.os.Handler;
+//import android.os.Message;
+//import android.support.v4.view.ViewPager;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.widget.AbsListView;
+//import android.widget.AdapterView;
+//import android.widget.EditText;
+//import android.widget.ListView;
+//import android.widget.TextView;
+//import android.widget.Toast;
+//
+//import com.kingtangdata.inventoryassis.R;
+//import com.kingtangdata.inventoryassis.data.Plan;
+//import com.kingtangdata.inventoryassis.data.DataDefine;
+//import com.kingtangdata.inventoryassis.data.InventoryHelper;
+//import com.kingtangdata.inventoryassis.view.InventoryDialog;
+//import com.kingtangdata.inventoryassis.view.PagerViewAdapter;
+//import com.kingtangdata.inventoryassis.view.ResultAdapter;
+//import com.kingtangdata.inventoryassis.view.SliderPopupChoicer;
+//import com.kingtangdata.inventoryassis.view.SurplusDialog;
+//
+//public class DataSearcher extends BaseActivity{
+//	
+//	public static final int SQL_LIMIT = 500;
+//	public static final int SQL_OFFSET_BASE = 250;
+//	private View addDscCnt;
+//	protected InventoryHelper dataHelper;
+//	private List<DataDefine> fields;
+//	private int firstPos;
+//	public TextView mProgressReport;
+//	private int type;
+//	private CommonDialog mDialog;
+//	private SliderPopupChoicer mChoicer;
+//	private LayoutInflater inflater;
+//	private List<Plan> mDatas;
+//	public ViewGroup mPopView;
+//	public ResultAdapter mResultAdapter;
+//	private AdapterView.OnItemClickListener mResultItemClickListener;
+//	private List<ListView> mSyconList;
+//	private EditText mTextInput;
+//	private Toast mToast;
+//	private ViewPager mViewPager;
+//	private List<View> mViews;
+//	protected int sql_offset = 0;
+//	
+//	public void setSearchType(int paramInt){
+//	    type = paramInt;
+//	}
+//	
+//	public void setDialog(CommonDialog commonDialog){		
+//	    mDialog = commonDialog;	    
+//	}
+//	
+//	private Handler handler = new Handler(){
+//	    public void handleMessage(Message msg){
+//	    	if (msg.what == 0){
+//	    		addDscCnt.setVisibility(8);
+//	    		mViewPager.setVisibility(0);
+//	    		mChoicer.setPopupData(fields);
+//	    		mViewPager.setAdapter(new PagerViewAdapter(mViews));
+//	    	}
+//	      
+//	    	if (msg.what == 1){
+//	    		mViewPager.setVisibility(8);
+//	    	}
+//	    }
+//	};
+//	
+//	private void refreshData(){
+//	    mDatas = dataHelper.searchData(type, "", "", 500L, 250 * sql_offset);
+//	    mResultAdapter.resetData(mDatas);
+//	}
+//	
+//	public void doCheck(View view){
+//		
+//	    String str1 = mChoicer.getText().toString().trim();
+//	    String str2 = mTextInput.getText().toString().trim();
+//	    
+//	    if (str2.equals("")){	    	
+//	    	Toast.makeText(this, "请输入盘查数据...", 1).show();
+//	    	return;	    	
+//	    }
+//	    
+//	    List<Plan> list = dataHelper.searchData(0, str1, str2);
+//	    
+//	    if (list.size() == 0){
+//	    	
+//	    	new AlertDialog
+//	    		.Builder(this)
+//	    		.setTitle("提示")
+//	    		.setMessage("该盘查数据不存在，是否进行盘盈...")
+//	    		.setPositiveButton(R.string.dialog_positive, 
+//	    		new DialogInterface.OnClickListener(){
+//	    			public void onClick(DialogInterface dialogInterface, int paramInt){
+//	    				SurplusDialog surplusDialog = new SurplusDialog(DataSearcher.this, R.string.dialog_add_surplus);
+//	    				surplusDialog.setData(new Plan(), true);
+//	    				surplusDialog.show();
+//	    			}
+//	    		}).setNegativeButton(2131099701, null).show();
+//	    }else{
+//	    	((InventoryDialog)this.mDialog).setModel(R.string.dialog_check);
+//	    	mDialog.setData((Plan)list.get(0), false);
+//	    	mDialog.show();
+//	    }
+//	}
+//	
+//	public void doSearch(View paramView){
+//	    String str1 = mChoicer.getText().toString().trim();
+//	    String str2 = mTextInput.getText().toString().trim();
+//	    sql_offset = 0;
+//	    List<Plan> list = dataHelper.searchData(type, str1, str2, 500L, 250 * sql_offset);
+//	    this.mResultAdapter.resetData(list);
+//	 }
+//	
+//	public List<Plan> getData(int paramInt, String a, String b){		
+//	    return dataHelper.searchData(paramInt, a, b);	    
+//	}
+//	
+//	protected void initalDialog(){
+//		
+//	    dataHelper = new InventoryHelper(this);
+//	    mViewPager = ((ViewPager)findViewById(R.id.pager_view));
+//	    inflater = LayoutInflater.from(this);
+//	    mProgressReport = ((TextView)findViewById(R.id.text_show_inventory_progress));
+//	    mChoicer = ((SliderPopupChoicer)findViewById(R.id.checker_choice));
+//	    mTextInput = ((EditText)findViewById(R.id.search_input));
+//	    mViewPager = ((ViewPager)findViewById(R.id.pager_view));
+//	    addDscCnt = findViewById(R.id.data_add_dsc_cnt);
+//	    mPopView = ((ViewGroup)inflater.inflate(R.layout.dialog_result_operate, null));
+//	    mResultItemClickListener = new ResultItemClickListener();
+//	    mSyconList = new ArrayList<ListView>();
+//	    mToast = Toast.makeText(this, "", 1);
+//	    
+//	    mViewPager.setOnHierarchyChangeListener(new ViewGroup.OnHierarchyChangeListener(){
+//	    	public void onChildViewAdded(View view1, View view2){
+//	    		int i = ((Integer)view2.getTag()).intValue();
+//	    		ListView listView = (ListView)view2.findViewById(2131296301);
+//	    		mSyconList.add(listView);
+//	    		for (int j = i * 4; ; j++){
+//	    			if (j >= 4 * (i + 1)){
+//	    				listView.setTag(Integer.valueOf(4 * (i + 1)));
+//	    				listView.setAdapter(mResultAdapter);
+//	    				listView.setOnItemClickListener(mResultItemClickListener);
+//	    				listView.setSelection(firstPos);
+//	    				listView.setOnScrollListener(new AbsListView.OnScrollListener(){
+//	    					public void onScroll(AbsListView absListView, int a, int b, int c){
+//	    						firstPos = a;
+//	    						if (c >= b){
+//	    							if (a != 0){
+//	    								if (sql_offset > 0){
+//	    									sql_offset = (-1 + sql_offset);
+//	    									System.out.println("top action 当前页数 = " + sql_offset);
+//	    									refreshData();
+//	    									absListView.setSelection(b + 250);
+//	    									mToast.setText("数据更新 " + 250 * sql_offset + " - " + (500 + 250 * sql_offset));
+//	    									mToast.show();
+//	    								}
+//	    							}
+//	    						}else{  
+//	    							sql_offset = (1 + sql_offset);
+//	    							System.out.println("bottom action 当前页数 = " + sql_offset);
+//	    							refreshData();
+//	    							absListView.setSelection(250 - b);
+//	    							mToast.setText("数据更新 " + 250 * sql_offset + " - " + (500 + 250 * sql_offset));
+//	    							mToast.show();
+//	    						}		
+//	    					}
+//
+//	    					public void onScrollStateChanged(AbsListView AbsListView, int paramInt){
+//	    						if (paramInt == 0){
+//	    							for (int i = 0; ; i++){
+//	    								if (i >= mSyconList.size()){
+//	    									return;
+//	    								}
+//	    								((ListView)mSyconList.get(i)).setSelection(firstPos);
+//	    							}
+//	    						}
+//	    					}
+//	    				});
+//
+//	    			}
+//	    			
+//	    			TextView localTextView = (TextView)view2.findViewById(2131296297 + j % 4);
+//	    			if ((j < fields.size()) && (fields.get(j) != null)){
+//	    				localTextView.setText(((DataDefine)fields.get(j)).getName());
+//	    			}
+//	    		}
+//	    	}
+//
+//	    	public void onChildViewRemoved(View view1, View view2){
+//	    		mSyconList.remove((ListView)view2.findViewById(2131296301));
+//	    	}
+//	    });
+//	    	
+//	    mChoicer.setChoicerLine(5);
+//	    
+//	}
+//	
+//
+//	protected void onResume(){
+//		
+//		super.onResume();
+//	    if (!getSharedPreferences("sys_prefern", 0).contains("login_user")){
+//	      finish();
+//	    }
+//	    setProgresText(dataHelper,mProgressReport);
+//	    
+//	}
+//
+//	public void setItemClickAction(AdapterView.OnItemClickListener OnItemClickListener){
+//	    this.mResultItemClickListener = OnItemClickListener;
+//	}
+//
+//	private class ResultItemClickListener implements AdapterView.OnItemClickListener{
+//	    private ResultItemClickListener(){
+//	    	
+//	    }
+//
+//	    public void onItemClick(AdapterView<?> adapterView, View view, int paramInt, long paramLong){
+//	    	
+//	      	mDialog.setData((Plan)mResultAdapter.getItem(paramInt), false);
+//	     	mDialog.show();
+//	      
+//	    }
+//	}
+//
+//	public class UIAddTask extends AsyncTask<Void, Integer, Boolean>{
+//		
+//	    public UIAddTask(){
+//	    	
+//	    }
+//
+//	    protected Boolean doInBackground(Void[] paramArrayOfVoid){
+//	    	
+//	    	fields = dataHelper.getDataDefines();
+//	    	mViews = new ArrayList<View>();
+//	    	int i=0;
+//	    	if (fields.size() % 4 == 0){
+//	    		i = fields.size()/4;
+//	    	}
+//	    	for (int j = 0;; j++){
+//	    		if (j >= i){
+//	    			mDatas = dataHelper.searchData(type, "", "", 500L, 250 * sql_offset);
+//	    			mResultAdapter = new ResultAdapter(DataSearcher.this, mDatas, fields);
+//	    			i = 1 + fields.size()/4;
+//	    			if(i>j)return true;
+//	    		}
+//	        
+//		    	ViewGroup viewGroup = (ViewGroup)inflater.inflate(R.layout.commom_search_cnt, null);
+//		        viewGroup.setTag(Integer.valueOf(j));
+//		        mViews.add(viewGroup);
+//	    	}
+//	    }
+//
+//	    protected void onPostExecute(Boolean pBoolean){		 
+//	    	super.onPostExecute(pBoolean);
+//	    	handler.sendEmptyMessage(0);
+//	      
+//	    }
+//
+//	    protected void onPreExecute(){
+//	    	super.onPreExecute();
+//	    	handler.sendEmptyMessage(1);	      
+//	    }
+//	    
+//	 }
+//}

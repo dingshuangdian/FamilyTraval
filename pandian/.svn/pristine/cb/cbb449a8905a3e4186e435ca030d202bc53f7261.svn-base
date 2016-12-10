@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="marks">
+        <item>标签编码</item>
+        <item>设备编号</item>
+        <item>设备名称</item>
+        <item>资产编号</item>
+        <item>设备型号</item>
+        <item>设备规格</item>
+        <item>使用部门</item>
+        <item>安装地点</item>
+        <item>是否相符</item>
+        <item>制造厂</item>
+        <item>出厂编号</item>
+        <item>备注</item>
+    </string-array>
+    
+    <string-array name="ids">
+        <item>label_code</item>
+        <item>device_code</item>
+        <item>device_name</item>
+        <item>assetno</item>
+        <item>device_type</item>
+        <item>device_size</item>
+        <item>dept_name</item>
+        <item>install_place</item>
+        <item>is_normal</item>
+        <item>factory</item>
+        <item>outno</item>
+        <item>memo</item>
+    </string-array>
+    
+    <string-array name="trade">
+        <item>食品副食饮料</item>
+        <item>纺织服装鞋帽箱包</item>
+        <item>数码电子家用电器</item>
+        <item>建材装潢家具</item>
+        <item>日用日化生活用品</item>
+        <item>文体教育</item>
+        <item>美容配饰</item>
+        <item>超市</item>
+        <item>食品批发市场</item>
+        <item>工艺品礼品</item>
+        <item>纸品包装印刷</item>
+        <item>机械电子通信网络</item>
+    	 <item>交通运输汽车及配件</item>
+    	  <item>冶金化工</item>
+    	   <item>餐饮及休闲娱乐服务</item>
+    	    <item>商业服务和咨询</item>
+    	     <item>日常生活服务</item>
+    	      <item>农林牧渔</item>
+    	       <item>其他</item>
+    	       
+    </string-array>
+    
+    <string-array name="country_codes">
+        <item>-</item>
+        <item>AR</item>
+        <item>AU</item>
+        <item>BR</item>
+        <item>BG</item>
+        <item>CA</item>
+        <item>CH</item>
+        <item>CN</item>
+        <item>CZ</item>
+        <item>DE</item>
+        <item>DK</item>
+        <item>ES</item>
+        <item>FI</item>
+        <item>FR</item>
+        <item>GB</item>
+        <item>GR</item>
+        <item>HU</item>
+        <item>ID</item>
+        <item>IT</item>
+        <item>JP</item>
+        <item>KR</item>
+        <item>NL</item>
+        <item>PL</item>
+        <item>PT</item>
+        <item>RU</item>
+        <item>SE</item>
+        <item>SK</item>
+        <item>SI</item>
+        <item>TR</item>
+        <item>TW</item>
+        <item>US</item>
+    </string-array>
+    <string-array name="preferences_front_light_values">
+        <item>ON</item>
+        <item>AUTO</item>
+        <item>OFF</item>
+    </string-array>
+    <string-array name="preferences_front_light_options">
+        <item>@string/preferences_front_light_on</item>
+        <item>@string/preferences_front_light_auto</item>
+        <item>@string/preferences_front_light_off</item>
+    </string-array>
+
+</resources>

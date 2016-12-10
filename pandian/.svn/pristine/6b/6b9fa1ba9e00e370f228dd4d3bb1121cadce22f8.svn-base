@@ -1,0 +1,257 @@
+package com.kingtangdata.inventoryassis.tools;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.params.ConnManagerParams;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+
+import android.content.Context;
+import android.util.Log;
+
+public class SyncDataRequest{
+	
+	private static final int CONNECTION_TIMEOUT = 20000;
+	private static final String LogTag = SyncDataRequest.class.getCanonicalName();
+	private static final int PING_TIMEOUT = 2000;
+	private static final int SO_TIMEOUT = 180000;
+	private static HttpClient mHttpClient = null;
+	public static final String targetstr_apiBatchAdd = "/pandianyi/api/plan_batchAdd.api";
+	public static final String targetApiBatchSave = "/pandianyi/api/plan_batchSave.api";
+	public static final String targetApiDepartmentList = "/pandianyi/api/department_list.api";
+	public static final String targetApiPlanDatabaseDownload = "/pandianyi/api/plan_downloadSqliteDB.api";
+	public static final String targetApiPlanList = "/pandianyi/api/plan_list.api";
+	public static final String targetApiPlanSave = "/pandianyi/api/plan_save.api";
+	public static final String targetApiUserList = "/pandianyi/api/user_list.api";
+	public static String targetURI = "http://192.168.1.106:6666";
+
+	public SyncDataRequest(Context context){
+		
+		targetURI = context.getSharedPreferences("sys_prefern", 0).getString("server_address", "http://192.168.1.106:6666");
+		if (mHttpClient == null){
+			//创建 HttpParams 以用来设置 HTTP 参数（这一部分不是必需的）
+			BasicHttpParams httpParams = new BasicHttpParams();
+			//设置连接管理器的超时
+			ConnManagerParams.setMaxTotalConnections(httpParams, 5);
+			//初始化工作
+			HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1);
+			HttpProtocolParams.setContentCharset(httpParams, HTTP.DEFAULT_CONTENT_CHARSET);
+            HttpProtocolParams.setUseExpectContinue(httpParams, true);
+			SchemeRegistry registry = new SchemeRegistry();
+			registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+			registry.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 80));
+
+			mHttpClient = new DefaultHttpClient(new ThreadSafeClientConnManager(httpParams, registry), httpParams);
+		}
+	}
+
+	public String getDepartments(String str_api, String str)throws ClientProtocolException, IOException{
+		
+		mHttpClient.getParams().setParameter("http.connection.timeout", Integer.valueOf(20000));
+		mHttpClient.getParams().setParameter("http.socket.timeout", Integer.valueOf(180000));
+		HttpPost httpPost = new HttpPost(targetURI + str_api);
+		Log.d(LogTag, httpPost.getURI().toString());
+		MultipartEntity multipartEntity = new MultipartEntity();
+		if (str != null){
+			multipartEntity.addPart("departments", new StringBody(str, Charset.forName("UTF-8")));		
+			Log.d(LogTag, multipartEntity.toString());
+			httpPost.setEntity(multipartEntity);
+		}
+		HttpResponse httpResponse = mHttpClient.execute(httpPost);
+		int i = httpResponse.getStatusLine().getStatusCode();
+		String str1 = EntityUtils.toString(httpResponse.getEntity());
+		String str2 = null;
+		if (i == 200){
+			str2 = str1;
+		}
+		return str2;
+	}
+
+	public boolean getDepartments(String str_api, String mDepartments, File file, DownloadProgressListener progressListener)throws ClientProtocolException, IOException{
+		mHttpClient.getParams().setParameter("http.connection.timeout", Integer.valueOf(20000));
+		mHttpClient.getParams().setParameter("http.socket.timeout", Integer.valueOf(180000));
+		HttpPost httpPost = new HttpPost(targetURI + str_api);
+		//Log.d(LogTag, httpPost.getURI().toString());
+		MultipartEntity multipartEntity = new MultipartEntity();
+		if (mDepartments != null && !("").equals(mDepartments)){
+			multipartEntity.addPart("departments", new StringBody(mDepartments, Charset.forName("UTF-8")));
+			Log.d(LogTag, multipartEntity.toString());
+			httpPost.setEntity(multipartEntity);
+		}
+		HttpResponse httpResponse = mHttpClient.execute(httpPost);
+		long dataLength;
+		InputStream inputStream;
+		FileOutputStream fileOutputStream;
+		byte[] dataByte;
+		int i;
+		
+		if (httpResponse.getStatusLine().getStatusCode() == 200){
+			dataLength = httpResponse.getEntity().getContentLength();
+			System.out.println("--------------------------------->HTTP访问信息1:"+dataLength);
+			inputStream = httpResponse.getEntity().getContent();
+			System.out.println("--------------------------------->HTTP访问信息2:"+inputStream);
+			if (inputStream != null){
+				
+				if (file.exists()){
+					String logTag = LogTag;
+					Boolean ret =  Boolean.valueOf(file.delete());
+					Log.d(logTag, String.format("delete > %s ", ret));
+				}
+				
+				file.createNewFile();
+				fileOutputStream = new FileOutputStream(file);
+				dataByte = new byte[1024];
+				i = 0;
+
+				while (true){
+					int j = inputStream.read(dataByte);
+					
+					if ((j == -1) || (DataSyncService.toStop)){
+						inputStream.close();
+						fileOutputStream.flush();
+						fileOutputStream.close();
+						file.deleteOnExit();
+						DataSyncService.toStop = false;
+						return false;
+					}
+					
+					i += j;
+					fileOutputStream.write(dataByte, 0, j);
+					progressListener.downloaded(i, dataLength);
+				}				
+			}
+			return true;
+		}
+		return false;
+	}
+
+	public String getSyncData(String paramString)
+		throws ClientProtocolException, IOException
+	{
+		mHttpClient.getParams().setParameter("http.connection.timeout", Integer.valueOf(20000));
+		mHttpClient.getParams().setParameter("http.socket.timeout", Integer.valueOf(180000));
+		HttpPost httpPost = new HttpPost(targetURI + paramString);
+		HttpResponse httpResponse = mHttpClient.execute(httpPost);
+		int i = httpResponse.getStatusLine().getStatusCode();
+		String str = EntityUtils.toString(httpResponse.getEntity());
+		if (i == 200)
+			return str;
+		Log.d(LogTag, i + ":" + str);
+		return str;
+	}
+
+	public boolean isUrlCorrect(String paramString)
+	{
+		mHttpClient.getParams().setParameter("http.connection.timeout", Integer.valueOf(20000));
+		mHttpClient.getParams().setParameter("http.socket.timeout", Integer.valueOf(180000));
+		HttpPost httpPost = new HttpPost(paramString + "/pandianyi/str_api/plan_save.api");
+		try
+		{
+			System.out.println("--------------->	 start valid");
+			int i = mHttpClient.execute(httpPost).getStatusLine().getStatusCode();
+			System.out.println("--------------->	 end valid");
+			boolean bool = false;
+			if (i == 200)
+				bool = true;
+			return bool;
+		}
+		catch (Exception localException)
+		{
+		}
+		return false;
+	}
+
+	public String ping(String str_api, String str)throws ClientProtocolException, IOException{
+		
+		mHttpClient.getParams().setParameter("http.connection.timeout", Integer.valueOf(2000));
+		mHttpClient.getParams().setParameter("http.socket.timeout", Integer.valueOf(180000));
+		HttpPost httpPost = new HttpPost(targetURI + str_api);
+		Log.d(LogTag, httpPost.getURI().toString());
+		MultipartEntity multipartEntity = new MultipartEntity();
+		if (str != null){
+			multipartEntity.addPart("json", new StringBody(str, Charset.forName("UTF-8")));
+			Log.d(LogTag, multipartEntity.toString());
+			httpPost.setEntity(multipartEntity);
+		}
+		HttpResponse httpResponse = mHttpClient.execute(httpPost);
+		int i = httpResponse.getStatusLine().getStatusCode();
+		String str1 = EntityUtils.toString(httpResponse.getEntity());
+		Log.d(LogTag, i + ":" + str1.toString());
+		String str2 = null;
+		if (i == 200){
+			str2 = str1;
+		}
+		return str2;
+	}
+
+	protected String post(String ip, String str)
+		throws ClientProtocolException, IOException
+	{
+		mHttpClient.getParams().setParameter("http.connection.timeout", Integer.valueOf(20000));
+		mHttpClient.getParams().setParameter("http.socket.timeout", Integer.valueOf(180000));
+		HttpPost httpPost = new HttpPost(targetURI + ip);
+		Log.d(LogTag, httpPost.getURI().toString());
+		MultipartEntity multipartEntity = new MultipartEntity();
+		if (str != null){
+			multipartEntity.addPart("json", new StringBody(str, Charset.forName("UTF-8")));
+			Log.d(LogTag, multipartEntity.toString());
+			httpPost.setEntity(multipartEntity);
+		}
+		HttpResponse httpResponse = mHttpClient.execute(httpPost);
+		int i = httpResponse.getStatusLine().getStatusCode();
+		String str1 = EntityUtils.toString(httpResponse.getEntity());
+		Log.d(LogTag, i + ":" + str1.toString());
+		String str2 = null;
+		if (i == 200)
+			str2 = str1;
+		return str2;
+	}
+
+	protected String post(String ip, String str, UploadMultipartEntity.ProgressListener progressListener)
+		throws ClientProtocolException, IllegalArgumentException, IOException
+	{
+		mHttpClient.getParams().setParameter("http.connection.timeout", Integer.valueOf(20000));
+		mHttpClient.getParams().setParameter("http.socket.timeout", Integer.valueOf(180000));
+		HttpPost httpPost = new HttpPost(targetURI + ip);
+		Log.d(LogTag, httpPost.getURI().toString());
+		UploadMultipartEntity multipartEntity = new UploadMultipartEntity(progressListener);
+		if (str != null){
+			multipartEntity.addPart("json", new StringBody(str, Charset.forName("UTF-8")));
+			Log.d(LogTag, "上传数据长度:" + String.valueOf(multipartEntity.getContentLength()));
+			Log.d(LogTag, multipartEntity.toString());
+			httpPost.setEntity(multipartEntity);
+		}
+		HttpResponse httpResponse = mHttpClient.execute(httpPost);
+		int i = httpResponse.getStatusLine().getStatusCode();
+		String str1 = EntityUtils.toString(httpResponse.getEntity());
+		Log.d(LogTag, i + ":" + str1.toString());
+		String str2 = null;
+		if (i == 200)
+			str2 = str1;
+		return str2;
+	}
+
+	public void shutdown()
+	{
+		mHttpClient.getConnectionManager().shutdown();
+	}
+}

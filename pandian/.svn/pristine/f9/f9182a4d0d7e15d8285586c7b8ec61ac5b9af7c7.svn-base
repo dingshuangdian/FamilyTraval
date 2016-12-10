@@ -1,0 +1,393 @@
+package com.kingtangdata.inventoryassis.db;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.util.LogUtils;
+
+public class PlanManager {
+
+	private DBHelper dbhelper = null;
+
+	private static PlanManager instance = null;
+	
+	private static final int PAGE_SIZE = 20;  
+
+	public PlanManager(Context context) {
+		dbhelper = DBHelper.getInstance(context);
+	}
+
+	public synchronized static PlanManager getInstance(Context context) {
+		if (instance == null) {
+			instance = new PlanManager(context);
+		}
+		return instance;
+	}
+
+	/**
+	 * 增加一条用户记录
+	 * 
+	 * @return 是否添加成功
+	 */
+	public boolean addPlan(Plan plan, SQLiteDatabase db) {
+		ContentValues contentValue = buildContentValue(plan);
+		try {
+			if (db == null) {
+				db = dbhelper.getWritableDatabase();
+			}
+
+			long rowId = db.insert("plans", "", contentValue);
+			if (rowId == -1) {
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * 增加一条用户记录
+	 * 
+	 * @return 是否添加成功
+	 */
+	public boolean addPlan(Plan plan) {
+		return addPlan(plan, null);
+	}
+
+	/**
+	 * 增加一批用户记录
+	 * 
+	 * @param mList
+	 * @return 是否添加成功
+	 */
+	public boolean addPlans(List<Plan> mList) {
+		if (mList == null) {
+			return false;
+		}
+
+		SQLiteDatabase db = dbhelper.getWritableDatabase();
+		try {
+			// 开启事务
+			db.beginTransaction();
+			int size = mList.size();
+			for (int i = 0; i < size; i++) {
+				Plan plan = mList.get(i);
+				addPlan(plan, db);
+			}
+
+			// 提交事务
+			db.setTransactionSuccessful();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+
+			if (db != null) {
+				// 事务结束，失败自动回滚
+				db.endTransaction();
+				db.close();
+				db = null;
+			}
+			if (mList != null) {
+				mList.clear();
+				mList = null;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * 根据类型不同 获取plan
+	 * @param type
+	 * @param pageNum 页码 
+	 * @return
+	 */
+	public List<Plan> getPlans(StringBuffer querySQL,String[] params,int pageNum){
+		SQLiteDatabase db = null;
+		Cursor cursor = null;
+		List<Plan> list = new ArrayList<Plan>();
+		try {
+			LogUtils.logd(getClass(), "querySQL = " + querySQL);
+			LogUtils.logd(getClass(), "params = " + params);
+			
+			//先按照页码取
+			if(pageNum > 0){
+				querySQL.append(" Limit " + String.valueOf(PAGE_SIZE) + " Offset "
+						+ String.valueOf((pageNum-1) * PAGE_SIZE) + " ");
+			}
+			
+			db = dbhelper.getReadableDatabase();
+			cursor = db.rawQuery(querySQL.toString(),params);
+			
+			while (cursor.moveToNext()) {
+				Plan pt = new Plan();
+				pt.setDet_id(cursor.getString(1));
+				pt.setCheck_id(cursor.getString(2));
+				pt.setAssetno(cursor.getString(3));
+				pt.setDevice_code(cursor.getString(4));
+				pt.setDevice_name(cursor.getString(5));
+				pt.setType_name(cursor.getString(6));
+				pt.setDevice_type(cursor.getString(7));
+				pt.setDevice_size(cursor.getString(8));
+				pt.setOutdate(cursor.getString(9));
+				pt.setInstall_place(cursor.getString(10));
+				pt.setCheck_result(cursor.getString(11));
+				pt.setMemo(cursor.getString(12));
+				pt.setDevicecard_id(cursor.getString(13));
+				pt.setType_id(cursor.getString(14));
+				pt.setField_name(cursor.getString(15));
+				pt.setIf_create(cursor.getString(16));
+				pt.setType_code(cursor.getString(17));
+				pt.setIs_upload(cursor.getString(18));
+				pt.setIs_bind(cursor.getString(19));
+				pt.setIs_normal(cursor.getString(20));
+				pt.setOutno(cursor.getString(21));
+				pt.setDept_name(cursor.getString(22));
+				pt.setDept_code(cursor.getString(23));
+				pt.setDept_id(cursor.getString(24));
+				pt.setLabel_code(cursor.getString(25));
+				pt.setFactory(cursor.getString(26));
+				pt.setRunning(cursor.getString(27));
+				pt.setIs_damage(cursor.getString(28));
+				list.add(pt);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (cursor != null) {
+				cursor.close();
+				cursor = null;
+			}
+			if (db != null) {
+				db.close();
+				db = null;
+			}
+		}
+		return list;
+	}
+	
+	/**
+	 * 重载getplans方法  页面传0表示取全部
+	 * @param querySQL
+	 * @param params
+	 * @return
+	 */
+	public List<Plan> getPlans(StringBuffer querySQL,String[] params){
+		return getPlans(querySQL, params , 0 );
+	}
+	
+	/**
+	 * 修改plan
+	 * @param plan
+	 * @return
+	 */
+	public boolean updatePlan(Plan plan,String detid){
+		ContentValues contentValue = buildContentValue(plan);
+		
+		SQLiteDatabase db = null;
+		
+		try {
+			db = dbhelper.getWritableDatabase();
+			db.beginTransaction();
+			int result = db.update("plans", contentValue, "  det_id = ? ", new String[]{detid});
+			
+			
+			LogUtils.logd(getClass(), "det_id=" + detid);
+			LogUtils.logd(getClass(), "result=" + result);
+			
+			db.setTransactionSuccessful();
+			
+			return result > 0 ;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return false;
+		} finally {
+			if (db != null) {
+				// 事务结束，失败自动回滚
+				db.endTransaction();
+				db.close();
+				db = null;
+			}
+		}
+	}
+	
+	/**
+	 * 删除所有计划
+	 */
+	public boolean deletePlans(SQLiteDatabase db) {
+		try {
+			if(db == null){
+				db = dbhelper.getWritableDatabase();
+			}
+			
+			long rowId = db.delete("plans",null, null);
+			
+			LogUtils.logd(getClass(), "delete result = " + rowId);
+			
+			if (rowId == -1) {
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} 
+		return true;
+	}
+	
+	
+	/**
+	 * 删除所有计划
+	 */
+	public boolean deletePlan(Plan plan) {
+		
+		SQLiteDatabase db = null;
+		try {
+			if(db == null){
+				db = dbhelper.getWritableDatabase();
+			}
+			
+			db.beginTransaction();
+			
+			long rowId = db.delete("plans"," det_id = ?", new String[]{plan.getDet_id()});
+			
+			LogUtils.logd(getClass(), "delete result = " + rowId);
+			
+			db.setTransactionSuccessful();
+			return rowId>0;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}  finally{
+			if (db != null) {
+				// 事务结束，失败自动回滚
+				db.endTransaction();
+				db.close();
+				db = null;
+			}
+		}
+	}
+	
+	
+	/**
+	 * 删除所有计划
+	 */
+	public boolean deletePlans(String whereClause, String[] whereArgs) {
+		
+		SQLiteDatabase db = null;
+		try {
+			if(db == null){
+				db = dbhelper.getWritableDatabase();
+			}
+			
+			db.beginTransaction();
+			
+			long rowId = db.delete("plans", whereClause ,whereArgs);
+			
+			LogUtils.logd(getClass(), "delete result = " + rowId);
+			
+			db.setTransactionSuccessful();
+			return rowId>0;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}  finally{
+			if (db != null) {
+				// 事务结束，失败自动回滚
+				db.endTransaction();
+				db.close();
+				db = null;
+			}
+		}
+	}
+	
+	
+	/**
+	 * 删除所有用户   不能删除Admin用户 需要过滤
+	 */
+	public boolean deletePlans() {
+		return deletePlans(null);
+	}
+	
+	public  int  getPlanCount (String querySQL,String[] params){
+		SQLiteDatabase db = null;
+		Cursor cursor = null;
+		int count = 0;
+		try {
+			db = dbhelper.getReadableDatabase();
+			cursor = db.rawQuery(querySQL, params);
+			while (cursor.moveToNext()) {
+				//获取总数
+				count = cursor.getInt(cursor.getColumnIndex("sumId"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return count;
+		} finally {
+			if(db != null){
+				db.close();
+			}
+			
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+		return count;
+	}
+	
+	
+	
+	/**
+	 * @param User
+	 *            对象
+	 * @return 根据对象凑成ContentValues
+	 */
+	private ContentValues buildContentValue(Plan plan) {
+		
+		LogUtils.logd(getClass(), "memo=" + plan.getMemo());
+		LogUtils.logd(getClass(), "is_normal=" + plan.getIs_normal());
+		
+		ContentValues contentValue = new ContentValues();
+		contentValue.put("det_id", plan.getDet_id());
+		contentValue.put("check_id", plan.getCheck_id());
+		contentValue.put("assetno", plan.getAssetno());
+		contentValue.put("device_code", plan.getDevice_code());
+		contentValue.put("device_name", plan.getDevice_name());
+		contentValue.put("type_name", plan.getType_name());
+		contentValue.put("device_type", plan.getDevice_type());
+		contentValue.put("device_size", plan.getDevice_size());
+		contentValue.put("outdate", plan.getOutdate());
+		contentValue.put("install_place",plan.getInstall_place());
+		contentValue.put("check_result", plan.getCheck_result());
+		contentValue.put("memo", plan.getMemo());
+		contentValue.put("devicecard_id", plan.getDevicecard_id());
+		contentValue.put("type_id", plan.getType_id());
+		contentValue.put("field_name", plan.getField_name());
+		contentValue.put("if_create", plan.isCreate());
+		contentValue.put("type_code", plan.getType_code());
+		contentValue.put("is_upload", plan.getIs_upload());
+		contentValue.put("is_bind", plan.getIs_bind());
+		contentValue.put("is_normal", plan.getIs_normal());
+		contentValue.put("outno", plan.getOutno());
+		contentValue.put("dept_name", plan.getDept_name());
+		contentValue.put("dept_code", plan.getDept_code());
+		contentValue.put("dept_id", plan.getDept_id());
+		contentValue.put("label_code", plan.getLabel_code());
+		contentValue.put("factory", plan.getFactory());
+		contentValue.put("running", plan.getRunning());
+		contentValue.put("is_damage", plan.getIs_damage());
+		return contentValue;
+	}
+}

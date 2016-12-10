@@ -1,0 +1,15 @@
+package com.kingtangdata.inventoryassis.http.domain;
+
+public class PlanReq extends BaseReq{
+	
+	
+	private String checkId;
+
+	public String getCheckId() {
+		return checkId;
+	}
+
+	public void setCheckId(String checkId) {
+		this.checkId = checkId;
+	}
+}

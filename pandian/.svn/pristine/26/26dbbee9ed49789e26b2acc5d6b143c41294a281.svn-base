@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- 14号字体 -->
+    <dimen name="font14">14dp</dimen>
+    <!-- 18号字体 -->
+    <dimen name="font18">18dp</dimen>
+    <!-- 16号字体 -->
+    <dimen name="font16">16dp</dimen>
+    <!-- 20号字体 -->
+    <dimen name="font20">20dp</dimen>
+    <!-- 24号字体 -->
+    <dimen name="font24">24dp</dimen>
+
+    <!-- 间距 -->
+    <dimen name="margin_m">10dp</dimen>
+    <dimen name="margin_l">8dp</dimen>
+    <dimen name="margin_h">12dp</dimen>
+    <dimen name="margin_xh">20dp</dimen>
+    
+    
+    <!-- 14号字体 -->
+    <dimen name="font_l">14dp</dimen>
+    <!-- 18号字体 -->
+    <dimen name="font_m">16dp</dimen>
+    <!-- 16号字体 -->
+    <dimen name="font_h">18dp</dimen>
+    <!-- 20号字体 -->
+    <dimen name="font_xh">20dp</dimen>
+    <!-- 24号字体 -->
+    <dimen name="font_xxh">24dp</dimen>
+    
+ 	<!-- 表格行高度 -->
+    <dimen name="table_row_height">25dp</dimen>
+
+</resources>

@@ -1,0 +1,29 @@
+package com.kingtangdata.inventoryassis.data;
+
+import com.google.gson.annotations.Expose;
+
+public class Task {
+
+	@Expose
+	private String check_id;
+
+	@Expose
+	private String check_no;
+
+	public String getCheck_id() {
+		return check_id;
+	}
+
+	public void setCheck_id(String check_id) {
+		this.check_id = check_id;
+	}
+
+	public String getCheck_no() {
+		return check_no;
+	}
+
+	public void setCheck_no(String check_no) {
+		this.check_no = check_no;
+	}
+
+}

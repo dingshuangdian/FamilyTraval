@@ -1,0 +1,156 @@
+package com.kingtangdata.inventoryassis.act;
+/*
+ * 盘盈任务
+ */
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+import com.kingtangdata.inventoryassis.R;
+import com.kingtangdata.inventoryassis.activity.BaseActivity;
+import com.kingtangdata.inventoryassis.data.Plan;
+import com.kingtangdata.inventoryassis.db.PlanManager;
+
+public class ActivityChechAddForm extends BaseActivity{
+
+	private EditText etMeanscode;
+	private EditText etDevicecode;
+	private EditText etDevicename;
+	private EditText etXinghao;
+	private EditText etChuchangcode;
+	private EditText etFactory;
+	private EditText etBuildaddress;
+	private EditText etRemarks;
+	
+	
+	private Plan plan = null;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		super.setContentView(R.layout.ui_surplus_addandmodify);
+		super.setTopLabel(R.string.title_activity_surplus);
+		super.setLeftButtonText("返回");
+		
+		//控件初始化
+		etMeanscode = (EditText)findViewById(R.id.et_meanscode);
+		etDevicecode = (EditText)findViewById(R.id.et_devicecode);
+		etDevicename = (EditText)findViewById(R.id.et_devicename);
+		etXinghao = (EditText)findViewById(R.id.et_xinghao);
+		etChuchangcode = (EditText)findViewById(R.id.et_chuchangcode);
+		etFactory = (EditText)findViewById(R.id.et_factory);
+		etBuildaddress = (EditText)findViewById(R.id.et_buildaddress);
+		etRemarks = (EditText)findViewById(R.id.et_remarks);	
+		
+		String type = getIntent().getStringExtra("type");
+		if(ActivitySurplus.PY_ADD.equals(type)){
+			//盘盈新增
+			super.setTopLabel(R.string.title_surplus_add);
+		}else{
+			//盘盈修改
+			super.setTopLabel(R.string.title_surplus_modify);
+			findViewById(R.id.bt_delete).setVisibility(View.VISIBLE);
+			plan = (Plan)getIntent().getSerializableExtra("plan");
+			setPlanText(plan);
+		}
+	}
+	
+	
+	/**
+	 * 根据plan对象给当前界面赋值
+	 * @param plan
+	 */
+	public void setPlanText(Plan plan){
+		
+		
+		etMeanscode .setText(plan.getAssetno());
+		etDevicecode .setText(plan.getDevice_code());
+		etDevicename .setText(plan.getDevice_name());
+		etXinghao.setText(plan.getDevice_type());
+		etChuchangcode .setText(plan.getOutno());
+		etFactory .setText(plan.getFactory());
+		etBuildaddress .setText(plan.getInstall_place());
+		etRemarks .setText(plan.getMemo());
+	}
+	
+	
+	/**
+	 * 保存方法
+	 * @param view
+	 */
+	public void doSave(View view){
+		//plan为空的时候表示是新增盘亏处理
+		if(plan == null){
+			plan = new Plan();
+			plan.setAssetno(etMeanscode.getText().toString());
+			plan.setDevice_code(etDevicecode.getText().toString());
+			plan.setDevice_name(etDevicename.getText().toString());
+			plan.setDevice_type(etXinghao.getText().toString());
+			plan.setOutno(etChuchangcode.getText().toString());
+			plan.setFactory(etFactory.getText().toString());
+			plan.setInstall_place(etBuildaddress.getText().toString());
+			plan.setMemo(etRemarks.getText().toString());
+			plan.setDet_id(String.valueOf(System.currentTimeMillis()));
+			plan.setLabel_code(getIntent().getStringExtra("rfid"));
+			
+			plan.setCheck_result("py");
+				
+			boolean result = PlanManager.getInstance(this).addPlan(plan);
+			if(result){
+				makeText("保存成功");
+				Intent intent = new Intent();
+				intent.putExtra("plan", plan);
+				setResult(RESULT_OK,intent);
+				finish();
+			}else{
+				makeText("保存失败");
+			}
+		}else{
+			plan.setAssetno(etMeanscode.getText().toString());
+			plan.setDevice_code(etDevicecode.getText().toString());
+			plan.setDevice_name(etDevicename.getText().toString());
+			plan.setDevice_type(etXinghao.getText().toString());
+			plan.setOutno(etChuchangcode.getText().toString());
+			plan.setFactory(etFactory.getText().toString());
+			plan.setInstall_place(etBuildaddress.getText().toString());
+			plan.setMemo(etRemarks.getText().toString());
+			plan.setLabel_code(getIntent().getStringExtra("rfid"));
+				
+			boolean result = PlanManager.getInstance(this).updatePlan(plan, plan.getDet_id());
+			if(result){
+				makeText("保存成功");
+				Intent intent = new Intent();
+				intent.putExtra("plan", plan);
+				intent.putExtra("operation","modify");
+				setResult(RESULT_OK,intent);
+				finish();
+			}else{
+				makeText("保存失败");
+			}
+		}	
+	}
+	
+	
+	/**
+	 * 撤销操作
+	 */
+	public void doDelete(View view){
+		
+		if(plan != null){
+			boolean result = PlanManager.getInstance(this).deletePlan(plan);
+			
+			if(result){
+				makeText("撤销成功");
+				Intent intent = new Intent();
+				intent.putExtra("plan",plan);
+				intent.putExtra("operation","delete");
+				setResult(RESULT_OK,intent);
+				finish();
+			}else{
+				makeText("撤销失败");
+			}
+		}
+	}
+}

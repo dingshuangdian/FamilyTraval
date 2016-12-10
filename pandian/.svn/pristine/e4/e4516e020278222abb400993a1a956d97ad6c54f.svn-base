@@ -1,0 +1,118 @@
+package com.kingtangdata.inventoryassis.db;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+/**
+ * 数据库操作基类
+ * @author Administrator
+ *
+ */
+public class DBHelper extends SQLiteOpenHelper{
+	
+	/**数据库名称*/
+	private final static String DATABASE_NAME = "ktd.db";
+	
+	/**数据库版本号*/
+	private final static int DATABASE_VERSION = 1;
+	
+	
+	public static DBHelper instance;
+	
+	
+	/**创建用户表sql*/
+	public static final String CREATE_USER_SQL = "CREATE TABLE "
+			+ " users " + " (" + "id" + " integer  primary key autoincrement," + "user_id"
+			+ " TEXT varchar(25), " + "user_code"
+			+ " TEXT varchar(20), " + "user_name"
+			+ " TEXT varchar(40), " + "user_pass"
+			+ " TEXT varchar(255), " + "dept_id"
+			+ " TEXT varchar(25));";
+	
+	/**创建部门表sql*/
+	public static final String CREATE_DEPT_SQL = "CREATE TABLE "
+			+ " depts " + " (" + "id" + " integer  primary key autoincrement," + "dept_id"
+			+ " TEXT varchar(25), " + "dept_code"
+			+ " TEXT varchar(20), " + "dept_name"
+			+ " TEXT varchar(40), " + "dept_level"
+			+ " TEXT varchar(10), " + "leader"
+			+ " TEXT varchar(20), " + "telephone"
+			+ " TEXT varchar(30), " + "netaddress"
+			+ " TEXT varchar(40), " + "email"
+			+ " TEXT varchar(40), " + "dept_function"
+			+ " TEXT varchar(80), " + "memo"
+			+ " TEXT varchar(100), " + "is_old"
+			+ " TEXT varchar(1), " + "is_examine"
+			+ " TEXT varchar(1), " + "add_date"
+			+ " TEXT varchar(30), " + "add_userid"
+			+ " TEXT varchar(25), " + "modify_date"
+			+ " TEXT varchar(30), " + "modify_userid"
+			+ " TEXT varchar(25), " + "is_prod"
+			+ " TEXT varchar(1));";
+	
+	
+	/**创建计划表sql*/
+	public static final String CREATE_PLAN_SQL = "CREATE TABLE "
+			+ " plans " + " (" + "id" + " integer  primary key autoincrement," + "det_id"
+			+ " TEXT varchar(25), " + "check_id"
+			+ " TEXT varchar(25), " + "assetno"
+			+ " TEXT varchar(20), " + "device_code"
+			+ " TEXT varchar(20), " + "device_name"
+			+ " TEXT varchar(40), " + "type_name"
+			+ " TEXT varchar(40), " + "device_type"
+			+ " TEXT varchar(40), " + "device_size"
+			+ " TEXT varchar(40), " + "outdate"
+			+ " TEXT varchar(30), " + "install_place"
+			+ " TEXT varchar(60), " + "check_result"
+			+ " TEXT varchar(10), " + "memo"
+			+ " TEXT varchar(200), " + "devicecard_id"
+			+ " TEXT varchar(25), " + "type_id"
+			+ " TEXT varchar(25), " + "field_name"
+			+ " TEXT varchar(40), " + "if_create"
+			+ " TEXT varchar(1), " + "type_code"
+			+ " TEXT varchar(20), " + "is_upload"
+			+ " TEXT varchar(1), " + "is_normal"
+			+ " TEXT varchar(1), " + "outno"
+			+ " TEXT varchar(20), " + "dept_name"
+			+ " TEXT varchar(40), " + "dept_code"
+			+ " TEXT varchar(20), " + "dept_id"
+			+ " TEXT varchar(25), " + "label_code"
+			+ " TEXT varchar(20), " + "factory"
+			+ " TEXT varchar(40));";
+	
+	
+	
+	public static  DBHelper getInstance(Context context) {
+		if (instance == null) {			
+			instance = new DBHelper(context);
+		}
+		return instance;
+	}
+	
+	
+	public DBHelper(Context context) {
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+	}
+	
+
+	@Override
+	public void onCreate(SQLiteDatabase db) {
+		// TODO Auto-generated method stub
+		db.execSQL(CREATE_USER_SQL);
+		db.execSQL(CREATE_DEPT_SQL);
+		db.execSQL(CREATE_PLAN_SQL);
+	}
+
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		// TODO Auto-generated method stub
+		
+		// 如果版本号改变了就需要看情况在此处对有变动的表做一个删除操作  不然表结构还是不会更新
+		// 删除用户表
+		// db.execSQL("DROP TABLE IF EXISTS users");
+		
+		onCreate(db);
+	}
+
+}

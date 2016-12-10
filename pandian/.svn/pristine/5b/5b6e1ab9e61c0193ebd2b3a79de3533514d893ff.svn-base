@@ -1,0 +1,2824 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=x-cp20936">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="help.files/filelist.xml">
+<link rel=Edit-Time-Data href="help.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Administrator</o:Author>
+  <o:LastAuthor>app</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>4377</o:TotalTime>
+  <o:Created>2014-01-07T09:46:00Z</o:Created>
+  <o:LastSaved>2014-01-07T09:46:00Z</o:LastSaved>
+  <o:Pages>22</o:Pages>
+  <o:Words>321</o:Words>
+  <o:Characters>1831</o:Characters>
+  <o:Lines>15</o:Lines>
+  <o:Paragraphs>4</o:Paragraphs>
+  <o:CharactersWithSpaces>2148</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:CustomDocumentProperties>
+  <o:KSOProductBuildVer dt:dt="string">2052-9.1.0.3914</o:KSOProductBuildVer>
+ </o:CustomDocumentProperties>
+</xml><![endif]-->
+<link rel=dataStoreItem href="help.files/item0001.xml"
+target="help.files/props0002.xml">
+<link rel=themeData href="help.files/themedata.thmx">
+<link rel=colorSchemeMapping href="help.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas>false</w:ValidateAgainstSchemas>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotUnderlineInvalidXML/>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-CN</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:DontUseIndentAsNumberingTabStop/>
+   <w:FELineBreak11/>
+   <w:WW11IndentRules/>
+   <w:DontAutofitConstrainedTables/>
+   <w:AutofitLikeWW11/>
+   <w:HangulWidthLikeWW11/>
+   <w:UseNormalStyleForList/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="0" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073743103 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073786111 1 0 415 0;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 1 Char";
+	mso-style-next:正文;
+	margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;
+	mso-font-kerning:0pt;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+h2
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 2 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+h3
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 3 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+h4
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 4 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-style:italic;}
+h5
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 5 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#243F60;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-weight:normal;}
+h6
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 6 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:6;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#243F60;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-weight:normal;
+	font-style:italic;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 7 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:7;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#404040;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 8 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:8;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 9 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:9;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#404040;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-style:italic;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	tab-stops:center 207.65pt right 415.3pt;
+	layout-grid-mode:char;
+	border:none;
+	mso-border-alt:none windowtext 0cm;
+	padding:0cm;
+	mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt;
+	font-size:9.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:宋体;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	tab-stops:center 207.65pt right 415.3pt;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-noshow:yes;
+	mso-style-priority:35;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 Char";
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:15.0pt;
+	margin-left:0cm;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 4.0pt 0cm;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#17365D;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 Char";
+	mso-style-next:正文;
+	mso-style-type:export-only;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 4.0pt 0cm;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#17365D;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 Char";
+	mso-style-next:正文;
+	mso-style-type:export-only;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 4.0pt 0cm;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#17365D;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"标题 Char";
+	mso-style-next:正文;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:15.0pt;
+	margin-left:0cm;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 4.0pt 0cm;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#17365D;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"副标题 Char";
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	letter-spacing:.75pt;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-style:italic;}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{mso-style-priority:1;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-style-link:"无间隔 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-priority:29;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"引用 Char";
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-style:italic;}
+p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote
+	{mso-style-priority:30;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"明显引用 Char";
+	mso-style-next:正文;
+	margin-top:10.0pt;
+	margin-right:46.8pt;
+	margin-bottom:14.0pt;
+	margin-left:46.8pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD .5pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 4.0pt 0cm;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoSubtleEmphasis
+	{mso-style-priority:19;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	color:gray;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{mso-style-priority:21;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoSubtleReference
+	{mso-style-priority:31;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	font-variant:small-caps;
+	color:#C0504D;
+	text-decoration:underline;
+	text-underline:single;}
+span.MsoIntenseReference
+	{mso-style-priority:32;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	font-variant:small-caps;
+	color:#C0504D;
+	letter-spacing:.25pt;
+	font-weight:bold;
+	text-decoration:underline;
+	text-underline:single;}
+span.MsoBookTitle
+	{mso-style-priority:33;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	font-variant:small-caps;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-qformat:yes;
+	mso-style-parent:"标题 1";
+	mso-style-next:正文;
+	margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	color:#365F91;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;
+	font-weight:bold;}
+span.1Char
+	{mso-style-name:"标题 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 1";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#365F91;
+	font-weight:bold;}
+span.2Char
+	{mso-style-name:"标题 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	font-weight:bold;}
+span.3Char
+	{mso-style-name:"标题 3 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 3";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	font-weight:bold;}
+span.4Char
+	{mso-style-name:"标题 4 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 4";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.5Char
+	{mso-style-name:"标题 5 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 5";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#243F60;}
+span.6Char
+	{mso-style-name:"标题 6 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 6";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#243F60;
+	font-style:italic;}
+span.7Char
+	{mso-style-name:"标题 7 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 7";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#404040;
+	font-style:italic;}
+span.8Char
+	{mso-style-name:"标题 8 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 8";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;}
+span.9Char
+	{mso-style-name:"标题 9 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"标题 9";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#404040;
+	font-style:italic;}
+span.Char
+	{mso-style-name:"标题 Char";
+	mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:标题;
+	mso-ansi-font-size:26.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#17365D;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+span.Char0
+	{mso-style-name:"副标题 Char";
+	mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:副标题;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	letter-spacing:.75pt;
+	font-style:italic;}
+span.Char1
+	{mso-style-name:"无间隔 Char";
+	mso-style-priority:1;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:无间隔;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:EN-US;}
+span.Char2
+	{mso-style-name:"引用 Char";
+	mso-style-priority:29;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:引用;
+	color:black;
+	font-style:italic;}
+span.Char3
+	{mso-style-name:"明显引用 Char";
+	mso-style-priority:30;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:明显引用;
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-ascii-font-family:Calibri;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:Calibri;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("help.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("help.files/header.htm") fcs;
+	mso-endnote-separator:url("help.files/header.htm") es;
+	mso-endnote-continuation-separator:url("help.files/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:15.6pt;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074" fillcolor="#9cbee0"
+  strokecolor="#739cc3">
+  <v:fill color="#9cbee0" color2="#bbd5f0" type="gradient">
+   <o:fill v:ext="view" type="gradientUnscaled"/>
+  </v:fill>
+  <v:stroke color="#739cc3" weight="1.25pt"/>
+  <o:colormenu v:ext="edit" fillcolor="none"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+  <o:rules v:ext="edit">
+   <o:r id="V:Rule9" type="callout" idref="#_x0000_s1030"/>
+   <o:r id="V:Rule10" type="callout" idref="#_x0000_s1031"/>
+   <o:r id="V:Rule13" type="callout" idref="#_x0000_s1033"/>
+   <o:r id="V:Rule14" type="callout" idref="#_x0000_s1034"/>
+   <o:r id="V:Rule15" type="callout" idref="#_x0000_s1035"/>
+   <o:r id="V:Rule16" type="callout" idref="#_x0000_s1036"/>
+   <o:r id="V:Rule17" type="callout" idref="#_x0000_s1037"/>
+   <o:r id="V:Rule18" type="callout" idref="#_x0000_s1038"/>
+   <o:r id="V:Rule19" type="callout" idref="#_x0000_s1039"/>
+   <o:r id="V:Rule20" type="callout" idref="#_x0000_s1040"/>
+   <o:r id="V:Rule21" type="callout" idref="#_x0000_s1041"/>
+   <o:r id="V:Rule22" type="callout" idref="#_x0000_s1042"/>
+   <o:r id="V:Rule23" type="callout" idref="#_x0000_s1043"/>
+   <o:r id="V:Rule24" type="callout" idref="#_x0000_s1044"/>
+   <o:r id="V:Rule25" type="callout" idref="#_x0000_s1045"/>
+   <o:r id="V:Rule26" type="callout" idref="#_x0000_s1050"/>
+   <o:r id="V:Rule27" type="callout" idref="#_x0000_s1052"/>
+   <o:r id="V:Rule28" type="callout" idref="#_x0000_s1053"/>
+   <o:r id="V:Rule29" type="callout" idref="#_x0000_s1054"/>
+   <o:r id="V:Rule30" type="callout" idref="#_x0000_s1055"/>
+   <o:r id="V:Rule31" type="callout" idref="#_x0000_s1056"/>
+   <o:r id="V:Rule32" type="callout" idref="#_x0000_s1057"/>
+   <o:r id="V:Rule33" type="callout" idref="#_x0000_s1058"/>
+   <o:r id="V:Rule34" type="callout" idref="#_x0000_s1059"/>
+   <o:r id="V:Rule35" type="callout" idref="#_x0000_s1060"/>
+   <o:r id="V:Rule36" type="callout" idref="#_x0000_s1061"/>
+   <o:r id="V:Rule37" type="callout" idref="#_x0000_s1062"/>
+   <o:r id="V:Rule38" type="callout" idref="#_x0000_s1063"/>
+   <o:r id="V:Rule39" type="callout" idref="#_x0000_s1064"/>
+   <o:r id="V:Rule40" type="callout" idref="#_x0000_s1065"/>
+   <o:r id="V:Rule41" type="callout" idref="#_x0000_s1066"/>
+   <o:r id="V:Rule42" type="callout" idref="#_x0000_s1067"/>
+   <o:r id="V:Rule43" type="callout" idref="#_x0000_s1068"/>
+   <o:r id="V:Rule44" type="callout" idref="#_x0000_s1069"/>
+   <o:r id="V:Rule45" type="callout" idref="#_x0000_s1070"/>
+   <o:r id="V:Rule46" type="callout" idref="#_x0000_s1071"/>
+   <o:r id="V:Rule47" type="callout" idref="#_x0000_s1072"/>
+   <o:r id="V:Rule48" type="callout" idref="#_x0000_s1073"/>
+   <o:r id="V:Rule49" type="callout" idref="#_x0000_s1074"/>
+   <o:r id="V:Rule50" type="callout" idref="#_x0000_s1075"/>
+   <o:r id="V:Rule51" type="callout" idref="#_x0000_s1076"/>
+   <o:r id="V:Rule52" type="callout" idref="#_x0000_s1077"/>
+  </o:rules>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=ZH-CN style='tab-interval:21.0pt;text-justify-trim:
+punctuation'>
+
+<div class=Section1 style='layout-grid:15.6pt'>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid #4F81BD 1.0pt;
+padding:0cm 0cm 4.0pt 0cm'>
+
+<p class=MsoTitle><span lang=EN-US style='font-family:宋体;mso-ascii-font-family:
+Cambria;mso-hansi-font-family:Cambria'>第</span><span lang=EN-US>1</span><span
+lang=EN-US style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria'>章：概览</span></p>
+
+</div>
+
+<h1><span lang=EN-US style='font-family:宋体;mso-ascii-font-family:Cambria;
+mso-hansi-font-family:Cambria'>概述</span><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>欢迎使用盘点易！盘点易是与服务端软件盘点功能相配合，用于设备盘点的手机</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'>APP</span><span style='font-family:
+宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-fareast-language:
+ZH-CN'>。此《用户手册》会告诉您如何开始使用盘点易。</span><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shapetype id="_x0000_t62" coordsize="21600,21600"
+ o:spt="62" adj="1350,25920" path="m3600,qx,3600l0@8@12@24,0@9,,18000qy3600,21600l@6,21600@15@27@7,21600,18000,21600qx21600,18000l21600@9@18@30,21600@8,21600,3600qy18000,l@7,0@21@33@6,xe">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="sum 10800 0 #0"/>
+  <v:f eqn="sum 10800 0 #1"/>
+  <v:f eqn="sum #0 0 #1"/>
+  <v:f eqn="sum @0 @1 0"/>
+  <v:f eqn="sum 21600 0 #0"/>
+  <v:f eqn="sum 21600 0 #1"/>
+  <v:f eqn="if @0 3600 12600"/>
+  <v:f eqn="if @0 9000 18000"/>
+  <v:f eqn="if @1 3600 12600"/>
+  <v:f eqn="if @1 9000 18000"/>
+  <v:f eqn="if @2 0 #0"/>
+  <v:f eqn="if @3 @10 0"/>
+  <v:f eqn="if #0 0 @11"/>
+  <v:f eqn="if @2 @6 #0"/>
+  <v:f eqn="if @3 @6 @13"/>
+  <v:f eqn="if @5 @6 @14"/>
+  <v:f eqn="if @2 #0 21600"/>
+  <v:f eqn="if @3 21600 @16"/>
+  <v:f eqn="if @4 21600 @17"/>
+  <v:f eqn="if @2 #0 @6"/>
+  <v:f eqn="if @3 @19 @6"/>
+  <v:f eqn="if #1 @6 @20"/>
+  <v:f eqn="if @2 @8 #1"/>
+  <v:f eqn="if @3 @22 @8"/>
+  <v:f eqn="if #0 @8 @23"/>
+  <v:f eqn="if @2 21600 #1"/>
+  <v:f eqn="if @3 21600 @25"/>
+  <v:f eqn="if @5 21600 @26"/>
+  <v:f eqn="if @2 #1 @8"/>
+  <v:f eqn="if @3 @8 @28"/>
+  <v:f eqn="if @4 @8 @29"/>
+  <v:f eqn="if @2 #1 0"/>
+  <v:f eqn="if @3 @31 0"/>
+  <v:f eqn="if #1 0 @32"/>
+  <v:f eqn="val #0"/>
+  <v:f eqn="val #1"/>
+ </v:formulas>
+ <v:path o:connecttype="custom" o:connectlocs="10800,0;0,10800;10800,21600;21600,10800;@34,@35"
+  textboxrect="791,791,20809,20809"/>
+ <v:handles>
+  <v:h position="#0,#1"/>
+ </v:handles>
+</v:shapetype><v:shape id="_x0000_s1031" type="#_x0000_t62" style='position:absolute;
+ margin-left:7.5pt;margin-top:72.1pt;width:63pt;height:28.5pt;z-index:3' adj="6377,-6935"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>状态栏</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:3;margin-left:6px;margin-top:75px;width:96px;height:67px'><img
+width=96 height=67 src="help.files/image001.gif" alt="圆角矩形标注: 状态栏" v:shapes="_x0000_s1031"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1030" type="#_x0000_t62" style='position:absolute;margin-left:46.5pt;
+ margin-top:333.85pt;width:63pt;height:30pt;z-index:2' adj="4063,27432"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>标签栏</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:2;margin-left:58px;margin-top:441px;width:96px;height:68px'><img
+width=96 height=68 src="help.files/image002.gif" alt="圆角矩形标注: 标签栏" v:shapes="_x0000_s1030"></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:219pt;
+ height:390pt'>
+ <v:imagedata src="help.files/image003.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image004.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>标签栏</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:30pt;height:30pt'>
+ <v:imagedata src="help.files/image005.png" o:title="btn_home_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=40 height=40
+src="help.files/image006.gif" v:shapes="_x0000_i1026"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>首页：包含手机盘点各项功能。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1027" type="#_x0000_t75" style='width:30pt;height:30pt'>
+ <v:imagedata src="help.files/image007.png" o:title="btn_search_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=40 height=40
+src="help.files/image008.gif" v:shapes="_x0000_i1027"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>盘点查询：查询盘点情况。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1028" type="#_x0000_t75" style='width:30pt;height:30pt'>
+ <v:imagedata src="help.files/image009.png" o:title="btn_settings_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=40 height=40
+src="help.files/image010.gif" v:shapes="_x0000_i1028"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>设置：设置服务器地址、登录账号、检测新版本等。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1029" type="#_x0000_t75" style='width:30pt;height:30pt'>
+ <v:imagedata src="help.files/image011.png" o:title="btn_help_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=40 height=40
+src="help.files/image012.gif" v:shapes="_x0000_i1029"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>帮助：打开本功能。</span><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>首页功能</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1030" type="#_x0000_t75" style='width:57pt;height:57pt'>
+ <v:imagedata src="help.files/image013.png" o:title="btn_main_download_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=76 height=76
+src="help.files/image014.gif" v:shapes="_x0000_i1030"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>下载任务：从服务端下载用户数据、绑定标签任务、盘点任务。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1031" type="#_x0000_t75" style='width:55.5pt;height:55.5pt'>
+ <v:imagedata src="help.files/image015.png" o:title="btn_main_upload_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=74 height=74
+src="help.files/image016.gif" v:shapes="_x0000_i1031"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>上传结果：将标签绑定结果或盘点结果，上传至服务端。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1032" type="#_x0000_t75" style='width:55.5pt;height:55.5pt'>
+ <v:imagedata src="help.files/image017.png" o:title="btn_main_rfid_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=74 height=74
+src="help.files/image018.gif" v:shapes="_x0000_i1032"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>标签绑定：盘点初始化时，通过手机感应</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'>RFID</span><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-fareast-language:
+ZH-CN'>标签，并与设备信息绑定。</span><span lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1033" type="#_x0000_t75" style='width:55.5pt;height:55.5pt'>
+ <v:imagedata src="help.files/image019.png" o:title="btn_main_check_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=74 height=74
+src="help.files/image020.gif" v:shapes="_x0000_i1033"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>盘点任务：下载盘点任务后，用手机到现场感应标签，进行实物盘点。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1034" type="#_x0000_t75" style='width:54.75pt;height:54.75pt'>
+ <v:imagedata src="help.files/image021.png" o:title="btn_main_surplus_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=73 height=73
+src="help.files/image022.gif" v:shapes="_x0000_i1034"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>盘盈处理：新增或撤销盘盈记录。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1035" type="#_x0000_t75" style='width:54pt;height:54pt'>
+ <v:imagedata src="help.files/image023.png" o:title="btn_main_shortage_normal"/>
+</v:shape><![endif]--><![if !vml]><img width=72 height=72
+src="help.files/image024.gif" v:shapes="_x0000_i1035"><![endif]></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>盘亏处理：撤销盘亏记录或修改盘亏记录的备注信息。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid #4F81BD 1.0pt;
+padding:0cm 0cm 4.0pt 0cm'>
+
+<p class=MsoTitle><span style='font-family:宋体;mso-ascii-font-family:Cambria;
+mso-hansi-font-family:Cambria;mso-fareast-language:ZH-CN'>第</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'>2</span><span style='font-family:
+宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:Cambria;mso-fareast-language:
+ZH-CN'>章：功能说明</span><span lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+</div>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>初次使用向导</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>在手机安装好盘点易，初次使用时，会出现设置向导，引导您设置服务端地址、下载用户数据，使您能用与服务端相同的用户，登录盘点易。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>设置地址格式为：服务端</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'>ip+</span><span style='font-family:
+宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-fareast-language:
+ZH-CN'>冒号</span><span lang=EN-US style='mso-fareast-language:ZH-CN'>+</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>服务端口号</span><span lang=EN-US style='mso-fareast-language:
+ZH-CN'>+/+</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>服务端应用名</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1035" type="#_x0000_t62"
+ style='position:absolute;margin-left:128.25pt;margin-top:147.85pt;width:82.5pt;
+ height:51pt;z-index:6' adj="14492,-13722" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>3</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>提示连接成功后保存</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:6;margin-left:167px;margin-top:139px;width:122px;height:134px'><img
+width=122 height=134 src="help.files/image025.gif" alt="圆角矩形标注: 3提示连接成功后保存"
+v:shapes="_x0000_s1035"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1034"
+ type="#_x0000_t62" style='position:absolute;margin-left:5.25pt;margin-top:147.85pt;
+ width:82.5pt;height:28.5pt;z-index:5' adj="7423,-22282" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>2</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>测试连接</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:5;margin-left:3px;margin-top:144px;width:122px;height:99px'><img
+width=122 height=99 src="help.files/image026.gif" alt="圆角矩形标注: 2测试连接" v:shapes="_x0000_s1034"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1033" type="#_x0000_t62" style='position:absolute;margin-left:144.75pt;
+ margin-top:15.85pt;width:71.25pt;height:48pt;z-index:4' adj="14279,25583"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>1</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>填写服务器地址服务</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:4;margin-left:189px;margin-top:17px;width:107px;height:93px'><img
+width=107 height=93 src="help.files/image027.gif" alt="圆角矩形标注: 1填写服务器地址服务"
+v:shapes="_x0000_s1033"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1036" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image028.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image029.jpg" v:shapes="_x0000_i1036"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>若测试连接时提示连接失败，请检查：</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>1</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、服务器地址的拼写是否正确。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>2</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、手机与服务器间的无线网络是否连通。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>3</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、服务端是否启动。与服务端连通正常时，可下载服务端的用户数据。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1037" type="#_x0000_t62"
+ style='position:absolute;margin-left:109.5pt;margin-top:217.5pt;width:83.25pt;
+ height:51pt;z-index:8' adj="16112,-13722" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>下载服务端用户数据</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:8;margin-left:142px;margin-top:232px;width:123px;height:134px'><img
+width=123 height=134 src="help.files/image030.gif" alt="圆角矩形标注: 下载服务端用户数据"
+v:shapes="_x0000_s1037"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1036"
+ type="#_x0000_t62" style='position:absolute;margin-left:138.75pt;margin-top:67.5pt;
+ width:69.75pt;height:51pt;z-index:7' adj="16212,-6416" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>与服务端连通正常</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:7;margin-left:181px;margin-top:59px;width:105px;height:107px'><img
+width=105 height=107 src="help.files/image031.gif" alt="圆角矩形标注: 与服务端连通正常"
+v:shapes="_x0000_s1036"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1037" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image032.png" o:title="" cropbottom="16243f"/>
+ <o:lock v:ext="edit" aspectratio="f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image033.jpg" v:shapes="_x0000_i1037"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1038" type="#_x0000_t75" style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image034.png" o:title="" cropbottom="17624f"/>
+ <o:lock v:ext="edit" aspectratio="f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image035.jpg" v:shapes="_x0000_i1038"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>若与服务端连通不正常，下载提示“网络通信失败，请稍后再试”，无法下载用户数据。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1038" type="#_x0000_t62"
+ style='position:absolute;margin-left:145.5pt;margin-top:1in;width:69.75pt;
+ height:51pt;z-index:9' adj="16212,-9275" strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>与服务端未连通</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:9;margin-left:190px;margin-top:54px;width:105px;height:118px'><img
+width=105 height=118 src="help.files/image036.gif" alt="圆角矩形标注: 与服务端未连通"
+v:shapes="_x0000_s1038"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1039" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image037.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image038.jpg" v:shapes="_x0000_i1039"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>下载用户数据成功后，可用服务端注册的用户账号、密码，登录盘点易。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1040" type="#_x0000_t75" style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image039.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image040.jpg" v:shapes="_x0000_i1040"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>若下载用户数据不成功，则因没有用户，无法登录盘点易。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>下载任务</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>使用盘点易，需先从服务端下载标签绑定或盘点任务，然后执行任务。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>下载前，请确认手机与服务端连通正常。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>在下载任务页面，可通过勾选不同的下载项，下载用户数据、绑定标签、盘点任务。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>下载绑定标签或盘点任务时，需选择一项执行人为登录用户的任务下载，任务由负责人在服务端制定，并指定执行人。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1041" type="#_x0000_t62"
+ style='position:absolute;margin-left:107.25pt;margin-top:143.25pt;width:69.75pt;
+ height:50.25pt;z-index:12' adj="26895,17989" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>下拉选择任务</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:12;margin-left:139px;margin-top:187px;width:138px;height:79px'><img
+width=138 height=79 src="help.files/image041.gif" alt="圆角矩形标注: 下拉选择任务" v:shapes="_x0000_s1041"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1040" type="#_x0000_t62" style='position:absolute;margin-left:2.25pt;
+ margin-top:202.5pt;width:69.75pt;height:51pt;z-index:11' adj="5528,-11816"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>勾选需下载的项目</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:11;margin-left:-1px;margin-top:218px;width:105px;height:128px'><img
+width=105 height=128 src="help.files/image042.gif" alt="圆角矩形标注: 勾选需下载的项目"
+v:shapes="_x0000_s1040"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1039"
+ type="#_x0000_t62" style='position:absolute;margin-left:146.25pt;margin-top:62.25pt;
+ width:69.75pt;height:51pt;z-index:10' adj="16212,-9275" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>与服务端连通正常</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:10;margin-left:191px;margin-top:41px;width:105px;height:118px'><img
+width=105 height=118 src="help.files/image043.gif" alt="圆角矩形标注: 与服务端连通正常"
+v:shapes="_x0000_s1039"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1041" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image044.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image045.jpg" v:shapes="_x0000_i1041"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>注意：每次下载绑定标签或盘点任务，都会覆盖上次下载的任务，若之前已执行了绑定标签或盘点，但未上传结果，再次下载同一任务或新任务，会使未上传的结果丢失。若结果已上传，再次下载同一任务或新任务，已上传的结果不会丢失。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>上传结果</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>用手机扫描标签，绑定或盘点结束后，将结果上传到服务端。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>如果任务记录多，一次执行不完，可以每天绑定或盘点一部分，每天上传结果，第二天继续执行绑定或盘点。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>每天上传盘点结果，还可以避免，重新下载任务时，覆盖掉已绑定或盘点的记录。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1044" type="#_x0000_t62"
+ style='position:absolute;margin-left:125.25pt;margin-top:264pt;width:69.75pt;
+ height:31.5pt;z-index:15' adj="5528,-19131" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>点击上传</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:15;margin-left:163px;margin-top:300px;width:105px;height:102px'><img
+width=105 height=102 src="help.files/image046.gif" alt="圆角矩形标注: 点击上传" v:shapes="_x0000_s1044"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1043" type="#_x0000_t62" style='position:absolute;margin-left:3.75pt;
+ margin-top:196.5pt;width:69.75pt;height:51pt;z-index:14' adj="5528,-11816"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>勾选要上传的项目</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:14;margin-left:1px;margin-top:210px;width:105px;height:128px'><img
+width=105 height=128 src="help.files/image047.gif" alt="圆角矩形标注: 勾选要上传的项目"
+v:shapes="_x0000_s1043"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1042"
+ type="#_x0000_t62" style='position:absolute;margin-left:115.5pt;margin-top:50.25pt;
+ width:69.75pt;height:48.75pt;z-index:13' adj="23876,266" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>与服务端连通正常</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:13;margin-left:150px;margin-top:50px;width:123px;height:90px'><img
+width=123 height=90 src="help.files/image048.gif" alt="圆角矩形标注: 与服务端连通正常"
+v:shapes="_x0000_s1042"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1042" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image049.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image050.jpg" v:shapes="_x0000_i1042"><![endif]><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>标签绑定</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>使用</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'>RFID</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>标签作为盘点标识时，需先为设备贴上标签，然后通过标签绑定任务，将</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'>RFID</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>标签与设备卡片绑定。</span><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>1</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、负责人在服务端制定标签绑定任务后，执行人将本人负责的任务下载到手机。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>2</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、到现场为设备贴标签。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>3</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、在手机上点开对应的设备，靠近</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'>RFID</span><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-fareast-language:
+ZH-CN'>标签扫一下，标签编码显示出来后，点保存，确定绑定。</span><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:oval id="_x0000_s1048" style='position:absolute;
+ margin-left:6pt;margin-top:124.5pt;width:207.75pt;height:19.5pt;z-index:1'
+ filled="f" strokecolor="#c0504d" strokeweight="2.5pt">
+ <v:shadow color="#868686"/>
+</v:oval><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:1;margin-left:6px;margin-top:164px;width:281px;height:30px'><img
+width=281 height=30 src="help.files/image051.gif" v:shapes="_x0000_s1048"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1045" type="#_x0000_t62" style='position:absolute;margin-left:83.25pt;
+ margin-top:171.75pt;width:95.25pt;height:31.5pt;z-index:16' adj="17994,-20674"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>点击打开记录</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:16;margin-left:107px;margin-top:175px;width:139px;height:104px'><img
+width=139 height=104 src="help.files/image052.gif" alt="圆角矩形标注: 点击打开记录" v:shapes="_x0000_s1045"></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1043"
+ type="#_x0000_t75" style='width:219pt;height:293.25pt'>
+ <v:imagedata src="help.files/image053.png" o:title="" cropbottom="16258f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=391
+src="help.files/image054.jpg" v:shapes="_x0000_i1043"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1050" type="#_x0000_t62"
+ style='position:absolute;margin-left:115.5pt;margin-top:98.6pt;width:95.25pt;
+ height:51.75pt;z-index:18' adj="4898,-12271" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>打开的记录，标签编码为空</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:18;margin-left:150px;margin-top:79px;width:139px;height:129px'><img
+width=139 height=129 src="help.files/image055.gif" alt="圆角矩形标注: 打开的记录，标签编码为空"
+v:shapes="_x0000_s1050"></span><![endif]><!--[if gte vml 1]><v:oval id="_x0000_s1049"
+ style='position:absolute;margin-left:6pt;margin-top:51.35pt;width:207.75pt;
+ height:19.5pt;z-index:17' filled="f" strokecolor="#c0504d" strokeweight="2.5pt">
+ <v:shadow color="#868686"/>
+</v:oval><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:17;margin-left:6px;margin-top:66px;width:281px;height:31px'><img
+width=281 height=31 src="help.files/image056.gif" v:shapes="_x0000_s1049"></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1044"
+ type="#_x0000_t75" style='width:219pt;height:356.25pt'>
+ <v:imagedata src="help.files/image057.png" o:title="" cropbottom="5671f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=475
+src="help.files/image058.jpg" v:shapes="_x0000_i1044"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1053" type="#_x0000_t62"
+ style='position:absolute;margin-left:117pt;margin-top:243.75pt;width:95.25pt;
+ height:51.75pt;z-index:21' adj="13062,38129" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>保存，确定绑定标签与设备</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:21;margin-left:152px;margin-top:321px;width:139px;height:146px'><img
+width=139 height=146 src="help.files/image059.gif" alt="圆角矩形标注: 保存，确定绑定标签与设备"
+v:shapes="_x0000_s1053"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1052"
+ type="#_x0000_t62" style='position:absolute;margin-left:108pt;margin-top:99.75pt;
+ width:100.5pt;height:51.75pt;z-index:20' adj="12380,-13523" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>手机靠近标签，扫到标签编码</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:20;margin-left:140px;margin-top:76px;width:146px;height:134px'><img
+width=146 height=134 src="help.files/image060.gif" alt="圆角矩形标注: 手机靠近标签，扫到标签编码"
+v:shapes="_x0000_s1052"></span><![endif]><!--[if gte vml 1]><v:oval id="_x0000_s1051"
+ style='position:absolute;margin-left:4.5pt;margin-top:52.5pt;width:207.75pt;
+ height:19.5pt;z-index:19' filled="f" strokecolor="#c0504d" strokeweight="2.5pt">
+ <v:shadow color="#868686"/>
+</v:oval><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:19;margin-left:4px;margin-top:68px;width:281px;height:30px'><img
+width=281 height=30 src="help.files/image051.gif" v:shapes="_x0000_s1051"></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1045"
+ type="#_x0000_t75" style='width:219pt;height:357pt'>
+ <v:imagedata src="help.files/image061.png" o:title="" cropbottom="5545f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=476
+src="help.files/image062.jpg" v:shapes="_x0000_i1045"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>4</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、重复以上步骤，逐台绑定完后，上传结果到服务端（未全部绑定完，也可以上传，推荐每天上传，以免数据丢失）。服务端的记录提交后，标签即与设备卡片绑定，可以作为盘点的标识。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>盘点任务</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>1</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、盘点任务由负责人在服务端制定，并指定执行人。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>2</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、执行人将本人负责的盘点任务下载到手机。</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>3</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、执行人到现场，通过用手机扫描贴在设备上的</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'>RFID</span><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-fareast-language:
+ZH-CN'>标签（支持扫描条码或二维码），核对弹出的设备信息。</span><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1054" type="#_x0000_t62"
+ style='position:absolute;margin-left:102.75pt;margin-top:120.75pt;width:112.5pt;
+ height:51pt;z-index:22' adj="15235,38689" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>在盘点任务列表，扫描标签盘点</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:22;margin-left:133px;margin-top:157px;width:162px;height:144px'><img
+width=162 height=144 src="help.files/image063.gif" alt="圆角矩形标注: 在盘点任务列表，扫描标签盘点"
+v:shapes="_x0000_s1054"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1055"
+ type="#_x0000_t62" style='position:absolute;margin-left:26.25pt;margin-top:288.75pt;
+ width:103.5pt;height:50.25pt;z-index:23' adj="4195,37333" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>若扫描条码或二维码，点此按钮</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:23;margin-left:31px;margin-top:381px;width:150px;height:138px'><img
+width=150 height=138 src="help.files/image064.gif" alt="圆角矩形标注: 若扫描条码或二维码，点此按钮"
+v:shapes="_x0000_s1055"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1046" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image065.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image066.jpg" v:shapes="_x0000_i1046"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>4</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、若设备信息与实物相同，选择“相符”，否则选择“不相符”，可在备注中填写不相符的内容，保存，此设备标记为已盘点。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1056" type="#_x0000_t62"
+ style='position:absolute;margin-left:115.5pt;margin-top:111.75pt;width:97.5pt;
+ height:47.25pt;z-index:24' adj="133,-14469" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>1</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>核对信息，选择是否相符</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:24;margin-left:141px;margin-top:91px;width:151px;height:129px'><img
+width=151 height=129 src="help.files/image067.gif" alt="圆角矩形标注: 1核对信息，选择是否相符"
+v:shapes="_x0000_s1056"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1058"
+ type="#_x0000_t62" style='position:absolute;margin-left:17.1pt;margin-top:362.25pt;
+ width:57.15pt;height:31.5pt;z-index:26' adj="26022,12137" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>3</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>保存</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:26;margin-left:19px;margin-top:479px;width:115px;height:54px'><img
+width=115 height=54 src="help.files/image068.gif" alt="圆角矩形标注: 3保存" v:shapes="_x0000_s1058"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1057" type="#_x0000_t62" style='position:absolute;margin-left:129pt;
+ margin-top:249.75pt;width:85.05pt;height:51pt;z-index:25' adj="13943,35767"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>2</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>如有需要，填写备注</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:25;margin-left:168px;margin-top:329px;width:125px;height:136px'><img
+width=125 height=136 src="help.files/image069.gif" alt="圆角矩形标注: 2如有需要，填写备注"
+v:shapes="_x0000_s1057"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1047" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image070.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image071.jpg" v:shapes="_x0000_i1047"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>5</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、如果出现标签损坏，扫不到标签，或者设备上没有标签，但设备实物正常，可以通过关键字，查询到这台设备，然后点“盘查”按钮，弹出的设备信息，备注默认为“标签损坏”，保存，此设备标记为已盘点。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1062" type="#_x0000_t62"
+ style='position:absolute;margin-left:136.5pt;margin-top:155.25pt;width:78pt;
+ height:51pt;z-index:30' adj="16989,-21981" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>4</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>查到设备后，点盘查</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:30;margin-left:178px;margin-top:116px;width:116px;height:167px'><img
+width=116 height=167 src="help.files/image072.gif" alt="圆角矩形标注: 4查到设备后，点盘查"
+v:shapes="_x0000_s1062"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1061"
+ type="#_x0000_t62" style='position:absolute;margin-left:105.75pt;margin-top:48pt;
+ width:51pt;height:31.5pt;z-index:29' adj="20901,26126" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>3</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>查询</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:29;margin-left:137px;margin-top:60px;width:91px;height:71px'><img
+width=91 height=71 src="help.files/image073.gif" alt="圆角矩形标注: 3查询" v:shapes="_x0000_s1061"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1060" type="#_x0000_t62" style='position:absolute;margin-left:54pt;
+ margin-top:143.25pt;width:63.75pt;height:47.25pt;z-index:28' adj="5032,-17211"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>2</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>输入查询内容</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:28;margin-left:68px;margin-top:121px;width:97px;height:141px'><img
+width=97 height=141 src="help.files/image074.gif" alt="圆角矩形标注: 2输入查询内容" v:shapes="_x0000_s1060"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1059" type="#_x0000_t62" style='position:absolute;margin-left:2.25pt;
+ margin-top:24.75pt;width:65.25pt;height:47.25pt;z-index:27' adj="15840,25303"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>1</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>选择查询条件</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:27;margin-left:-1px;margin-top:29px;width:99px;height:90px'><img
+width=99 height=90 src="help.files/image075.gif" alt="圆角矩形标注: 1选择查询条件" v:shapes="_x0000_s1059"></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1048"
+ type="#_x0000_t75" style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image076.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image077.jpg" v:shapes="_x0000_i1048"><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_i1049" type="#_x0000_t75" style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image078.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image079.jpg" v:shapes="_x0000_i1049"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1064" type="#_x0000_t62"
+ style='position:absolute;margin-left:22.5pt;margin-top:-151.6pt;width:69pt;
+ height:53.25pt;z-index:32' adj="17562,27015" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>自动显示标签损坏</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+relative;z-index:32'><span style='position:absolute;left:26px;top:-206px;
+width:104px;height:107px'><img width=104 height=107
+src="help.files/image080.gif" alt="圆角矩形标注: 自动显示标签损坏" v:shapes="_x0000_s1064"></span></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1063" type="#_x0000_t62" style='position:absolute;margin-left:143.25pt;
+ margin-top:-118.6pt;width:64.5pt;height:51pt;z-index:31' adj="15773,27254"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>5</span><span
+    style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+    Calibri;mso-fareast-language:ZH-CN'>保存盘点结果</span><span lang=EN-US
+    style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+relative;z-index:31'><span style='position:absolute;left:187px;top:-162px;
+width:98px;height:104px'><img width=98 height=104 src="help.files/image081.gif"
+alt="圆角矩形标注: 5保存盘点结果" v:shapes="_x0000_s1063"></span></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'>6</span><span style='font-family:
+宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-fareast-language:
+ZH-CN'>、如果扫描设备标签时提示“没有找到匹配的标签，是否需要盘盈？”</span><span style='mso-fareast-language:
+ZH-CN'> </span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>表示此设备在本部门的盘点任务账上没有。选择“是”，会弹出盘盈新增页面，在此页填写设备信息，保存，此设备标记为盘盈。此设备最终是否盘盈，待盘点任务完成上传，由负责人在服务端判断确认。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1067" type="#_x0000_t62"
+ style='position:absolute;margin-left:156.75pt;margin-top:596.25pt;width:49.5pt;
+ height:30pt;z-index:35' adj="1244,30132" strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>保存</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:35;margin-left:201px;margin-top:791px;width:82px;height:77px'><img
+width=82 height=77 src="help.files/image082.gif" alt="圆角矩形标注: 保存" v:shapes="_x0000_s1067"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1066" type="#_x0000_t62" style='position:absolute;margin-left:121.5pt;
+ margin-top:386.25pt;width:79.5pt;height:48pt;z-index:34' adj="2812,26258"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>填写盘盈设备信息</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:34;margin-left:158px;margin-top:511px;width:118px;height:96px'><img
+width=118 height=96 src="help.files/image083.gif" alt="圆角矩形标注: 填写盘盈设备信息"
+v:shapes="_x0000_s1066"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1065"
+ type="#_x0000_t62" style='position:absolute;margin-left:22.5pt;margin-top:258.75pt;
+ width:79.5pt;height:27.75pt;z-index:33' adj="6276,-10625" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>是盘盈设备</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:33;margin-left:26px;margin-top:317px;width:118px;height:73px'><img
+width=118 height=73 src="help.files/image084.gif" alt="圆角矩形标注: 是盘盈设备" v:shapes="_x0000_s1065"></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1050"
+ type="#_x0000_t75" style='width:219pt;height:287.25pt'>
+ <v:imagedata src="help.files/image085.png" o:title="" cropbottom="17266f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=383
+src="help.files/image086.jpg" v:shapes="_x0000_i1050"><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_i1051" type="#_x0000_t75" style='width:219pt;height:359.25pt'>
+ <v:imagedata src="help.files/image087.png" o:title="" cropbottom="5167f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=479
+src="help.files/image088.jpg" v:shapes="_x0000_i1051"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'>7</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+mso-fareast-language:ZH-CN'>、盘点扫描到最后，如果出现账上有设备，但对应的实物没有，可点开设备信息，按“盘亏”，此设备标记为盘亏。此设备最终是否盘亏，待盘点任务完成上传，由负责人在服务端判断确认。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1068" type="#_x0000_t62"
+ style='position:absolute;margin-left:137.25pt;margin-top:290.2pt;width:71.25pt;
+ height:30pt;z-index:36' adj="864,30132" strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>盘亏设备</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:36;margin-left:172px;margin-top:383px;width:114px;height:76px'><img
+width=114 height=76 src="help.files/image089.gif" alt="圆角矩形标注: 盘亏设备" v:shapes="_x0000_s1068"></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1052"
+ type="#_x0000_t75" style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image090.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image091.jpg" v:shapes="_x0000_i1052"><![endif]><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>盘盈处理</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>如果在盘点任务中，标记为盘盈的设备信息需要补充，或需要撤销盘盈，可以在盘盈处理功能中执行。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>没有标签的盘盈设备，可以直接在此新增盘盈，填写设备信息，保存。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1070" type="#_x0000_t62"
+ style='position:absolute;margin-left:98.25pt;margin-top:264.75pt;width:79.5pt;
+ height:48.75pt;z-index:38' adj="-1671,31503" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>如需撤销盘盈，点撤销</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:38;margin-left:104px;margin-top:349px;width:141px;height:119px'><img
+width=141 height=119 src="help.files/image092.gif" alt="圆角矩形标注: 如需撤销盘盈，点撤销"
+v:shapes="_x0000_s1070"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1069"
+ type="#_x0000_t62" style='position:absolute;margin-left:103.5pt;margin-top:90pt;
+ width:96pt;height:52.5pt;z-index:37' adj="6210,26475" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>点开盘盈记录，补充信息</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:37;margin-left:134px;margin-top:116px;width:140px;height:102px'><img
+width=140 height=102 src="help.files/image093.gif" alt="圆角矩形标注: 点开盘盈记录，补充信息"
+v:shapes="_x0000_s1069"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1053" type="#_x0000_t75"
+ style='width:219pt;height:364.5pt'>
+ <v:imagedata src="help.files/image094.png" o:title="" cropbottom="4285f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=486
+src="help.files/image095.jpg" v:shapes="_x0000_i1053"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1071" type="#_x0000_t62"
+ style='position:absolute;margin-left:119.25pt;margin-top:68.6pt;width:86.25pt;
+ height:1in;z-index:39' adj="15176,-9945" strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>无标签的盘盈设备，可直接新增盘盈</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:39;margin-left:155px;margin-top:33px;width:127px;height:162px'><img
+width=127 height=162 src="help.files/image096.gif"
+alt="圆角矩形标注: 无标签的盘盈设备，可直接新增盘盈" v:shapes="_x0000_s1071"></span><![endif]><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1054"
+ type="#_x0000_t75" style='width:219pt;height:294.75pt'>
+ <v:imagedata src="help.files/image097.png" o:title="" cropbottom="16006f"/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=393
+src="help.files/image098.jpg" v:shapes="_x0000_i1054"><![endif]><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>盘亏处理</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>如果在盘点任务中，标记为盘亏的设备信息需要补充，或需要撤销盘亏，可以在盘亏处理功能中执行。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1072" type="#_x0000_t62"
+ style='position:absolute;margin-left:115.5pt;margin-top:60.9pt;width:96pt;
+ height:52.5pt;z-index:40' adj="6210,26475" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>点开盘亏记录，补充信息</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:40;margin-left:150px;margin-top:77px;width:140px;height:103px'><img
+width=140 height=103 src="help.files/image099.gif" alt="圆角矩形标注: 点开盘亏记录，补充信息"
+v:shapes="_x0000_s1072"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1073"
+ type="#_x0000_t62" style='position:absolute;margin-left:110.25pt;margin-top:235.65pt;
+ width:79.5pt;height:48.75pt;z-index:41' adj="-1671,31503" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>如需撤销盘亏，点撤销</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:41;margin-left:120px;margin-top:310px;width:141px;height:119px'><img
+width=141 height=119 src="help.files/image100.gif" alt="圆角矩形标注: 如需撤销盘亏，点撤销"
+v:shapes="_x0000_s1073"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1055" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image101.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image102.jpg" v:shapes="_x0000_i1055"><![endif]><o:p></o:p></span></p>
+
+<h1><span style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:
+Cambria;mso-fareast-language:ZH-CN'>盘点查询</span><span lang=EN-US
+style='mso-fareast-language:ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>盘点任务中的记录，随着盘点的执行，已盘的记录不再显示，但仍可在盘点查询功能中，查看已盘、未盘、盘盈、盘亏的记录。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s1075" type="#_x0000_t62"
+ style='position:absolute;margin-left:132.75pt;margin-top:139.5pt;width:67.5pt;
+ height:48.75pt;z-index:43' adj="20832,-16017" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>可输入条件查询</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:43;margin-left:173px;margin-top:118px;width:106px;height:141px'><img
+width=106 height=141 src="help.files/image103.gif" alt="圆角矩形标注: 可输入条件查询"
+v:shapes="_x0000_s1075"></span><![endif]><!--[if gte vml 1]><v:shape id="_x0000_s1074"
+ type="#_x0000_t62" style='position:absolute;margin-left:111pt;margin-top:297pt;
+ width:79.5pt;height:48.75pt;z-index:42' adj="-1671,31503" strokecolor="#4f81bd"
+ strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>在标签栏打开盘点查询</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:42;margin-left:121px;margin-top:392px;width:141px;height:119px'><img
+width=141 height=119 src="help.files/image104.gif" alt="圆角矩形标注: 在标签栏打开盘点查询"
+v:shapes="_x0000_s1074"></span><![endif]><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><!--[if gte vml 1]><v:shape id="_x0000_i1056" type="#_x0000_t75"
+ style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image105.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image106.jpg" v:shapes="_x0000_i1056"><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_i1057" type="#_x0000_t75" style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image107.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image108.jpg" v:shapes="_x0000_i1057"><![endif]><o:p></o:p></span></p>
+
+<h1><!--[if gte vml 1]><v:shape id="_x0000_s1077" type="#_x0000_t62" style='position:absolute;
+ margin-left:1.5pt;margin-top:-186.1pt;width:69.75pt;height:70.5pt;z-index:45'
+ adj="25037,6848" strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>选择盘点状态，过滤记录</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+relative;z-index:45'><span style='position:absolute;left:-2px;top:-252px;
+width:125px;height:106px'><img width=125 height=106
+src="help.files/image109.gif" alt="圆角矩形标注: 选择盘点状态，过滤记录" v:shapes="_x0000_s1077"></span></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1076" type="#_x0000_t62" style='position:absolute;margin-left:84pt;
+ margin-top:-336.1pt;width:94.5pt;height:48.75pt;z-index:44' adj="21051,-14023"
+ strokecolor="#4f81bd" strokeweight="5pt">
+ <v:stroke linestyle="thickThin"/>
+ <v:shadow color="#868686"/>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+    mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>点按钮打开盘点状态选择</span><span
+    lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+relative;z-index:44'><span style='position:absolute;left:108px;top:-506px;
+width:143px;height:131px'><img width=143 height=131
+src="help.files/image110.gif" alt="圆角矩形标注: 点按钮打开盘点状态选择" v:shapes="_x0000_s1076"></span></span><![endif]><span
+style='font-family:宋体;mso-ascii-font-family:Cambria;mso-hansi-font-family:Cambria;
+mso-fareast-language:ZH-CN'>设置</span><span lang=EN-US style='mso-fareast-language:
+ZH-CN'><o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>服务器设置：在初次使用向导中，已设置服务器地址，如需修改服务器地址，可以在此修改。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>问题反馈：打开您手机设置的邮箱，发邮件给我们，反馈盘点易使用中的问题。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>检测新版本：当盘点易有新版本时，负责人将程序文件放到服务端，手机端与服务端连通时，可以检测到新版本，并下载升级。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>关于我们：盘点易版本信息。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-fareast-language:ZH-CN'>客服热线：直接拨打客服热线电话，进行咨询。</span><span
+lang=EN-US style='mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-fareast-language:ZH-CN'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1058" type="#_x0000_t75" style='width:219pt;height:390pt'>
+ <v:imagedata src="help.files/image111.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=292 height=520
+src="help.files/image112.jpg" v:shapes="_x0000_i1058"><![endif]><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_m"
+        android:layout_marginRight="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_m"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_mobile"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font16" />
+
+        <EditText
+            android:id="@+id/et_mob"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_m"
+            android:background="@drawable/bg_edittext"
+            android:hint="@string/register_mobile_hint"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:padding="@dimen/margin_m"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_m"
+        android:layout_marginRight="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_m"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_pwd"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font16" />
+
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_m"
+            android:background="@drawable/bg_edittext"
+            android:hint="@string/register_pwd_hint"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:padding="@dimen/margin_m"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_m"
+        android:layout_marginRight="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_m"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_name"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font16" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_m"
+            android:background="@drawable/bg_edittext"
+            android:hint="@string/register_name_hint"
+            android:padding="@dimen/margin_m"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_m"
+        android:layout_marginRight="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_m"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_email"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font16" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_m"
+            android:background="@drawable/bg_edittext"
+            android:hint="@string/register_email_hint"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/margin_m"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_m"
+        android:layout_marginRight="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_m"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_trade"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font16" />
+
+        <com.kingtangdata.inventoryassis.view.SliderPopupChoicer
+            android:id="@+id/trade_choice"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_m"
+            android:background="@drawable/bg_slide_choose"
+            android:gravity="center_vertical"
+            android:hint="@string/register_trade_hint"
+            android:padding="@dimen/margin_m"
+            android:singleLine="true"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_m"
+        android:layout_marginRight="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_m"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_code"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font16" />
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_m"
+            android:background="@drawable/bg_edittext"
+            android:hint="@string/register_code_hint"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:padding="@dimen/margin_m"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_m"
+        android:layout_marginRight="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_m"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_code"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font16"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginLeft="@dimen/margin_m"
+            android:text="@string/register_btn"
+            android:textColor="@drawable/selector_text_href"
+            android:textSize="@dimen/font16" 
+            android:onClick="getCode"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_submit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_m"
+        android:layout_marginRight="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_h"
+        android:background="@drawable/selector_bluebtn"
+        android:onClick="doSubmit"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font16" />
+
+</LinearLayout>

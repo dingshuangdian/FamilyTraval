@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    android:orientation="vertical" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:background="@color/bg"
+  	xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <LinearLayout 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_weight="1.0">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="关于正泰数据"
+            android:textSize="50.0sp" />
+    </LinearLayout>
+</LinearLayout>

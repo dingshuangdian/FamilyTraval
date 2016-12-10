@@ -1,0 +1,12 @@
+package com.kingtangdata.inventoryassis.adapter;
+
+import java.util.List;
+
+import com.kingtangdata.inventoryassis.data.Plan;
+
+import android.widget.BaseAdapter;
+
+public abstract class PagerAdapter extends BaseAdapter {
+
+	public abstract void  setData(List<Plan> list);
+}

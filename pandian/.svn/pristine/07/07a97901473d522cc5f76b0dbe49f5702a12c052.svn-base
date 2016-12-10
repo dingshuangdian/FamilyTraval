@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="48dp"
+    android:background="@drawable/bg_topbar" >
+
+    <TextView
+        android:id="@+id/lm_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="3"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font24" />
+
+    <ImageView
+        android:id="@+id/mkt_top_left_btn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@null"
+        android:paddingLeft="6.0dip"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/mkt_top_right_btn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:visibility="invisible" />
+
+   <Button
+        android:id="@+id/top_left_btn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/title_btn_back"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font16" 
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/top_right_btn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font14"
+        android:visibility="invisible" />
+
+</RelativeLayout>

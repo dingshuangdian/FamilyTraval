@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dp" >
+
+    <RadioGroup
+        android:id="@+id/ui_inventory_type"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        	    
+            <RadioButton
+            android:id="@id/radio_all"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/selector_radio"
+            android:checked="true"
+            android:text="全部"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font14"
+            android:paddingLeft="25dp" />
+        
+  
+        </LinearLayout>
+        
+        
+        <RadioButton
+            android:id="@id/radio_checked"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/selector_radio"
+            android:text="已盘"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font14"
+            android:paddingLeft="25dp" />
+
+        <RadioButton
+            android:id="@id/radio_not"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/selector_radio"
+            android:text="未盘"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font14"
+            android:paddingLeft="25dp" />        
+
+        <RadioButton
+            android:id="@id/radio_shartage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/selector_radio"
+            android:text="盘亏"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font14"
+            android:paddingLeft="25dp" />        
+        
+        <RadioButton
+            android:id="@id/radio_surplus"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/selector_radio"
+            android:text="盘盈"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font14"
+            android:paddingLeft="25dp" />
+
+    </RadioGroup>
+
+</LinearLayout>
